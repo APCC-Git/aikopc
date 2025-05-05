@@ -1,3 +1,9 @@
+// /features/common/SmoothScroll.tsx
+// スムーズスクロール用コンポーネント
+// https://gsap.com/docs/v3/Plugins/ScrollSmoother/
+// parallaxも実装可能
+// https://codepen.io/GreenSock/pen/jOjMQjr
+
 'use client';
 
 import { useEffect, useRef } from 'react';
@@ -16,15 +22,16 @@ export default function SmoothScroll(props: any) {
       ScrollSmoother.create({
         wrapper: wrapper.current!,
         content: content.current!,
-        smooth: 1.5,
+        smooth: 1.0,
         effects: true,
+        normalizeScroll: true,
       });
     }
   }, []);
 
   return (
     <div ref={wrapper} id="smooth-wrapper" className="h-full overflow-hidden min-h-screen">
-      <div ref={content} id="smooth-content">
+      <div ref={content} id="smooth-content" className={props.className} style={props.style}>
         {props.children}
       </div>
     </div>

@@ -3,7 +3,7 @@
 > **開発中**  
 > アイデアは [こちら](#アイデア) に記載
 
-誰かNext書けるようになってや(´;ω;｀)  
+誰かNext.js書けるようになってや(´;ω;｀)  
 共有メアドはAPCC-Official@outlook.jp
 
 ---
@@ -13,7 +13,7 @@
 npm install
 npm run dev
 ```
-<localhost:3000>に開発サーバが立ち上がるぞ！
+<http://localhost:3000>に開発サーバが立ち上がるぞ！
 
 ---
 ## 使用技術
@@ -33,6 +33,7 @@ Cloudflare Pagesにデプロイ予定
 
 ## ディレクトリ構成
 ```
+src
 ├── app          ... ルーティングに関するコンポーネント
 ├── features     ... ロジック + コンポーネントをまとめたもの
 │   ├── common   ... 共通部分
@@ -40,16 +41,10 @@ Cloudflare Pagesにデプロイ予定
 ├── components   ... ロジックがない共通コンポーネント
 ├── hooks        ... 共通ロジックの内、React Hooksが「ある」もの
 ├── utils        ... 共通ロジックの内、React Hooksが「ない」もの
-└── constants    ... 定数を定義したファイル
+├── constants    ... 定数を定義したファイル
+└── types        ... 型を定義したファイル
 ```
- - `app`内では`'use client'`を使わない！
  - 詳しくは[この記事](https://qiita.com/miumi/items/359b8a77bbb6f9666950)を参照
-
----
-
-## アイデア
- - GSAP を使ってアニメーション強化
- - Three.js（R3F）で3D演出
 
 ---
 
@@ -62,3 +57,19 @@ Cloudflare Pagesにデプロイ予定
 * **main ブランチに直接コミットしない！**
   * main への push は即座に Cloudflare Pages に反映されるぞ！
   * `develop`ブランチを切ってpush
+---
+
+## アイデア
+* モチーフ
+  * PCのパーツ
+    * 電源ボタン
+    * マザーボード
+    * モニター
+    * ハードディスク
+  * モチーフカラー
+    * 白/グレーでダークモードに応じて反転
+    * アクセントカラー一色(オレンジとか蛍光イエローとか)
+* ミリタリー的デザイン
+  * [こういうの](https://www.istockphoto.com/jp/%E3%82%A4%E3%83%A9%E3%82%B9%E3%83%88/%E3%82%B5%E3%82%A4%E3%83%90%E3%83%BC%E3%83%91%E3%83%B3%E3%82%AF)(iStock)
+  * [こういうの](images/img.png)(Hiby R4)
+  * [こういうの](images/img_1.png)(モバ充)
