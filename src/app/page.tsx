@@ -12,7 +12,6 @@ export default function Home() {
     <div className={''} style={{ backgroundColor: bg }}>
       <Header rainbow={true} singleColor={'orange'} bg={bg} color={'white'} textColor={'white'} />
       <WindowSvg></WindowSvg>
-      <WindowSvg></WindowSvg>
     </div>
   );
 }
