@@ -3,7 +3,7 @@ import SmoothScroll from '@/features/common/SmoothScroll';
 import Header from '@/components/HeaderOutline';
 import Footer from '@/components/Footer';
 import Window from '@/components/Window';
-import WindowSvg from '@/components/WindowSvgTest';
+import WindowSvg from '@/components/WindowSvg';
 
 export default function Home() {
   const bg = 'black';

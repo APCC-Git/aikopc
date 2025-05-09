@@ -11,19 +11,7 @@ export default function WindowSvg(props: any) {
   const textColor = 'black';
   const bg = 'black';
   return (
-    <div className={'absolute h-[720px] w-full'}>
-      {/*マスク*/}
-      <div
-        className={'hidden md:block h-full md:w-full xl:w-4/5 2xl:w-3/4 transition-all absolute'}
-      >
-        <div
-          className={'absolute w-[80.9%] h-[63%] bottom-[11%] left-[11.65%] bg-white opacity-30'}
-        ></div>
-        <div
-          className={'absolute w-[6.65%] h-[80px] bottom-[11%] left-[5%] bg-white opacity-30'}
-          style={{ clipPath: 'polygon(100% 0, 0 0, 100% 100%)' }}
-        ></div>
-      </div>
+    <div className={'h-[720px] w-full z-50'}>
       {/*SVG*/}
       <svg
         version="1.0"
@@ -37,7 +25,7 @@ export default function WindowSvg(props: any) {
       >
         <g
           transform="translate(0.000000,1428.000000) scale(0.100000,-0.100000)"
-          fill={color}
+          fill="#ffffff"
           stroke="none"
         >
           <path
@@ -50,6 +38,13 @@ export default function WindowSvg(props: any) {
 -2150 0 -2150 0 0 -688z m1120 231 l0 -318 623 -622 622 -623 898 0 897 0 0
 -260 0 -260 -1387 0 -1388 0 -622 622 -623 623 0 577 0 578 490 0 490 0 0
 -317z"
+          />
+          <path
+            d="M18725 13000 l-320 -320 -3905 0 -3905 0 -240 -240 -240 -240 -3987
+0 -3988 0 0 -1603 0 -1602 -400 -400 -400 -400 0 -2555 0 -2555 803 -803 802
+-802 10555 0 10555 0 403 403 402 402 0 4158 0 4157 -1383 0 -1382 0 -728 728
+-727 727 0 633 0 632 -798 0 -797 0 -320 -320z"
+            fillOpacity="0.5"
           />
           <path
             d="M18725 13000 l-320 -320 -3905 0 -3905 0 -240 -240 -240 -240 -3987
@@ -73,4 +68,4 @@ export default function WindowSvg(props: any) {
       </svg>
     </div>
   );
-} 
+}
