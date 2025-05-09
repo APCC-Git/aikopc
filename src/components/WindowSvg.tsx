@@ -73,4 +73,4 @@ export default function WindowSvg(props: any) {
       </svg>
     </div>
   );
-}
+} 
