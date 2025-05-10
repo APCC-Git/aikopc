@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import SmoothScroll from '@/features/common/SmoothScroll';
-import Header from '@/components/HeaderOutline';
-import Footer from '@/components/Footer';
-import Window from '@/components/Window';
-import WindowSvg from '@/components/WindowSvg';
+import Header from '@/components/cyber/HeaderOutline';
+import Footer from '@/components/cyber/Footer';
+import Window from '@/components/cyber/Window';
+import WindowSvg from '@/components/cyber/WindowSvg';
 
 export default function Home() {
   const bg = 'black';
