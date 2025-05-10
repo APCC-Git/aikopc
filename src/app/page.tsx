@@ -11,7 +11,11 @@ export default function Home() {
   return (
     <div className={''} style={{ backgroundColor: bg }}>
       <Header rainbow={true} singleColor={'orange'} bg={bg} color={'white'} textColor={'white'} />
-      <WindowSvg></WindowSvg>
+      <WindowSvg>
+        <div className={'w-full h-full p-2'}>
+          <div className={'text-5xl text-white font-bold mt-5'}>愛光学園パソコン部</div>
+        </div>
+      </WindowSvg>
     </div>
   );
 }

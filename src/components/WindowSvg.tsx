@@ -11,7 +11,7 @@ export default function WindowSvg(props: any) {
   const textColor = 'black';
   const bg = 'black';
   return (
-    <div className={'h-[720px] w-full z-50'}>
+    <div className={'h-[720px] w-full z-50 items-center'}>
       {/*SVG*/}
       <svg
         version="1.0"
@@ -20,7 +20,7 @@ export default function WindowSvg(props: any) {
         height="1428.000000pt"
         viewBox="0 0 2593.000000 1428.000000"
         style={{ height: '720px' }}
-        className={'hidden md:block md:w-full xl:w-4/5 2xl:w-3/4 transition-all absolute'}
+        className={'hidden md:block md:w-full xl:w-4/5 2xl:w-3/4 transition-all absolute z-40'}
         preserveAspectRatio="none"
       >
         <g
@@ -66,6 +66,9 @@ export default function WindowSvg(props: any) {
           />
         </g>
       </svg>
+      <div className={'w-full h-full z-50 relative items-center justify-center hidden md:flex'}>
+        <div className={'w-[80%] h-[500px]'}>{props.children}</div>
+      </div>
     </div>
   );
 }
