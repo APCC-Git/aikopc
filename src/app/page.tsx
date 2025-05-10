@@ -4,12 +4,7 @@ import { Header } from '@/components/ui/header';
 import { Button } from "@/components/ui/button";
 import Carousel from "@/components/ui/carousel"
 
-interface Slide {
-  content: React.ReactNode;
-  style?: React.CSSProperties;
-}
-
-const slidesData:Slide = [
+const slidesData = [
   {
     content: (
       <Image
@@ -58,14 +53,14 @@ export default function Home() {
           </Link>
         </div>
       </div>
-      <div className={"w-full min-h-[500px] rounded-lg bg-gray-100 overflow-hidden"} style={{boxShadow: "0px 0px 15px 4px #bdbdbd"}}>
+      <div className={"w-full min-h-[500px] rounded-lg bg-[rgb(170 170 170)] overflow-hidden"} style={{boxShadow: "rgb(170 170 170) 0px 0px 20px 5px"}}>
         <Carousel
           slides={slidesData}
           loop={true}
           slidesPerView={1}
           spacing={20}
           autoplayInterval={3000} // 3秒ごとに自動再生
-          className={"w-full h-[500px]"}
+          className={"w-full h-[500px] bg-[rgb(170 170 170)]"}
         />
       </div>
     </div>
