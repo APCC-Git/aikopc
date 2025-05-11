@@ -69,4 +69,4 @@ export default function Home() {
 
 // メタデータ
 import type { Metadata } from 'next';
-export const metadata: Metadata = { title: 'パソコン部' };
+export const metadata: Metadata = { title: 'Aikopc.net' };

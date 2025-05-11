@@ -81,3 +81,7 @@ export default async function BlogPage({ params }: { params: Promise<{ page: str
     </div>
   );
 }
+
+// メタデータ
+import type { Metadata } from 'next';
+export const metadata: Metadata = { title: 'Blog | Aikopc.net' };

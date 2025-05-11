@@ -20,9 +20,20 @@ const workSans = Work_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'パソコン部',
+  metadataBase: new URL('http://aikopc.net'),
+  title: 'Aikopc.net',
   description: '愛光学園パソコン部の公式ホームページ',
-  keywords: ['パソコン部', 'パソコン', '愛光学園', '中学校', '高校', '愛媛'],
+  keywords: ['パソコン部', 'パソコン', '愛光学園', '中学校', '高校', '愛媛' ,`Aikopc`],
+  openGraph: {
+    title: `Aikopc.net`,
+    images: [
+      {
+        url: "/images/sample1.jpg",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
 };
 
 export default function RootLayout({

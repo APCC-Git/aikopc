@@ -1,6 +1,7 @@
 import { client } from '@/lib/microcms';
 import { Card, CardContent } from "@/components/ui/card"
 import dayjs from 'dayjs';
+import { Metadata } from "next"
 
 // ブログ記事の型定義
 type Props = {
@@ -11,10 +12,37 @@ type Props = {
   category: { name: string };
 };
 
+//metadata用の型定義
+type metadataProps = {
+  params: { id: string }
+}
+
 // microCMSから特定の記事を取得
 async function getBlogPost(id: string): Promise<Props> {
   const data = await client.get({ endpoint: "blogs", contentId: id });
   return data;
+}
+
+// metadata を動的に生成
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = await params;
+  const data = await client.get({ endpoint: "blogs", contentId: id })
+
+  return {
+    metadataBase: new URL('http://aikopc.net'),
+    title: `${data.title} | Aikopc.net`,
+    description: "愛光学園パソコン部 ブログ記事ページ",
+    openGraph: {
+      title: `${data.title} | Aikopc.net`,
+      images: [
+        {
+          url: data.eyecatch?.url || "/images/sample1.jpg",
+          width: 1200,
+          height: 630,
+        },
+      ],
+    },
+  }
 }
 
 // 記事詳細ページの生成

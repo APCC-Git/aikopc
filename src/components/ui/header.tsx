@@ -15,7 +15,7 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* ロゴ */}
         <Link href="/" className="text-xl font-bold text-primary">
-          <Image src="/logo.png" alt="logo" width={50} height={50}/>
+          <Image src="/logo.png" alt="logo" width={50} height={50} priority/>
           {/*AikoPC.net*/}
         </Link>
 
