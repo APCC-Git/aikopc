@@ -6,6 +6,19 @@ import { notFound } from "next/navigation";
 import { Card, CardContent } from "@/components/ui/card"
 import dayjs from "dayjs"
 
+type Post = {
+  id: string
+  title: string
+  publishedAt: string
+  eyecatch?: {
+    url: string
+  }
+  category?: {
+    id: string
+    name: string
+  }
+}
+
 
 export async function generateStaticParams() {
   const { totalCount } = await getBlogPostsByPage(1);
@@ -25,13 +38,14 @@ export default async function BlogPage({ params }: { params: Promise<{ page: str
   if (!posts.length) return <div>記事がありません</div>;
 
   const pageCount = Math.ceil(totalCount / 10);
+  //console.log(posts);
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold mb-6">Blog（ページ {pageNumber}）</h1>
 
       <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-6">
-        {posts.map((post) => (
+        {posts.map((post:Post) => (
           <Card key={post.id} className="overflow-hidden pt-0">
               <div className="relative h-54 w-full">
                 <Image
@@ -53,7 +67,6 @@ export default async function BlogPage({ params }: { params: Promise<{ page: str
                 </span>
               }
               </div>
-              <p className="text-sm text-gray-700 line-clamp-3">{post.body}</p>
             </CardContent>
           </Card>
         ))}
