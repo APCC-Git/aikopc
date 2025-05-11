@@ -10,7 +10,7 @@ const slidesData = [
       <Image
         src="/images/sample1.jpg"
         fill
-        className="object-cover"
+        className="object-cover bg-[rgb(199 199 199)]"
         alt="Placeholder Image"
       />
     ),
@@ -20,7 +20,7 @@ const slidesData = [
       <Image
         src="/images/sample2.jpg"
         fill
-        className="object-cover"
+        className="object-cover bg-[rgb(199 199 199)]"
         alt="Placeholder Image"
       />
     ),
@@ -30,7 +30,7 @@ const slidesData = [
       <Image
         src="/images/sample3.jpg"
         fill
-        className="object-cover"
+        className="object-cover bg-[rgb(199 199 199)]"
         alt="Placeholder Image"
       />
     ),
@@ -53,7 +53,7 @@ export default function Home() {
           </Link>
         </div>
       </div>
-      <div className={"w-full min-h-[500px] rounded-lg bg-[rgb(170 170 170)] overflow-hidden"} style={{boxShadow: "rgb(170 170 170) 0px 0px 20px 5px"}}>
+      <div className={"w-full min-h-[500px] rounded-lg bg-[rgb(170 170 170)] overflow-hidden"} style={{boxShadow: "rgb(199 199 199) 0px 0px 20px 5px"}}>
         <Carousel
           slides={slidesData}
           loop={true}
