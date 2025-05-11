@@ -6,7 +6,6 @@
 誰かNext.js書けるようになってや(´;ω;｀)  
 共有メアドはAPCC-Official@outlook.jp
 
----
 
 ## Getting Started
 ```shell
@@ -15,7 +14,6 @@ npm run dev
 ```
 <http://localhost:3000>に開発サーバが立ち上がるぞ！
 
----
 ## 使用技術
 | 言語・フレームワーク        | バージョン   |
 |-------------------|---------|
@@ -24,12 +22,10 @@ npm run dev
 | Next.js           | 15.3.1  |
 | TypeScript        | 5.8.3   |
 | TailwindCSS       | v4      |
----
 
 ## ホスト
-Cloudflare Pagesにデプロイ予定
-
----
+conoha vpsにデプロイ予定
+github actionsを使用して自動デプロイ
 
 ## ディレクトリ構成
 ```
@@ -42,7 +38,8 @@ src
 ├── hooks        ... 共通ロジックの内、React Hooksが「ある」もの
 ├── utils        ... 共通ロジックの内、React Hooksが「ない」もの
 ├── constants    ... 定数を定義したファイル
-└── types        ... 型を定義したファイル
+├── types        ... 型を定義したファイル
+└── lib          ... apiなど
 ```
  - 詳しくは[この記事](https://qiita.com/miumi/items/359b8a77bbb6f9666950)を参照
 
@@ -55,7 +52,6 @@ src
   * わかりやすい変数名
   * マジックナンバーは避ける
 * **main ブランチに直接コミットしない！**
-  * main への push は即座に Cloudflare Pages に反映されるぞ！
   * `develop`ブランチを切ってpush
 ---
 
@@ -69,7 +65,18 @@ src
   * モチーフカラー
     * 白/グレーでダークモードに応じて反転
     * アクセントカラー一色(オレンジとか蛍光イエローとか)
-* ミリタリー的デザイン
+* ~~ミリタリー的デザイン~~
   * [こういうの](https://www.istockphoto.com/jp/%E3%82%A4%E3%83%A9%E3%82%B9%E3%83%88/%E3%82%B5%E3%82%A4%E3%83%90%E3%83%BC%E3%83%91%E3%83%B3%E3%82%AF)(iStock)
   * [こういうの](images/img.png)(Hiby R4)
   * [こういうの](images/img_1.png)(モバ充)
+* shadcn/uiでモダンui
+  * ログイン機能
+    * ブログ作成
+    * プロジェクトの進捗管理
+
+## ToDo
++ [] カルーセル用の画像探す・取る
++ [] Aboutページを作る
++ []
++ [] ブログページをOn-demand ISRに対応させる [この記事](https://blog.microcms.io/on-demand-isr/)を参照
++ [] 部員ログイン機能をつける
