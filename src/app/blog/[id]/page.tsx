@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import dayjs from 'dayjs';
 import { Metadata } from "next"
 import { notFound } from 'next/navigation'
+import { PostTile } from "@/components/ui/postTile"
 
 // ブログ記事の型定義
 // type Props = {
@@ -85,13 +86,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ id: s
   const post = await getBlogPost(id);
 
   if(!post)notFound();
-  // console.log(post);
-  // console.log(await getSimilarPost(post.category?.id??"チュートリアル"));
+  const similar = await getSimilarPost(post.category?.id??"チュートリアル");
   // dayjsを使ってpublishedAtをYY.MM.DD形式に変換
   const formattedDate = dayjs(post.publishedAt).format('YY-MM-DD');
 
   return (
-    <main className={"w-full p-4 md:p-10"}>
+    <main className={"w-full p-4 md:p-10 block lg:flex"}>
       <Card className={"w-full lg:w-2/3 rounded-lg p-4"}>
         <div>
           <h1 className={"text-2xl font-bold mr-5"}>{post.title}</h1>
@@ -107,6 +107,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ id: s
         <hr />
         <article className="prose" dangerouslySetInnerHTML={{ __html: `${post.content}`,}}/>
       </Card>
+      <div className={"hidden lg:block w-1/3 p-4 pt-0"}>
+        関連記事
+        {similar.map((post)=>{
+          return(
+          <div key={post.id} className={"mt-4"}>
+            <PostTile  post={post} />
+          </div>
+          )
+        })}
+      </div>
     </main>
   );
 }
