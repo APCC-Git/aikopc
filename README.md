@@ -4,7 +4,7 @@
 > アイデアは [こちら](#アイデア) に記載
 
 誰かNext.js書けるようになってや(´;ω;｀)  
-共有メアドはAPCC-Official@outlook.jp
+共有メアドは APCC-Official@outlook.jp
 
 
 ## Getting Started
@@ -79,5 +79,6 @@ src
 + [ ] Aboutページを作る
 + [x] ブログのスタイリング
 + [ ] 記事ページに関連記事機能を実装
-+ [ ] ブログページをOn-demand ISRに対応させる [この記事](https://blog.microcms.io/on-demand-isr/)を参照 (microcmsのwebhook的にデプロイ後でないと難しそう)
 + [ ] 部員ログイン機能を作る
++ [ ] ブログページをOn-demand ISRに対応させる [この記事](https://blog.microcms.io/on-demand-isr/)を参照 (microcmsのwebhook的にデプロイ後でないと難しそう)
++ [ ] Github Actions設定

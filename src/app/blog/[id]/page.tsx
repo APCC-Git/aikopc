@@ -26,8 +26,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ id: s
   const formattedDate = dayjs(post.publishedAt).format('YY.MM.DD');
 
   return (
-    <main className={"w-full lg:w-2/3 p-4 md:p-10"}>
-      <Card className={"w-full rounded-lg p-4"}>
+    <main className={"w-full p-4 md:p-10"}>
+      <Card className={"w-full lg:w-2/3 rounded-lg p-4"}>
         <div>
           <h1 className={"text-2xl font-bold mr-5"}>{post.title}</h1>
           <div className={"text-gray-600 mt-2"}>{formattedDate}</div>
