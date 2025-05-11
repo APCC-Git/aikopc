@@ -2,19 +2,33 @@ import { client } from '@/lib/microcms';
 import { Card, CardContent } from "@/components/ui/card"
 import dayjs from 'dayjs';
 import { Metadata } from "next"
+import { notFound } from 'next/navigation'
 
 // ブログ記事の型定義
+// type Props = {
+//   id: string;
+//   title: string;
+//   content: string;
+//   publishedAt: string;
+//   category: { 
+//     id: string
+//     name: string 
+//   };
+// };
 type Props = {
   id: string;
   title: string;
-  content: string;
+  content?: string;
   publishedAt: string;
-  category: { name: string };
-};
-
-//metadata用の型定義
-type metadataProps = {
-  params: { id: string }
+  eyecatch?: {
+    url: string
+    height: number
+    width: number
+  };
+  category?: {
+    id: string
+    name: string
+  };
 }
 
 // microCMSから特定の記事を取得
@@ -23,10 +37,30 @@ async function getBlogPost(id: string): Promise<Props> {
   return data;
 }
 
+async function getSimilarPost(categoryId: string): Promise<Props[]> {
+  if (!categoryId) return [];
+
+  const data = await client.get<{ contents: Props[] }>({ 
+    endpoint: "blogs", 
+    queries: {
+      filters: `category[equals]${categoryId}`,
+      limit: 3,
+    }
+  });
+
+  return data.contents;
+}
+
+//metadata用の型定義
+type metadataProps = {
+  params: Promise<{ id: string }>
+}
+
 // metadata を動的に生成
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: metadataProps): Promise<Metadata> {
   const { id } = await params;
-  const data = await client.get({ endpoint: "blogs", contentId: id })
+  const data = await getBlogPost(id);
+  if(!data)  notFound();
 
   return {
     metadataBase: new URL('http://aikopc.net'),
@@ -50,8 +84,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ id: s
   const { id } = await params; // IDを取得
   const post = await getBlogPost(id);
 
+  if(!post)notFound();
+  // console.log(post);
+  // console.log(await getSimilarPost(post.category?.id??"チュートリアル"));
   // dayjsを使ってpublishedAtをYY.MM.DD形式に変換
-  const formattedDate = dayjs(post.publishedAt).format('YY.MM.DD');
+  const formattedDate = dayjs(post.publishedAt).format('YY-MM-DD');
 
   return (
     <main className={"w-full p-4 md:p-10"}>
@@ -60,9 +97,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ id: s
           <h1 className={"text-2xl font-bold mr-5"}>{post.title}</h1>
           <div className={"text-gray-600 mt-2"}>{formattedDate}</div>
           <div className="flex flex-wrap gap-1 text-xs mt-2">
+          {post.category &&
             <span className="bg-gray-200 px-2 py-0.5 rounded-full text-gray-600">
               #{post.category.name}
             </span>
+          }
           </div>
         </div>
         <hr />
