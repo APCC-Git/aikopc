@@ -1,5 +1,5 @@
-// app/blog/[id]/page.tsx
 import { client } from '@/lib/microcms';
+import { Card, CardContent } from "@/components/ui/card"
 import dayjs from 'dayjs';
 
 // ブログ記事の型定義
@@ -26,11 +26,20 @@ export default async function BlogPostPage({ params }: { params: Promise<{ id: s
   const formattedDate = dayjs(post.publishedAt).format('YY.MM.DD');
 
   return (
-    <main>
-      <h1>{post.title}</h1>
-      <div>{formattedDate}</div>
-      <div>カテゴリー：{post.category && post.category.name}</div>
-      <article className="prose lg:prose-xl" dangerouslySetInnerHTML={{ __html: `${post.content}`,}}/>
+    <main className={"w-full lg:w-2/3 p-4 md:p-10"}>
+      <Card className={"w-full rounded-lg p-4"}>
+        <div>
+          <h1 className={"text-2xl font-bold mr-5"}>{post.title}</h1>
+          <div className={"text-gray-600 mt-2"}>{formattedDate}</div>
+          <div className="flex flex-wrap gap-1 text-xs mt-2">
+            <span className="bg-gray-200 px-2 py-0.5 rounded-full text-gray-600">
+              #{post.category.name}
+            </span>
+          </div>
+        </div>
+        <hr />
+        <article className="prose" dangerouslySetInnerHTML={{ __html: `${post.content}`,}}/>
+      </Card>
     </main>
   );
 }

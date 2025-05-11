@@ -24,7 +24,7 @@ npm run dev
 | TailwindCSS       | v4      |
 
 ## ホスト
-conoha vpsにデプロイ予定
+conoha vpsにデプロイ予定  
 github actionsを使用して自動デプロイ
 
 ## ディレクトリ構成
@@ -57,18 +57,18 @@ src
 
 ## アイデア
 * モチーフ
-  * PCのパーツ
+  ~~* PCのパーツ
     * 電源ボタン
     * マザーボード
     * モニター
-    * ハードディスク
-  * モチーフカラー
+    * ハードディスク~~
+  ~~* モチーフカラー
     * 白/グレーでダークモードに応じて反転
-    * アクセントカラー一色(オレンジとか蛍光イエローとか)
+    * アクセントカラー一色(オレンジとか蛍光イエローとか)~~
 * ~~ミリタリー的デザイン~~
-  * [こういうの](https://www.istockphoto.com/jp/%E3%82%A4%E3%83%A9%E3%82%B9%E3%83%88/%E3%82%B5%E3%82%A4%E3%83%90%E3%83%BC%E3%83%91%E3%83%B3%E3%82%AF)(iStock)
-  * [こういうの](images/img.png)(Hiby R4)
-  * [こういうの](images/img_1.png)(モバ充)
+  ~~* [こういうの](https://www.istockphoto.com/jp/%E3%82%A4%E3%83%A9%E3%82%B9%E3%83%88/%E3%82%B5%E3%82%A4%E3%83%90%E3%83%BC%E3%83%91%E3%83%B3%E3%82%AF)(iStock)~~
+  ~~* [こういうの](images/img.png)(Hiby R4)~~
+  ~~* [こういうの](images/img_1.png)(モバ充)~~
 * shadcn/uiでモダンui
   * ログイン機能
     * ブログ作成
@@ -77,6 +77,7 @@ src
 ## ToDo
 + [ ] カルーセル用の画像探す・取る
 + [ ] Aboutページを作る
-+ [ ] ブログのスタイリング
-+ [ ] ブログページをOn-demand ISRに対応させる [この記事](https://blog.microcms.io/on-demand-isr/)を参照
-+ [ ] 部員ログイン機能をつける
++ [x] ブログのスタイリング
++ [ ] 記事ページに関連記事機能を実装
++ [ ] ブログページをOn-demand ISRに対応させる [この記事](https://blog.microcms.io/on-demand-isr/)を参照 (microcmsのwebhook的にデプロイ後でないと難しそう)
++ [ ] 部員ログイン機能を作る
