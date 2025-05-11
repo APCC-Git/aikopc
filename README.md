@@ -75,8 +75,8 @@ src
     * プロジェクトの進捗管理
 
 ## ToDo
-+ [] カルーセル用の画像探す・取る
-+ [] Aboutページを作る
-+ []
-+ [] ブログページをOn-demand ISRに対応させる [この記事](https://blog.microcms.io/on-demand-isr/)を参照
-+ [] 部員ログイン機能をつける
++ [ ] カルーセル用の画像探す・取る
++ [ ] Aboutページを作る
++ [ ] ブログのスタイリング
++ [ ] ブログページをOn-demand ISRに対応させる [この記事](https://blog.microcms.io/on-demand-isr/)を参照
++ [ ] 部員ログイン機能をつける
