@@ -1,5 +1,6 @@
 // app/blog/page/[page]/page.tsx
 import { getBlogPostsByPage } from "@/lib/microcms";
+import { Pagination } from "@/components/ui/Pagination"
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -12,6 +13,8 @@ type Post = {
   publishedAt: string
   eyecatch?: {
     url: string
+    height: number
+    width: number
   }
   category?: {
     id: string
@@ -19,10 +22,11 @@ type Post = {
   }
 }
 
+const limit = 10; //1ページに表示する記事の数
 
 export async function generateStaticParams() {
-  const { totalCount } = await getBlogPostsByPage(1);
-  const pageCount = Math.ceil(totalCount / 10);
+  const { totalCount } = await getBlogPostsByPage(1,limit);
+  const pageCount = Math.ceil(totalCount / limit);
   return Array.from({ length: pageCount }, (_, i) => ({
     page: (i + 1).toString(),
   }));
@@ -33,12 +37,11 @@ export default async function BlogPage({ params }: { params: Promise<{ page: str
   const pageNumber = parseInt(page || "1", 10);
   if (isNaN(pageNumber)) return notFound();
 
-  const { posts, totalCount } = await getBlogPostsByPage(pageNumber);
+  const { posts, totalCount } = await getBlogPostsByPage(pageNumber,limit);
 
-  if (!posts.length) return <div>記事がありません</div>;
+  if (!posts.length) return <div className={"text-center text-lg mt-5"}>記事がありません</div>;
 
-  const pageCount = Math.ceil(totalCount / 10);
-  //console.log(posts);
+  const pageCount = Math.ceil(totalCount / limit);
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
@@ -53,6 +56,7 @@ export default async function BlogPage({ params }: { params: Promise<{ page: str
                   alt={post.title}
                   fill
                   className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </div>
             <CardContent className="p-4 space-y-2">
@@ -73,17 +77,7 @@ export default async function BlogPage({ params }: { params: Promise<{ page: str
       </div>
 
       {/* ページネーション */}
-      <div className="flex justify-center gap-2">
-        {Array.from({ length: pageCount }, (_, i) => (
-          <Link
-            key={i}
-            href={`/blog/page/${i + 1}`}
-            className={`px-3 py-1 border rounded ${i + 1 === pageNumber ? "bg-gray-200 font-bold" : ""}`}
-          >
-            {i + 1}
-          </Link>
-        ))}
-      </div>
+      <Pagination current={pageNumber} total={Math.ceil(totalCount / limit)} limit={limit} />
     </div>
   );
 }

@@ -23,7 +23,7 @@ export function Header() {
         <nav className="hidden md:flex space-x-6">
           <Link href="/" className="text-sm hover:underline">Home</Link>
           <Link href="/about" className="text-sm hover:underline">About</Link>
-          <Link href="/blog" className="text-sm hover:underline">Blog</Link>
+          <Link href="/blog/page/1" className="text-sm hover:underline">Blog</Link>
         </nav>
 
         <div className="flex items-center gap-2">          
@@ -48,7 +48,7 @@ export function Header() {
         <nav className="flex flex-col space-y-2">
           <Link href="/" onClick={() => setMenuOpen(false)} className="text-sm hover:underline">Home</Link>
           <Link href="/about" onClick={() => setMenuOpen(false)} className="text-sm hover:underline">About</Link>
-          <Link href="/blog" onClick={() => setMenuOpen(false)} className="text-sm hover:underline">Blog</Link>
+          <Link href="/blog/page/1" onClick={() => setMenuOpen(false)} className="text-sm hover:underline">Blog</Link>
         </nav>
       </div>
     </header>

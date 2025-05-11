@@ -40,7 +40,7 @@ src
 ├── utils        ... 共通ロジックの内、React Hooksが「ない」もの
 ├── constants    ... 定数を定義したファイル
 ├── types        ... 型を定義したファイル
-└── lib          ... apiなど
+└── lib          ... ユーティリティ関数
 ```
  - 詳しくは[この記事](https://qiita.com/miumi/items/359b8a77bbb6f9666950)を参照
 
