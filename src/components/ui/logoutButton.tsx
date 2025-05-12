@@ -9,6 +9,7 @@ export function LogoutButton() {
   const handleLogout = async () => {
     await fetch('/api/auth/logout', { method: 'POST' });
     router.push('/');
+    router.refresh(); //サーバー側でクッキーをリロード
   };
 
   return <Button onClick={handleLogout}>ログアウト</Button>;

@@ -21,9 +21,10 @@ export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRe
       method: 'POST',
       body: JSON.stringify({ username, password }),
     });
-    if (res.ok)
+    if (res.ok) {
       router.push('/dashboard'); // 認証後に遷移
-    else setLoginFailed(true);
+      router.refresh(); //サーバー側でクッキーをリロード
+    } else setLoginFailed(true);
   };
 
   return (
