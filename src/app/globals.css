@@ -1,6 +1,9 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "keen-slider/keen-slider.min.css";
+/*@import 'src/styles/_keyframe-animations.scss';*/
+/*@import 'src/styles/_variables.scss';*/
+
 @plugin "@tailwindcss/typography";
 @custom-variant dark (&:is(.dark *));
 

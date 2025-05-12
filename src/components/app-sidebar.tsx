@@ -1,24 +1,13 @@
-"use client"
+'use client';
 
-import * as React from "react"
-import Image from "next/image"
-import {
-  BookOpen,
-  Bot,
-  Command,
-  Frame,
-  LifeBuoy,
-  Map,
-  PieChart,
-  Send,
-  Settings2,
-  SquareTerminal,
-} from "lucide-react"
+import * as React from 'react';
+import Image from 'next/image';
+import { BookOpen, CodeXml, LifeBuoy, Laptop, Gamepad2, Send, FilePenLine } from 'lucide-react';
 
-import { NavMain } from "@/components/nav-main"
-import { NavProjects } from "@/components/nav-projects"
-import { NavSecondary } from "@/components/nav-secondary"
-import { NavUser } from "@/components/nav-user"
+import { NavMain } from '@/components/nav-main';
+import { NavProjects } from '@/components/nav-projects';
+import { NavSecondary } from '@/components/nav-secondary';
+import { NavUser } from '@/components/nav-user';
 import {
   Sidebar,
   SidebarContent,
@@ -27,133 +16,91 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
+} from '@/components/ui/sidebar';
+import { type } from 'node:os';
 
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/logo.png",
+    name: 'admin',
+    id: '69119',
+    avatar: '/logo.png',
   },
   navMain: [
     {
-      title: "Playground",
-      url: "#",
-      icon: SquareTerminal,
+      title: 'ブログ',
+      url: '/dashboard/blog',
+      icon: FilePenLine,
       isActive: true,
       items: [
         {
-          title: "History",
-          url: "#",
+          title: '作成',
+          url: '/dashboard/blog/create',
         },
         {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
-          url: "#",
+          title: '下書き',
+          url: '/dashboard/blog/draft',
         },
       ],
     },
     {
-      title: "Models",
-      url: "#",
-      icon: Bot,
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Documentation",
-      url: "#",
+      title: '講座',
+      url: '/dashboard/course',
       icon: BookOpen,
       items: [
         {
-          title: "Introduction",
-          url: "#",
+          title: 'スケジュール',
+          url: '/dashboard/course/schedule',
         },
         {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
+          title: '講座一覧',
+          url: '/dashboard/course/lessons',
         },
       ],
     },
   ],
   navSecondary: [
     {
-      title: "Support",
-      url: "#",
+      title: 'Support',
+      url: '#',
       icon: LifeBuoy,
     },
     {
-      title: "Feedback",
-      url: "#",
+      title: 'Feedback',
+      url: '#',
       icon: Send,
     },
   ],
   projects: [
     {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
+      name: 'C++',
+      url: '#',
+      icon: CodeXml,
     },
     {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: PieChart,
+      name: 'ゲーム',
+      url: '#',
+      icon: Gamepad2,
     },
     {
-      name: "Travel",
-      url: "#",
-      icon: Map,
+      name: '自作PC',
+      url: '#',
+      icon: Laptop,
     },
   ],
-}
+};
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+type User = {
+  userId: string;
+  userName: string;
+  iat: number;
+  exp: number;
+};
+
+type AppSidebarProps = React.ComponentProps<typeof Sidebar> & {
+  user: User;
+};
+
+export function AppSidebar({ user, ...props }: AppSidebarProps) {
   return (
     <Sidebar variant="inset" {...props}>
       <SidebarHeader>
@@ -162,8 +109,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarMenuButton size="lg" asChild>
               <a href="/dashboard">
                 <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                  {/*<Command className="size-4" />*/}
-                  <Image src={"/icons/icon-192.png"} width={192} height={192} className={"rounded-sm"} alt={"logo"}/>
+                  <Image
+                    src={'/icons/icon-192.png'}
+                    width={192}
+                    height={192}
+                    className={'rounded-sm'}
+                    alt={'logo'}
+                  />
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-medium">Aikopc.net</span>
@@ -177,11 +129,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarContent>
         <NavMain items={data.navMain} />
         <NavProjects projects={data.projects} />
-        <NavSecondary items={data.navSecondary} className="mt-auto" />
+        {/*<NavSecondary items={data.navSecondary} className="mt-auto" />*/}
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser user={user} />
       </SidebarFooter>
     </Sidebar>
-  )
+  );
 }

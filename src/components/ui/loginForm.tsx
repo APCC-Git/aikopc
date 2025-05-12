@@ -9,7 +9,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRef<'div'>) {
-  const [username, setUsername] = useState('');
+  const [id, setId] = useState('');
   const [password, setPassword] = useState('');
   const [loginFailed, setLoginFailed] = useState(false);
   const router = useRouter();
@@ -19,7 +19,7 @@ export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRe
     setLoginFailed(false);
     const res = await fetch('/api/auth/login', {
       method: 'POST',
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ id, password }),
     });
     if (res.ok) {
       router.push('/dashboard'); // 認証後に遷移
@@ -44,12 +44,7 @@ export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRe
             <div className="flex flex-col gap-6">
               <div className="grid gap-2">
                 <Label htmlFor="number">生徒番号</Label>
-                <Input
-                  placeholder=""
-                  value={username}
-                  onChange={e => setUsername(e.target.value)}
-                  required
-                />
+                <Input placeholder="" value={id} onChange={e => setId(e.target.value)} required />
               </div>
               <div className="grid gap-2">
                 <div className="flex items-center">

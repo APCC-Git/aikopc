@@ -1,3 +1,12 @@
-export default function BlogPage() {
-  return <h1 className="text-2xl font-bold">ブログ管理ページ</h1>
+import { DashboardBreadcrumb } from '@/components/DashboardBreadcrumb';
+
+export default function Page() {
+  return (
+    <div>
+      <DashboardBreadcrumb
+        items={[{ label: 'ダッシュボード', href: '/dashboard' }, { label: 'ブログ' }]}
+      />
+      <div className="w-full overflow-x-auto"></div>
+    </div>
+  );
 }
