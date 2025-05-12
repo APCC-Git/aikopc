@@ -4,7 +4,7 @@ import Image from 'next/image';
 import dayjs from 'dayjs';
 import { FC } from 'react';
 import { PostType } from '@/types/PostType';
-
+//props
 type Props = {
   post: PostType;
 };
