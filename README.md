@@ -14,6 +14,8 @@ npm install
 npm run dev
 ```
 <http://localhost:3000>に開発サーバが立ち上がるぞ！
+> [!IMPORTANT]
+> .envファイルがないとブログやらログインやらができません。もってる人からもらってね！
 
 ## 使用技術
 | 言語・フレームワーク        | バージョン   |
@@ -82,6 +84,7 @@ src
 + [x] 記事ページに関連記事機能を実装
 + [ ] 関連記事機能のロジック変更(containにする)
 + [x] 部員ログイン機能を作る
++ [ ] ダッシュボード画面作る
 + [ ] DB管理
 + [ ] ブログページをOn-demand ISRに対応させる [この記事](https://blog.microcms.io/on-demand-isr/)を参照 (microcmsのwebhook的にデプロイ後でないと難しそう)
 + [ ] Github Actions設定
