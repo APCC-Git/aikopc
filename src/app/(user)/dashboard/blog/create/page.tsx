@@ -3,7 +3,7 @@ import { SimpleEditor } from '@/components/tiptap-templates/simple/simple-editor
 
 export default function Page() {
   return (
-    <div>
+    <div className={'h-full flex flex-col'}>
       <DashboardBreadcrumb
         items={[
           { label: 'ダッシュボード', href: '/dashboard' },
@@ -11,8 +11,10 @@ export default function Page() {
           { label: 'ブログ作成' },
         ]}
       />
-      <div className="w-full overflow-x-auto p-2 md:p-4">
-        <SimpleEditor></SimpleEditor>
+      <div className="w-full h-full max-h-full p-2 md:p-6">
+        <div className="shadow-sm w-full max-h-full">
+          <SimpleEditor />
+        </div>
       </div>
     </div>
   );
