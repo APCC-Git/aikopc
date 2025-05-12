@@ -18,21 +18,7 @@ export default async function DashboardLayout({ children }: { children: ReactNod
     // 型ガードで判定
     if (typeof payload === 'object' && payload !== null && 'userId' in payload) {
       return (
-        <div className="flex min-h-screen">
-          {/* Sidebar */}
-          <aside className="w-64 bg-gray-100 border-r p-4 space-y-4">
-            <h2 className="text-xl font-bold mb-6">ダッシュボード</h2>
-            <nav className="space-y-2">
-              <SidebarLink href="/dashboard/blog">ブログ</SidebarLink>
-              <SidebarLink href="/dashboard/projects">プロジェクト</SidebarLink>
-              <SidebarLink href="/dashboard/settings">アカウント設定</SidebarLink>
-              <LogoutButton />
-            </nav>
-          </aside>
-
-          {/* Main Content */}
-          <main className="flex-1 p-6 bg-white">{children}</main>
-        </div>
+        <div>{children}</div>
       )
     } else {
       return <div>トークンの形式が不正です</div>;
