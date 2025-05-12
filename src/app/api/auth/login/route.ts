@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
 // 仮のユーザーデータ（実際はDBから取得）
-const users = [{ id: '69119', username: '69119', passwordHash: await bcrypt.hash('69119', 10) }];
+const users = [{ id: 'admin', username: 'admin', passwordHash: await bcrypt.hash('admin', 10) }];
 
 export async function POST(req: NextRequest) {
   console.log(req.body);
