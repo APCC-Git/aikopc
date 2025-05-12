@@ -1,28 +1,14 @@
 // app/blog/page/[page]/page.tsx
-import { getBlogPostsByPage } from "@/lib/microcms";
-import { Pagination } from "@/components/ui/Pagination"
-import { PostTile } from "@/components/ui/postTile"
-import { notFound } from "next/navigation";
-
-type Post = {
-  id: string
-  title: string
-  publishedAt: string
-  eyecatch?: {
-    url: string
-    height: number
-    width: number
-  }
-  category?: {
-    id: string
-    name: string
-  }
-}
+import { getBlogPostsByPage } from '@/lib/microcms';
+import { Pagination } from '@/components/ui/Pagination';
+import { PostTile } from '@/components/ui/postTile';
+import { notFound } from 'next/navigation';
+import { PostType } from '@/types/PostType';
 
 const limit = 10; //1ページに表示する記事の数
 
 export async function generateStaticParams() {
-  const { totalCount } = await getBlogPostsByPage(1,limit);
+  const { totalCount } = await getBlogPostsByPage(1, limit);
   const pageCount = Math.ceil(totalCount / limit);
   return Array.from({ length: pageCount }, (_, i) => ({
     page: (i + 1).toString(),
@@ -31,12 +17,12 @@ export async function generateStaticParams() {
 
 export default async function BlogPage({ params }: { params: Promise<{ page: string }> }) {
   const { page } = await params;
-  const pageNumber = parseInt(page || "1", 10);
+  const pageNumber = parseInt(page || '1', 10);
   if (isNaN(pageNumber)) return notFound();
 
-  const { posts, totalCount } = await getBlogPostsByPage(pageNumber,limit);
+  const { posts, totalCount } = await getBlogPostsByPage(pageNumber, limit);
 
-  if (!posts.length) return <div className={"text-center text-lg mt-5"}>記事がありません</div>;
+  if (!posts.length) return <div className={'text-center text-lg mt-5'}>記事がありません</div>;
 
   const pageCount = Math.ceil(totalCount / limit);
 
@@ -45,9 +31,9 @@ export default async function BlogPage({ params }: { params: Promise<{ page: str
       <h1 className="text-2xl font-bold mb-6">Blog（ページ {pageNumber}）</h1>
 
       <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-6">
-        {posts.map((post:Post) => (
+        {posts.map((post: PostType) => (
           <div key={post.id}>
-            <PostTile  post={post} />
+            <PostTile post={post} />
           </div>
         ))}
       </div>
