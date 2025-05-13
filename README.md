@@ -85,6 +85,7 @@ src
 + [ ] 関連記事機能のロジック変更(containにする)
 + [x] 部員ログイン機能を作る
 + [ ] ダッシュボード画面作る
++ [ ] middleware.ts作成
 + [ ] DB管理
 + [ ] ブログページをOn-demand ISRに対応させる [この記事](https://blog.microcms.io/on-demand-isr/)を参照 (microcmsのwebhook的にデプロイ後でないと難しそう)
 + [ ] Github Actions設定
