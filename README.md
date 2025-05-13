@@ -27,8 +27,9 @@ npm run dev
 | TailwindCSS       | v4      |
 
 ## ホスト
-conoha vpsにデプロイ予定  
-github actionsを使用して自動デプロイ
+Conoha VPSにデプロイ + nginxで公開  
+6Rix6が作成した`deploy.sh`を実行すれば自動でデプロイされる。  
+sshの秘密鍵が必要
 
 ## ディレクトリ構成
 ```
@@ -85,7 +86,7 @@ src
 + [ ] 関連記事機能のロジック変更(containにする)
 + [x] 部員ログイン機能を作る
 + [ ] ダッシュボード画面作る
-+ [ ] middleware.ts作成
++ [x] middleware.ts作成
 + [ ] DB管理
 + [ ] ブログページをOn-demand ISRに対応させる [この記事](https://blog.microcms.io/on-demand-isr/)を参照 (microcmsのwebhook的にデプロイ後でないと難しそう)
-+ [ ] Github Actions設定
++ [ ] [SSL 証明書を取得する (Let's Encrypt)](https://www.server-world.info/query?os=CentOS_Stream_9&p=ssl&f=2)
