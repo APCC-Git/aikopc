@@ -91,3 +91,4 @@ src
 + [ ] ブログページをOn-demand ISRに対応させる [この記事](https://blog.microcms.io/on-demand-isr/)を参照 (microcmsのwebhook的にデプロイ後でないと難しそう)
 + [ ] [SSL 証明書を取得する (Let's Encrypt)](https://www.server-world.info/query?os=CentOS_Stream_9&p=ssl&f=2)
 + [ ] (SSL対応したら)CookieをSecure:trueに設定(auth/login)
++ [ ] iPadのレイアウト作る

@@ -26,9 +26,9 @@ const Carousel: React.FC<CarouselProps> = ({
   spacing = 15,
   autoplayInterval,
   displayArrow = false,
-  className = ""
+  className = '',
 }) => {
-  const autoplayPlugin: KeenSliderPlugin = (slider) => {
+  const autoplayPlugin: KeenSliderPlugin = slider => {
     let timeout: ReturnType<typeof setTimeout>;
     let mouseOver = false;
 
@@ -44,20 +44,20 @@ const Carousel: React.FC<CarouselProps> = ({
       }, autoplayInterval);
     }
 
-    slider.on("created", () => {
-      slider.container.addEventListener("mouseover", () => {
+    slider.on('created', () => {
+      slider.container.addEventListener('mouseover', () => {
         mouseOver = true;
         clearNextTimeout();
       });
-      slider.container.addEventListener("mouseout", () => {
+      slider.container.addEventListener('mouseout', () => {
         mouseOver = false;
         nextTimeout();
       });
       nextTimeout();
     });
-    slider.on("dragStarted", clearNextTimeout);
-    slider.on("animationEnded", nextTimeout);
-    slider.on("updated", nextTimeout);
+    slider.on('dragStarted', clearNextTimeout);
+    slider.on('animationEnded', nextTimeout);
+    slider.on('updated', nextTimeout);
   };
 
   const plugins: KeenSliderPlugin[] = [];
@@ -78,15 +78,16 @@ const Carousel: React.FC<CarouselProps> = ({
   );
 
   return (
-    <div className={`carousel-container ${className}`}> {/* ナビゲーションボタンの位置調整用コンテナ */}
-      <div ref={sliderRef} className="keen-slider w-full h-full">
+    <div className={`carousel-container ${className}`}>
+      {' '}
+      {/* ナビゲーションボタンの位置調整用コンテナ */}
+      <div ref={sliderRef} className="keen-slider w-full h-full min-h-[500px]">
         {slides.map((slide, index) => (
-          <div className="keen-slider__slide w-full h-full" key={index} style={slide.style}>
+          <div className="keen-slider__slide w-full min-h-full" key={index} style={slide.style}>
             {slide.content}
           </div>
         ))}
       </div>
-
       {instanceRef.current && displayArrow && (
         <>
           <Arrow
@@ -95,9 +96,7 @@ const Carousel: React.FC<CarouselProps> = ({
               e.stopPropagation();
               instanceRef.current?.prev();
             }}
-            disabled={
-              !loop && instanceRef.current?.track.details.rel === 0
-            }
+            disabled={!loop && instanceRef.current?.track.details.rel === 0}
           />
           <Arrow
             onClick={(e: React.MouseEvent) => {
@@ -107,7 +106,7 @@ const Carousel: React.FC<CarouselProps> = ({
             disabled={
               !loop &&
               instanceRef.current?.track.details.rel ===
-                instanceRef.current?.track.details.slides.length -1
+                instanceRef.current?.track.details.slides.length - 1
             }
           />
         </>
@@ -123,23 +122,19 @@ interface ArrowProps {
   onClick: (e: React.MouseEvent) => void;
 }
 
-const Arrow: React.FC<ArrowProps> = (props) => {
-  const disabledClassName = props.disabled ? " arrow--disabled" : "";
+const Arrow: React.FC<ArrowProps> = props => {
+  const disabledClassName = props.disabled ? ' arrow--disabled' : '';
   return (
     <svg
       onClick={props.onClick}
-      className={`arrow ${
-        props.left ? "arrow--left" : "arrow--right"
-      } ${disabledClassName}`}
+      className={`arrow ${props.left ? 'arrow--left' : 'arrow--right'} ${disabledClassName}`}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
     >
       {props.left && (
         <path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z" />
       )}
-      {!props.left && (
-        <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
-      )}
+      {!props.left && <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />}
     </svg>
   );
 };

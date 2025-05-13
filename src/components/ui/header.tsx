@@ -15,8 +15,8 @@ type Props = {
 export function Header({ user }: Props) {
   const [menuOpen, setMenuOpen] = useState(false);
   return (
-    <header className="w-full border-b shadow-sm mb-2 relative z-50">
-      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+    <header className="w-full max-h-20 border-b shadow-sm mb-2 relative z-50">
+      <div className="w-full mx-auto px-4 py-3 md:px-10 flex items-center justify-between">
         {/* ロゴ */}
         <Link href="/" className="text-xl font-bold text-primary">
           <Image src="/logo.png" alt="logo" width={50} height={50} priority />
@@ -25,13 +25,13 @@ export function Header({ user }: Props) {
 
         {/* PC用ナビゲーション */}
         <nav className="hidden md:flex space-x-6">
-          <Link href="/" className="text-sm hover:underline">
+          <Link href="/" className="text-sm xl:text-xl hover:underline">
             Home
           </Link>
-          <Link href="/about" className="text-sm hover:underline">
+          <Link href="/about" className="text-sm xl:text-xl hover:underline">
             About
           </Link>
-          <Link href={'/blog/page/1'} className="text-sm hover:underline">
+          <Link href={'/blog/page/1'} className="text-sm xl:text-xl hover:underline">
             Blog
           </Link>
         </nav>
@@ -44,13 +44,13 @@ export function Header({ user }: Props) {
           {/* ログインボタン */}
           {!user ? (
             <Link href="/login">
-              <Button variant="outline" className="inline-block">
+              <Button variant="outline" className="inline-block xl:text-xl xl:h-12">
                 ログイン
               </Button>
             </Link>
           ) : (
             <Link href="/dashboard">
-              <Button variant="outline" className="inline-block">
+              <Button variant="outline" className="inline-block  xl:text-xl xl:h-12">
                 ダッシュボード
               </Button>
             </Link>
