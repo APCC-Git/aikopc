@@ -13,7 +13,7 @@ export default function Page() {
         ]}
       />
       <div className="w-full h-full max-h-full p-2 md:p-6 absolute z-10 overflow-scroll">
-        <div className="w-full">
+        <div className="w-full mb-16 md:mb-5">
           <div className="w-full h-16"></div>
           <div className={"w-full mt-5"}>
             <div className={"font-bold"}>タイトル</div>
