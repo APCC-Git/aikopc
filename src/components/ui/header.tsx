@@ -25,13 +25,13 @@ export function Header({ user }: Props) {
 
         {/* PC用ナビゲーション */}
         <nav className="hidden md:flex space-x-6">
-          <Link href="/" className="text-sm xl:text-xl hover:underline">
+          <Link href="/" className="text-sm 2xl:text-xl hover:underline">
             Home
           </Link>
-          <Link href="/about" className="text-sm xl:text-xl hover:underline">
+          <Link href="/about" className="text-sm 2xl:text-xl hover:underline">
             About
           </Link>
-          <Link href={'/blog/page/1'} className="text-sm xl:text-xl hover:underline">
+          <Link href={'/blog/page/1'} className="text-sm 2xl:text-xl hover:underline">
             Blog
           </Link>
         </nav>
@@ -44,13 +44,13 @@ export function Header({ user }: Props) {
           {/* ログインボタン */}
           {!user ? (
             <Link href="/login">
-              <Button variant="outline" className="inline-block xl:text-xl xl:h-12">
+              <Button variant="outline" className="inline-block 2xl:text-xl 2xl:h-12">
                 ログイン
               </Button>
             </Link>
           ) : (
             <Link href="/dashboard">
-              <Button variant="outline" className="inline-block  xl:text-xl xl:h-12">
+              <Button variant="outline" className="inline-block  2xl:text-xl 2xl:h-12">
                 ダッシュボード
               </Button>
             </Link>
