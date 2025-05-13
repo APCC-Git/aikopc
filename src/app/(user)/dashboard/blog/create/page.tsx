@@ -4,7 +4,7 @@ import { Input } from '@/components/ui/input';
 
 export default function Page() {
   return (
-    <div className={'w-full flex flex-col overflow-scroll'}>
+    <div className={'w-full flex flex-col overflow-y-scroll'}>
       <DashboardBreadcrumb
         items={[
           { label: 'ダッシュボード', href: '/dashboard' },
@@ -12,14 +12,29 @@ export default function Page() {
           { label: 'ブログ作成' },
         ]}
       />
-      <div className="w-full h-full max-h-full p-2 md:p-6 flex flex-col justify-between overflow-scroll">
-        <Input placeholder="タイトルを入力" className={"mt-10"}/>
-        <Input placeholder="タイトルを入力" className={"mt-10"}/>
-        <Input placeholder="タイトルを入力" className={"mt-10"}/>
-        <div className="shadow-sm w-full max-h-full mt-10">
-          <SimpleEditor />
+      <div className="w-full h-full max-h-full p-2 md:p-6 absolute z-10 overflow-scroll">
+        <div className="w-full">
+          <div className="w-full h-16"></div>
+          <div className={"w-full mt-5"}>
+            <div className={"font-bold"}>タイトル</div>
+            <Input placeholder="タイトルを入力" className={"mt-3"}/>
+          </div>
+          <div className={"w-full mt-10"}>
+            <div className={"font-bold"}>内容</div>
+            <div className="shadow-sm w-full max-h-full mt-3 rounded-lg">
+              <SimpleEditor />
+            </div>
+          </div>
+          <div className={"w-full mt-5"}>
+            <div className={"font-bold"}>アイキャッチ</div>
+            <Input placeholder="画像アップローダーを実装予定" className={"mt-3"}/>
+          </div>
+          <div className={"w-full mt-5"}>
+            <div className={"font-bold"}>カテゴリ</div>
+            <Input placeholder="APIでカテゴリ取得→選択" className={"mt-3"}/>
+          </div>
+          </div>
         </div>
-      </div>
     </div>
   );
 }
