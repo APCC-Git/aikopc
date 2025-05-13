@@ -6,15 +6,11 @@
 		"dev": "next dev --turbopack",
 		"build": "next build",
 		"start": "next start",
-		"lint": "next lint",
-		"deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
-		"preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-		"cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
+		"lint": "next lint"
 	},
 	"dependencies": {
 		"@floating-ui/react": "^0.27.8",
 		"@gsap/react": "^2.1.2",
-		"@opennextjs/cloudflare": "~1.0.0-beta.0 || ^1.0.0",
 		"@radix-ui/react-avatar": "^1.1.9",
 		"@radix-ui/react-collapsible": "^1.1.10",
 		"@radix-ui/react-dialog": "^1.1.13",
@@ -55,7 +51,6 @@
 		"three": "^0.176.0"
 	},
 	"devDependencies": {
-		"@cloudflare/workers-types": "^4.20250430.0",
 		"@svgr/webpack": "^8.1.0",
 		"@tailwindcss/postcss": "^4",
 		"@tailwindcss/typography": "^0.5.16",

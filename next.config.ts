@@ -7,18 +7,14 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'images.microcms-assets.io'
+        hostname: 'images.microcms-assets.io',
       },
       {
         protocol: 'https',
-        hostname: 'placehold.jp'
-      }
-    ]
+        hostname: 'placehold.jp',
+      },
+    ],
   },
 };
 
 export default nextConfig;
-
-// added by create cloudflare to enable calling `getCloudflareContext()` in `next dev`
-import { initOpenNextCloudflareForDev } from '@opennextjs/cloudflare';
-initOpenNextCloudflareForDev();
