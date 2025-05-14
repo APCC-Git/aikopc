@@ -64,6 +64,7 @@ export function Header({ user }: Props) {
           'md:hidden absolute top-full left-0 w-full bg-white px-4 overflow-hidden transition-all duration-300 z-40 rounded-b-sm shadow-sm',
           menuOpen ? 'max-h-[300px] py-3' : 'max-h-0 py-0'
         )}
+        style={{ transition: 'all', transitionDuration: '0.2' }}
       >
         <nav className="flex flex-col space-y-2">
           <Link href="/" onClick={() => setMenuOpen(false)} className="text-sm hover:underline">

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import prisma from '@/lib/prisma';
 
 // 仮のユーザーデータ（実際はDBから取得）
 const users = [{ id: '69119', username: 'Rix', passwordHash: await bcrypt.hash('admin', 10) }];
@@ -8,6 +9,16 @@ const users = [{ id: '69119', username: 'Rix', passwordHash: await bcrypt.hash('
 export async function POST(req: NextRequest) {
   // @ts-ignore
   const { id, password } = await req.json();
+
+  const prismaUser = await prisma.user.findUnique({
+    where: {
+      userId: id,
+    },
+  });
+
+  if (prismaUser?.password == password) {
+    console.log('PASSWORD_SALT', prismaUser);
+  }
 
   const user = users.find(u => u.id === id);
   if (!user || !(await bcrypt.compare(password, user.passwordHash))) {
