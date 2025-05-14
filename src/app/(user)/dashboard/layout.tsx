@@ -1,39 +1,16 @@
-import Link from 'next/link';
-import { cn } from '@/lib/utils';
-import { ReactNode, use } from 'react';
-import { cookies } from 'next/headers';
-import jwt, { JwtPayload } from 'jsonwebtoken';
+import { ReactNode } from 'react';
 import { LogoutButton } from '@/components/ui/logoutButton';
-import { Card } from '@/components/ui/card';
-import { redirect } from 'next/navigation';
 import { AppSidebar } from '@/components/app-sidebar';
-import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
-
-type User = {
-  userId: string;
-  userName: string;
-  iat: number;
-  exp: number;
-};
+import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
+import { getUser } from '@/lib/auth';
+import { User } from '@/types/prisma';
 
 export default async function DashboardLayout({ children }: { children: ReactNode }) {
-  const token = (await cookies()).get('token')?.value;
-
-  if (!token) redirect('/login');
-
   try {
-    const payload = jwt.verify(token, process.env.JWT_SECRET!);
+    const payload = await getUser();
 
     // 型ガードで判定
-    if (
-      typeof payload === 'object' &&
-      payload !== null &&
-      typeof payload.userId === 'string' &&
-      typeof payload.userName === 'string' &&
-      typeof payload.iat === 'number' &&
-      typeof payload.exp === 'number'
-    ) {
-      //console.log(payload);
+    if (payload) {
       return (
         <SidebarProvider>
           <AppSidebar user={payload as User} />

@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import Image from 'next/image';
-import { BookOpen, CodeXml, LifeBuoy, Laptop, Gamepad2, Send, FilePenLine } from 'lucide-react';
+import { BookOpen, CodeXml, Users, Laptop, Gamepad2, Database, FilePenLine } from 'lucide-react';
 
 import { NavMain } from '@/components/nav-main';
 import { NavProjects } from '@/components/nav-projects';
@@ -18,6 +18,7 @@ import {
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import { type } from 'node:os';
+import { User } from '@/types/prisma';
 
 const data = {
   user: {
@@ -60,14 +61,14 @@ const data = {
   ],
   navSecondary: [
     {
-      title: 'Support',
-      url: '#',
-      icon: LifeBuoy,
+      title: 'ユーザー管理',
+      url: '/dashboard/user',
+      icon: Users,
     },
     {
-      title: 'Feedback',
-      url: '#',
-      icon: Send,
+      title: 'DB管理',
+      url: '/dashboard/db',
+      icon: Database,
     },
   ],
   projects: [
@@ -87,13 +88,6 @@ const data = {
       icon: Laptop,
     },
   ],
-};
-
-type User = {
-  userId: string;
-  userName: string;
-  iat: number;
-  exp: number;
 };
 
 type AppSidebarProps = React.ComponentProps<typeof Sidebar> & {
@@ -129,7 +123,7 @@ export function AppSidebar({ user, ...props }: AppSidebarProps) {
       <SidebarContent>
         <NavMain items={data.navMain} />
         <NavProjects projects={data.projects} />
-        {/*<NavSecondary items={data.navSecondary} className="mt-auto" />*/}
+        {user.role === 'admin' && <NavSecondary items={data.navSecondary} className="mt-auto" />}
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={user} />

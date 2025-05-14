@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import { Work_Sans, Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
-import { Header } from '@/components/ui/header';
-import { getUser } from '@/lib/auth';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -42,7 +40,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const user = await getUser();
   return (
     <html lang="ja">
       <body

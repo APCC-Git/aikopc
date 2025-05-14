@@ -28,8 +28,16 @@ npm run dev
 
 ## ホスト
 Conoha VPSにデプロイ + nginxで公開  
-6Rix6が作成した`deploy.sh`を実行すれば自動でデプロイされる。  
-sshの秘密鍵が必要
+6Rix6が作成した`deploy.sh`を実行すれば自動でデプロイされる。(sshの秘密鍵が必要)
+#### prisma studio　の転送方法
+```shell
+# vps側で
+npx prisma studio
+
+# クライアント側で
+ssh -L 5555:localhost:5555 [username]@[hostname]
+# → localhost:5555
+```
 
 ## ディレクトリ構成
 ```
