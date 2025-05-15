@@ -3,9 +3,6 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import prisma from '@/lib/prisma';
 
-// 仮のユーザーデータ（実際はDBから取得）
-// const users = [{ id: '69119', username: 'Rix', passwordHash: await bcrypt.hash('admin', 10) }];
-
 export async function POST(req: NextRequest) {
   const body = await req.json();
 

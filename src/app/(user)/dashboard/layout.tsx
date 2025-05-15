@@ -19,17 +19,21 @@ export default async function DashboardLayout({ children }: { children: ReactNod
       );
     } else {
       return (
-        <div>
-          トークンの形式が不正です
-          <LogoutButton />
+        <div className="text-center flex flex-col justify-center mt-20">
+          <div className="flex items-center flex-col">
+            セッション期限が切れています。再度ログインしてください
+            <LogoutButton />
+          </div>
         </div>
       );
     }
   } catch {
     return (
-      <div>
-        トークンが無効です
-        <LogoutButton />
+      <div className="text-center flex flex-col justify-center mt-20">
+        <div className="flex items-center flex-col">
+          セッション期限が切れています。再度ログインしてください
+          <LogoutButton />
+        </div>
       </div>
     );
   }

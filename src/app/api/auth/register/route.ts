@@ -5,6 +5,7 @@ import { getUser } from '@/lib/auth';
 
 export async function POST(req: NextRequest) {
   const user = await getUser();
+  const body = await req.json();
 
   if (!user) {
     return NextResponse.json({ error: 'Not authorized' }, { status: 403 });
@@ -13,8 +14,6 @@ export async function POST(req: NextRequest) {
   if (user.role !== 'admin') {
     return NextResponse.json({ error: 'Not authorized' }, { status: 403 });
   }
-
-  const body = await req.json();
 
   if (
     !body ||
