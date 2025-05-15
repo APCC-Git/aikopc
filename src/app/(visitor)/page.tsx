@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Header } from '@/components/ui/header';
 import { Button } from '@/components/ui/button';
 import Carousel from '@/components/ui/carousel';
+import { SiGithub, SiX } from '@icons-pack/react-simple-icons';
 
 const slidesData = [
   {
@@ -41,7 +42,7 @@ export default function Home() {
   return (
     <div className={'w-full min-h-[calc(100vh-90px)] p-4 md:p-10 block md:flex'}>
       <div className={'mb-5 md:mr-10 xl:mr-20 p-4 text-center md:text-left'}>
-        <div className={'text-6xl 2xl:text-8xl font-bold'}>Aikopc.net</div>
+        <div className={'text-6xl 2xl:text-8xl font-bold md:mt-8'}>Aikopc.net</div>
         <div className={'text-md 2xl:text-3xl mt-4'}>愛光学園パソコン部のホームページ</div>
         <div className={'mt-6 w-full flex justify-center md:justify-start'}>
           <Link href="/about">
@@ -51,6 +52,14 @@ export default function Home() {
             <Button variant="outline" className="inline-block ml-3 2xl:text-xl 2xl:h-12">
               部員ログイン
             </Button>
+          </Link>
+        </div>
+        <div className="mt-4 md:mt-8 flex justify-center md:justify-start space-x-8">
+          <Link href="https://github.com/APCC-Git" target="_blank" rel="noopener noreferrer">
+            <SiGithub size={24} />
+          </Link>
+          <Link href="https://x.com/APCC_" target="_blank" rel="noopener noreferrer">
+            <SiX className={'w-full h-full'} size={24} />
           </Link>
         </div>
       </div>
