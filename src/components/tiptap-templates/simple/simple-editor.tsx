@@ -210,6 +210,12 @@ export function SimpleEditor() {
       Link.configure({ openOnClick: false }),
     ],
     content: content, //エディタ初期化時の文章 placeholder
+    onUpdate: ({ editor }) => {
+      const html = editor.getHTML();
+      const json = editor.getJSON();
+      const plainText = editor.getText();
+      console.log(html);
+    },
   });
 
   const bodyRect = useCursorVisibility({

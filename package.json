@@ -11,6 +11,7 @@
 	"dependencies": {
 		"@floating-ui/react": "^0.27.8",
 		"@gsap/react": "^2.1.2",
+		"@icons-pack/react-simple-icons": "^12.8.0",
 		"@prisma/client": "^6.7.0",
 		"@radix-ui/react-avatar": "^1.1.9",
 		"@radix-ui/react-collapsible": "^1.1.10",
@@ -48,6 +49,7 @@
 		"next": "15.3.1",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
+		"simple-icons": "^14.13.0",
 		"tailwind-merge": "^3.2.0",
 		"three": "^0.176.0"
 	},

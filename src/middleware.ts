@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 // 保護されたパス（認証が必要）
-const protectedRoutes = ['/dashboard'];
+const protectedRoutes = ['/dashboard', '/csv'];
 
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;

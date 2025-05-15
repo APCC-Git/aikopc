@@ -1,6 +1,6 @@
 import { Header } from '@/components/ui/header';
 import { getUser } from '@/lib/auth';
-
+import React from 'react';
 
 export default async function VisitorLayout({
   children,
