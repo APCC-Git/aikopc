@@ -2,7 +2,16 @@
 
 import * as React from 'react';
 import Image from 'next/image';
-import { BookOpen, CodeXml, Users, Laptop, Gamepad2, Database, FilePenLine } from 'lucide-react';
+import {
+  BookOpen,
+  CodeXml,
+  Users,
+  Laptop,
+  Gamepad2,
+  Database,
+  FilePenLine,
+  Rocket,
+} from 'lucide-react';
 
 import { NavMain } from '@/components/nav-main';
 import { NavProjects } from '@/components/nav-projects';
@@ -31,7 +40,7 @@ const data = {
       title: 'ブログ',
       url: '/dashboard/blog',
       icon: FilePenLine,
-      isActive: true,
+      isActive: false,
       items: [
         {
           title: '作成',
@@ -55,6 +64,21 @@ const data = {
         {
           title: '講座一覧',
           url: '/dashboard/course/lessons',
+        },
+      ],
+    },
+    {
+      title: 'プロジェクト',
+      url: '/dashboard/project',
+      icon: Rocket,
+      items: [
+        {
+          title: '一覧',
+          url: '/dashboard/project/view',
+        },
+        {
+          title: '作成',
+          url: '/dashboard/project/create',
         },
       ],
     },
