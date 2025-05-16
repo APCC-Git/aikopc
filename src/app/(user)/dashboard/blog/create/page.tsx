@@ -23,7 +23,6 @@ export default function Page() {
       const res = await fetch('/api/blog/category', { method: 'POST' });
       if (res.ok) {
         const data = await res.json();
-        console.log(data);
         if (data !== null && typeof data === 'object' && 'contents' in data) {
           setCategories(data.contents as Category[]);
         }
