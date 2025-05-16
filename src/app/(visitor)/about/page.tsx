@@ -33,11 +33,11 @@ export default function AboutPage() {
         <div className="grid md:grid-cols-3 gap-6">
           <div className="p-6 bg-slate-100 rounded-lg">
             <h3 className="text-xl font-bold mb-2">充実した機材</h3>
-            <p>最新のPCと開発環境を完備し、快適な開発作業が可能です。</p>
+            <p>一人一台PCと開発環境を完備し、快適な開発作業が可能です。</p>
           </div>
           <div className="p-6 bg-slate-100 rounded-lg">
             <h3 className="text-xl font-bold mb-2">技術サポート</h3>
-            <p>先輩部員や顧問の先生による丁寧な指導体制を整えています。</p>
+            <p>先輩部員による丁寧な指導体制、プログラミング講座を整えています。</p>
           </div>
           <div className="p-6 bg-slate-100 rounded-lg">
             <h3 className="text-xl font-bold mb-2">プロジェクト活動</h3>
