@@ -40,7 +40,7 @@ export default function AboutPage() {
             <p>先輩部員による丁寧な指導体制、プログラミング講座を整えています。</p>
           </div>
           <div className="p-6 bg-slate-100 rounded-lg">
-            <h3 className="text-xl font-bold mb-2">プロジェクト活動</h3>
+            <h3 className="text-xl font-bold mb-2">プロ ジェクト活動</h3>
             <p>実践的なプロジェクトを通じて、チーム開発の経験を積めます。</p>
           </div>
         </div>
