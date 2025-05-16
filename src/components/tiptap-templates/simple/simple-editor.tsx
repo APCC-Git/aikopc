@@ -67,7 +67,7 @@ import { handleImageUpload, MAX_FILE_SIZE } from '@/lib/tiptap-utils';
 // --- Styles ---
 import '@/components/tiptap-templates/simple/simple-editor.scss';
 
-import content from '@/components/tiptap-templates/simple/data/content.json';
+//import content from '@/components/tiptap-templates/simple/data/content.json';
 
 const MainToolbarContent = ({
   onHighlighterClick,
@@ -128,19 +128,19 @@ const MainToolbarContent = ({
         <TextAlignButton align="justify" />
       </ToolbarGroup>
 
-      <ToolbarSeparator />
+      {/*<ToolbarSeparator />*/}
 
-      <ToolbarGroup>
-        <ImageUploadButton text="Add" />
-      </ToolbarGroup>
+      {/*<ToolbarGroup>*/}
+      {/*  <ImageUploadButton text="Add" />*/}
+      {/*</ToolbarGroup>*/}
 
       <Spacer />
 
       {isMobile && <ToolbarSeparator />}
 
-      <ToolbarGroup>
-        <ThemeToggle />
-      </ToolbarGroup>
+      {/*<ToolbarGroup>*/}
+      {/*  <ThemeToggle />*/}
+      {/*</ToolbarGroup>*/}
     </>
   );
 };
@@ -170,7 +170,7 @@ const MobileToolbarContent = ({
   </>
 );
 
-export function SimpleEditor() {
+export function SimpleEditor({ setTextAction }: { setTextAction: (text: string) => void }) {
   const isMobile = useMobile();
   const windowSize = useWindowSize();
   const [mobileView, setMobileView] = React.useState<'main' | 'highlighter' | 'link'>('main');
@@ -197,24 +197,16 @@ export function SimpleEditor() {
       Typography,
       Superscript,
       Subscript,
-
       Selection,
-      ImageUploadNode.configure({
-        accept: 'image/*',
-        maxSize: MAX_FILE_SIZE,
-        limit: 3,
-        upload: handleImageUpload,
-        onError: error => console.error('Upload failed:', error),
-      }),
       TrailingNode,
       Link.configure({ openOnClick: false }),
     ],
-    content: content, //エディタ初期化時の文章 placeholder
+    content: null, //エディタ初期化時の文章 placeholder
     onUpdate: ({ editor }) => {
-      const html = editor.getHTML();
-      const json = editor.getJSON();
-      const plainText = editor.getText();
-      console.log(html);
+      setTextAction(editor.getHTML());
+    },
+    onCreate: ({ editor }) => {
+      setTextAction(editor.getHTML());
     },
   });
 

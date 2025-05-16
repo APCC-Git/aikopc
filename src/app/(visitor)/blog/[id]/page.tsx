@@ -11,6 +11,7 @@ async function getBlogPost(id: string): Promise<PostType> {
   return await client.get({ endpoint: 'blogs', contentId: id });
 }
 
+// 同じカテゴリの記事を取得
 async function getSimilarPost(categoryId: string): Promise<PostType[]> {
   if (!categoryId) return [];
 

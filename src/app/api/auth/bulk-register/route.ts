@@ -1,10 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
 import bcrypt from 'bcrypt';
 import prisma from '@/lib/prisma';
+import { getUser } from '@/lib/auth';
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
+    const user = await getUser();
+
+    if (!user) {
+      return NextResponse.json({ error: 'Not authorized' }, { status: 403 });
+    }
+
+    if (user.role !== 'admin') {
+      return NextResponse.json({ error: 'Not authorized' }, { status: 403 });
+    }
 
     if (!body || typeof body !== 'object' || !('users' in body)) {
       return NextResponse.json({ error: 'Invalid request' }, { status: 400 });
