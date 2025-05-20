@@ -14,9 +14,21 @@ enum Role {
 }
 
 model User {
-  id       String @id @default(uuid())
-  userId   String @unique
-  username String @unique
+  id       String  @id @default(uuid())
+  userId   String  @unique
+  username String  @unique
   password String
-  role     Role   @default(user)
+  role     Role    @default(user)
+  drafts   Draft[]
+}
+
+model Draft {
+  id        String   @id @default(uuid())
+  title     String
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    String
+  author    User     @relation(fields: [userId], references: [id])
+  published Boolean  @default(false)
 }

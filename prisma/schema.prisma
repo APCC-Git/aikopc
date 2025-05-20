@@ -19,4 +19,18 @@ model User {
   username String @unique
   password String
   role     Role @default(user)
+  drafts   Draft[]
 }
+
+
+model Draft {
+  id        String   @id @default(uuid())
+  title     String
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    String
+  author    User     @relation(fields: [userId], references: [id])
+  published Boolean  @default(false)
+}
+

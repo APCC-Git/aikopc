@@ -18,6 +18,11 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  * 
  */
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
+/**
+ * Model Draft
+ * 
+ */
+export type Draft = $Result.DefaultSelection<Prisma.$DraftPayload>
 
 /**
  * Enums
@@ -170,6 +175,16 @@ export class PrismaClient<
     * ```
     */
   get user(): Prisma.UserDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.draft`: Exposes CRUD operations for the **Draft** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Drafts
+    * const drafts = await prisma.draft.findMany()
+    * ```
+    */
+  get draft(): Prisma.DraftDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -610,7 +625,8 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    User: 'User'
+    User: 'User',
+    Draft: 'Draft'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -629,7 +645,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user"
+      modelProps: "user" | "draft"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -704,6 +720,80 @@ export namespace Prisma {
           count: {
             args: Prisma.UserCountArgs<ExtArgs>
             result: $Utils.Optional<UserCountAggregateOutputType> | number
+          }
+        }
+      }
+      Draft: {
+        payload: Prisma.$DraftPayload<ExtArgs>
+        fields: Prisma.DraftFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DraftFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DraftPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DraftFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DraftPayload>
+          }
+          findFirst: {
+            args: Prisma.DraftFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DraftPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DraftFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DraftPayload>
+          }
+          findMany: {
+            args: Prisma.DraftFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DraftPayload>[]
+          }
+          create: {
+            args: Prisma.DraftCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DraftPayload>
+          }
+          createMany: {
+            args: Prisma.DraftCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DraftCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DraftPayload>[]
+          }
+          delete: {
+            args: Prisma.DraftDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DraftPayload>
+          }
+          update: {
+            args: Prisma.DraftUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DraftPayload>
+          }
+          deleteMany: {
+            args: Prisma.DraftDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DraftUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DraftUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DraftPayload>[]
+          }
+          upsert: {
+            args: Prisma.DraftUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DraftPayload>
+          }
+          aggregate: {
+            args: Prisma.DraftAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDraft>
+          }
+          groupBy: {
+            args: Prisma.DraftGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DraftGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DraftCountArgs<ExtArgs>
+            result: $Utils.Optional<DraftCountAggregateOutputType> | number
           }
         }
       }
@@ -792,6 +882,7 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     user?: UserOmit
+    draft?: DraftOmit
   }
 
   /* Types for Logging */
@@ -880,6 +971,36 @@ export namespace Prisma {
    * Count Types
    */
 
+
+  /**
+   * Count Type UserCountOutputType
+   */
+
+  export type UserCountOutputType = {
+    drafts: number
+  }
+
+  export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    drafts?: boolean | UserCountOutputTypeCountDraftsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCountOutputType
+     */
+    select?: UserCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountDraftsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DraftWhereInput
+  }
 
 
   /**
@@ -1050,6 +1171,8 @@ export namespace Prisma {
     username?: boolean
     password?: boolean
     role?: boolean
+    drafts?: boolean | User$draftsArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1077,10 +1200,18 @@ export namespace Prisma {
   }
 
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "username" | "password" | "role", ExtArgs["result"]["user"]>
+  export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    drafts?: boolean | User$draftsArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type UserIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
-    objects: {}
+    objects: {
+      drafts: Prisma.$DraftPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       userId: string
@@ -1481,6 +1612,7 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    drafts<T extends User$draftsArgs<ExtArgs> = {}>(args?: Subset<T, User$draftsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DraftPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1532,6 +1664,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where: UserWhereUniqueInput
@@ -1550,6 +1686,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where: UserWhereUniqueInput
@@ -1567,6 +1707,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * Filter, which User to fetch.
      */
@@ -1616,6 +1760,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where?: UserWhereInput
@@ -1664,6 +1812,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which Users to fetch.
      */
     where?: UserWhereInput
@@ -1706,6 +1858,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * The data needed to create a User.
      */
@@ -1754,6 +1910,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * The data needed to update a User.
      */
@@ -1821,6 +1981,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * The filter to search for the User to update in case it exists.
      */
     where: UserWhereUniqueInput
@@ -1847,6 +2011,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter which User to delete.
      */
     where: UserWhereUniqueInput
@@ -1867,6 +2035,30 @@ export namespace Prisma {
   }
 
   /**
+   * User.drafts
+   */
+  export type User$draftsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Draft
+     */
+    select?: DraftSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Draft
+     */
+    omit?: DraftOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DraftInclude<ExtArgs> | null
+    where?: DraftWhereInput
+    orderBy?: DraftOrderByWithRelationInput | DraftOrderByWithRelationInput[]
+    cursor?: DraftWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DraftScalarFieldEnum | DraftScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1878,6 +2070,1094 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Draft
+   */
+
+  export type AggregateDraft = {
+    _count: DraftCountAggregateOutputType | null
+    _min: DraftMinAggregateOutputType | null
+    _max: DraftMaxAggregateOutputType | null
+  }
+
+  export type DraftMinAggregateOutputType = {
+    id: string | null
+    title: string | null
+    content: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    userId: string | null
+    published: boolean | null
+  }
+
+  export type DraftMaxAggregateOutputType = {
+    id: string | null
+    title: string | null
+    content: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    userId: string | null
+    published: boolean | null
+  }
+
+  export type DraftCountAggregateOutputType = {
+    id: number
+    title: number
+    content: number
+    createdAt: number
+    updatedAt: number
+    userId: number
+    published: number
+    _all: number
+  }
+
+
+  export type DraftMinAggregateInputType = {
+    id?: true
+    title?: true
+    content?: true
+    createdAt?: true
+    updatedAt?: true
+    userId?: true
+    published?: true
+  }
+
+  export type DraftMaxAggregateInputType = {
+    id?: true
+    title?: true
+    content?: true
+    createdAt?: true
+    updatedAt?: true
+    userId?: true
+    published?: true
+  }
+
+  export type DraftCountAggregateInputType = {
+    id?: true
+    title?: true
+    content?: true
+    createdAt?: true
+    updatedAt?: true
+    userId?: true
+    published?: true
+    _all?: true
+  }
+
+  export type DraftAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Draft to aggregate.
+     */
+    where?: DraftWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Drafts to fetch.
+     */
+    orderBy?: DraftOrderByWithRelationInput | DraftOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DraftWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Drafts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Drafts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Drafts
+    **/
+    _count?: true | DraftCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DraftMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DraftMaxAggregateInputType
+  }
+
+  export type GetDraftAggregateType<T extends DraftAggregateArgs> = {
+        [P in keyof T & keyof AggregateDraft]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDraft[P]>
+      : GetScalarType<T[P], AggregateDraft[P]>
+  }
+
+
+
+
+  export type DraftGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DraftWhereInput
+    orderBy?: DraftOrderByWithAggregationInput | DraftOrderByWithAggregationInput[]
+    by: DraftScalarFieldEnum[] | DraftScalarFieldEnum
+    having?: DraftScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DraftCountAggregateInputType | true
+    _min?: DraftMinAggregateInputType
+    _max?: DraftMaxAggregateInputType
+  }
+
+  export type DraftGroupByOutputType = {
+    id: string
+    title: string
+    content: string
+    createdAt: Date
+    updatedAt: Date
+    userId: string
+    published: boolean
+    _count: DraftCountAggregateOutputType | null
+    _min: DraftMinAggregateOutputType | null
+    _max: DraftMaxAggregateOutputType | null
+  }
+
+  type GetDraftGroupByPayload<T extends DraftGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DraftGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DraftGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DraftGroupByOutputType[P]>
+            : GetScalarType<T[P], DraftGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DraftSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    content?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    userId?: boolean
+    published?: boolean
+    author?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["draft"]>
+
+  export type DraftSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    content?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    userId?: boolean
+    published?: boolean
+    author?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["draft"]>
+
+  export type DraftSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    content?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    userId?: boolean
+    published?: boolean
+    author?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["draft"]>
+
+  export type DraftSelectScalar = {
+    id?: boolean
+    title?: boolean
+    content?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    userId?: boolean
+    published?: boolean
+  }
+
+  export type DraftOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "content" | "createdAt" | "updatedAt" | "userId" | "published", ExtArgs["result"]["draft"]>
+  export type DraftInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    author?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type DraftIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    author?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type DraftIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    author?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $DraftPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Draft"
+    objects: {
+      author: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      title: string
+      content: string
+      createdAt: Date
+      updatedAt: Date
+      userId: string
+      published: boolean
+    }, ExtArgs["result"]["draft"]>
+    composites: {}
+  }
+
+  type DraftGetPayload<S extends boolean | null | undefined | DraftDefaultArgs> = $Result.GetResult<Prisma.$DraftPayload, S>
+
+  type DraftCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DraftFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DraftCountAggregateInputType | true
+    }
+
+  export interface DraftDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Draft'], meta: { name: 'Draft' } }
+    /**
+     * Find zero or one Draft that matches the filter.
+     * @param {DraftFindUniqueArgs} args - Arguments to find a Draft
+     * @example
+     * // Get one Draft
+     * const draft = await prisma.draft.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DraftFindUniqueArgs>(args: SelectSubset<T, DraftFindUniqueArgs<ExtArgs>>): Prisma__DraftClient<$Result.GetResult<Prisma.$DraftPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Draft that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DraftFindUniqueOrThrowArgs} args - Arguments to find a Draft
+     * @example
+     * // Get one Draft
+     * const draft = await prisma.draft.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DraftFindUniqueOrThrowArgs>(args: SelectSubset<T, DraftFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DraftClient<$Result.GetResult<Prisma.$DraftPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Draft that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DraftFindFirstArgs} args - Arguments to find a Draft
+     * @example
+     * // Get one Draft
+     * const draft = await prisma.draft.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DraftFindFirstArgs>(args?: SelectSubset<T, DraftFindFirstArgs<ExtArgs>>): Prisma__DraftClient<$Result.GetResult<Prisma.$DraftPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Draft that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DraftFindFirstOrThrowArgs} args - Arguments to find a Draft
+     * @example
+     * // Get one Draft
+     * const draft = await prisma.draft.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DraftFindFirstOrThrowArgs>(args?: SelectSubset<T, DraftFindFirstOrThrowArgs<ExtArgs>>): Prisma__DraftClient<$Result.GetResult<Prisma.$DraftPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Drafts that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DraftFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Drafts
+     * const drafts = await prisma.draft.findMany()
+     * 
+     * // Get first 10 Drafts
+     * const drafts = await prisma.draft.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const draftWithIdOnly = await prisma.draft.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DraftFindManyArgs>(args?: SelectSubset<T, DraftFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DraftPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Draft.
+     * @param {DraftCreateArgs} args - Arguments to create a Draft.
+     * @example
+     * // Create one Draft
+     * const Draft = await prisma.draft.create({
+     *   data: {
+     *     // ... data to create a Draft
+     *   }
+     * })
+     * 
+     */
+    create<T extends DraftCreateArgs>(args: SelectSubset<T, DraftCreateArgs<ExtArgs>>): Prisma__DraftClient<$Result.GetResult<Prisma.$DraftPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Drafts.
+     * @param {DraftCreateManyArgs} args - Arguments to create many Drafts.
+     * @example
+     * // Create many Drafts
+     * const draft = await prisma.draft.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DraftCreateManyArgs>(args?: SelectSubset<T, DraftCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Drafts and returns the data saved in the database.
+     * @param {DraftCreateManyAndReturnArgs} args - Arguments to create many Drafts.
+     * @example
+     * // Create many Drafts
+     * const draft = await prisma.draft.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Drafts and only return the `id`
+     * const draftWithIdOnly = await prisma.draft.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DraftCreateManyAndReturnArgs>(args?: SelectSubset<T, DraftCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DraftPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Draft.
+     * @param {DraftDeleteArgs} args - Arguments to delete one Draft.
+     * @example
+     * // Delete one Draft
+     * const Draft = await prisma.draft.delete({
+     *   where: {
+     *     // ... filter to delete one Draft
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DraftDeleteArgs>(args: SelectSubset<T, DraftDeleteArgs<ExtArgs>>): Prisma__DraftClient<$Result.GetResult<Prisma.$DraftPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Draft.
+     * @param {DraftUpdateArgs} args - Arguments to update one Draft.
+     * @example
+     * // Update one Draft
+     * const draft = await prisma.draft.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DraftUpdateArgs>(args: SelectSubset<T, DraftUpdateArgs<ExtArgs>>): Prisma__DraftClient<$Result.GetResult<Prisma.$DraftPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Drafts.
+     * @param {DraftDeleteManyArgs} args - Arguments to filter Drafts to delete.
+     * @example
+     * // Delete a few Drafts
+     * const { count } = await prisma.draft.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DraftDeleteManyArgs>(args?: SelectSubset<T, DraftDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Drafts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DraftUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Drafts
+     * const draft = await prisma.draft.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DraftUpdateManyArgs>(args: SelectSubset<T, DraftUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Drafts and returns the data updated in the database.
+     * @param {DraftUpdateManyAndReturnArgs} args - Arguments to update many Drafts.
+     * @example
+     * // Update many Drafts
+     * const draft = await prisma.draft.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Drafts and only return the `id`
+     * const draftWithIdOnly = await prisma.draft.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DraftUpdateManyAndReturnArgs>(args: SelectSubset<T, DraftUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DraftPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Draft.
+     * @param {DraftUpsertArgs} args - Arguments to update or create a Draft.
+     * @example
+     * // Update or create a Draft
+     * const draft = await prisma.draft.upsert({
+     *   create: {
+     *     // ... data to create a Draft
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Draft we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DraftUpsertArgs>(args: SelectSubset<T, DraftUpsertArgs<ExtArgs>>): Prisma__DraftClient<$Result.GetResult<Prisma.$DraftPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Drafts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DraftCountArgs} args - Arguments to filter Drafts to count.
+     * @example
+     * // Count the number of Drafts
+     * const count = await prisma.draft.count({
+     *   where: {
+     *     // ... the filter for the Drafts we want to count
+     *   }
+     * })
+    **/
+    count<T extends DraftCountArgs>(
+      args?: Subset<T, DraftCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DraftCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Draft.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DraftAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DraftAggregateArgs>(args: Subset<T, DraftAggregateArgs>): Prisma.PrismaPromise<GetDraftAggregateType<T>>
+
+    /**
+     * Group by Draft.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DraftGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DraftGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DraftGroupByArgs['orderBy'] }
+        : { orderBy?: DraftGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DraftGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDraftGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Draft model
+   */
+  readonly fields: DraftFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Draft.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DraftClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    author<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Draft model
+   */
+  interface DraftFieldRefs {
+    readonly id: FieldRef<"Draft", 'String'>
+    readonly title: FieldRef<"Draft", 'String'>
+    readonly content: FieldRef<"Draft", 'String'>
+    readonly createdAt: FieldRef<"Draft", 'DateTime'>
+    readonly updatedAt: FieldRef<"Draft", 'DateTime'>
+    readonly userId: FieldRef<"Draft", 'String'>
+    readonly published: FieldRef<"Draft", 'Boolean'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Draft findUnique
+   */
+  export type DraftFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Draft
+     */
+    select?: DraftSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Draft
+     */
+    omit?: DraftOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DraftInclude<ExtArgs> | null
+    /**
+     * Filter, which Draft to fetch.
+     */
+    where: DraftWhereUniqueInput
+  }
+
+  /**
+   * Draft findUniqueOrThrow
+   */
+  export type DraftFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Draft
+     */
+    select?: DraftSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Draft
+     */
+    omit?: DraftOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DraftInclude<ExtArgs> | null
+    /**
+     * Filter, which Draft to fetch.
+     */
+    where: DraftWhereUniqueInput
+  }
+
+  /**
+   * Draft findFirst
+   */
+  export type DraftFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Draft
+     */
+    select?: DraftSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Draft
+     */
+    omit?: DraftOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DraftInclude<ExtArgs> | null
+    /**
+     * Filter, which Draft to fetch.
+     */
+    where?: DraftWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Drafts to fetch.
+     */
+    orderBy?: DraftOrderByWithRelationInput | DraftOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Drafts.
+     */
+    cursor?: DraftWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Drafts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Drafts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Drafts.
+     */
+    distinct?: DraftScalarFieldEnum | DraftScalarFieldEnum[]
+  }
+
+  /**
+   * Draft findFirstOrThrow
+   */
+  export type DraftFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Draft
+     */
+    select?: DraftSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Draft
+     */
+    omit?: DraftOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DraftInclude<ExtArgs> | null
+    /**
+     * Filter, which Draft to fetch.
+     */
+    where?: DraftWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Drafts to fetch.
+     */
+    orderBy?: DraftOrderByWithRelationInput | DraftOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Drafts.
+     */
+    cursor?: DraftWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Drafts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Drafts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Drafts.
+     */
+    distinct?: DraftScalarFieldEnum | DraftScalarFieldEnum[]
+  }
+
+  /**
+   * Draft findMany
+   */
+  export type DraftFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Draft
+     */
+    select?: DraftSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Draft
+     */
+    omit?: DraftOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DraftInclude<ExtArgs> | null
+    /**
+     * Filter, which Drafts to fetch.
+     */
+    where?: DraftWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Drafts to fetch.
+     */
+    orderBy?: DraftOrderByWithRelationInput | DraftOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Drafts.
+     */
+    cursor?: DraftWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Drafts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Drafts.
+     */
+    skip?: number
+    distinct?: DraftScalarFieldEnum | DraftScalarFieldEnum[]
+  }
+
+  /**
+   * Draft create
+   */
+  export type DraftCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Draft
+     */
+    select?: DraftSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Draft
+     */
+    omit?: DraftOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DraftInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Draft.
+     */
+    data: XOR<DraftCreateInput, DraftUncheckedCreateInput>
+  }
+
+  /**
+   * Draft createMany
+   */
+  export type DraftCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Drafts.
+     */
+    data: DraftCreateManyInput | DraftCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Draft createManyAndReturn
+   */
+  export type DraftCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Draft
+     */
+    select?: DraftSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Draft
+     */
+    omit?: DraftOmit<ExtArgs> | null
+    /**
+     * The data used to create many Drafts.
+     */
+    data: DraftCreateManyInput | DraftCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DraftIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Draft update
+   */
+  export type DraftUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Draft
+     */
+    select?: DraftSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Draft
+     */
+    omit?: DraftOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DraftInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Draft.
+     */
+    data: XOR<DraftUpdateInput, DraftUncheckedUpdateInput>
+    /**
+     * Choose, which Draft to update.
+     */
+    where: DraftWhereUniqueInput
+  }
+
+  /**
+   * Draft updateMany
+   */
+  export type DraftUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Drafts.
+     */
+    data: XOR<DraftUpdateManyMutationInput, DraftUncheckedUpdateManyInput>
+    /**
+     * Filter which Drafts to update
+     */
+    where?: DraftWhereInput
+    /**
+     * Limit how many Drafts to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Draft updateManyAndReturn
+   */
+  export type DraftUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Draft
+     */
+    select?: DraftSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Draft
+     */
+    omit?: DraftOmit<ExtArgs> | null
+    /**
+     * The data used to update Drafts.
+     */
+    data: XOR<DraftUpdateManyMutationInput, DraftUncheckedUpdateManyInput>
+    /**
+     * Filter which Drafts to update
+     */
+    where?: DraftWhereInput
+    /**
+     * Limit how many Drafts to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DraftIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Draft upsert
+   */
+  export type DraftUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Draft
+     */
+    select?: DraftSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Draft
+     */
+    omit?: DraftOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DraftInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Draft to update in case it exists.
+     */
+    where: DraftWhereUniqueInput
+    /**
+     * In case the Draft found by the `where` argument doesn't exist, create a new Draft with this data.
+     */
+    create: XOR<DraftCreateInput, DraftUncheckedCreateInput>
+    /**
+     * In case the Draft was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DraftUpdateInput, DraftUncheckedUpdateInput>
+  }
+
+  /**
+   * Draft delete
+   */
+  export type DraftDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Draft
+     */
+    select?: DraftSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Draft
+     */
+    omit?: DraftOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DraftInclude<ExtArgs> | null
+    /**
+     * Filter which Draft to delete.
+     */
+    where: DraftWhereUniqueInput
+  }
+
+  /**
+   * Draft deleteMany
+   */
+  export type DraftDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Drafts to delete
+     */
+    where?: DraftWhereInput
+    /**
+     * Limit how many Drafts to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Draft without action
+   */
+  export type DraftDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Draft
+     */
+    select?: DraftSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Draft
+     */
+    omit?: DraftOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DraftInclude<ExtArgs> | null
   }
 
 
@@ -1904,6 +3184,19 @@ export namespace Prisma {
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+  export const DraftScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    content: 'content',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    userId: 'userId',
+    published: 'published'
+  };
+
+  export type DraftScalarFieldEnum = (typeof DraftScalarFieldEnum)[keyof typeof DraftScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -1956,6 +3249,27 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime[]'
+   */
+  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -1981,6 +3295,7 @@ export namespace Prisma {
     username?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
     role?: EnumRoleFilter<"User"> | $Enums.Role
+    drafts?: DraftListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -1989,6 +3304,7 @@ export namespace Prisma {
     username?: SortOrder
     password?: SortOrder
     role?: SortOrder
+    drafts?: DraftOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -2000,6 +3316,7 @@ export namespace Prisma {
     NOT?: UserWhereInput | UserWhereInput[]
     password?: StringFilter<"User"> | string
     role?: EnumRoleFilter<"User"> | $Enums.Role
+    drafts?: DraftListRelationFilter
   }, "id" | "userId" | "username">
 
   export type UserOrderByWithAggregationInput = {
@@ -2024,12 +3341,78 @@ export namespace Prisma {
     role?: EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
   }
 
+  export type DraftWhereInput = {
+    AND?: DraftWhereInput | DraftWhereInput[]
+    OR?: DraftWhereInput[]
+    NOT?: DraftWhereInput | DraftWhereInput[]
+    id?: StringFilter<"Draft"> | string
+    title?: StringFilter<"Draft"> | string
+    content?: StringFilter<"Draft"> | string
+    createdAt?: DateTimeFilter<"Draft"> | Date | string
+    updatedAt?: DateTimeFilter<"Draft"> | Date | string
+    userId?: StringFilter<"Draft"> | string
+    published?: BoolFilter<"Draft"> | boolean
+    author?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type DraftOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    userId?: SortOrder
+    published?: SortOrder
+    author?: UserOrderByWithRelationInput
+  }
+
+  export type DraftWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: DraftWhereInput | DraftWhereInput[]
+    OR?: DraftWhereInput[]
+    NOT?: DraftWhereInput | DraftWhereInput[]
+    title?: StringFilter<"Draft"> | string
+    content?: StringFilter<"Draft"> | string
+    createdAt?: DateTimeFilter<"Draft"> | Date | string
+    updatedAt?: DateTimeFilter<"Draft"> | Date | string
+    userId?: StringFilter<"Draft"> | string
+    published?: BoolFilter<"Draft"> | boolean
+    author?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type DraftOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    userId?: SortOrder
+    published?: SortOrder
+    _count?: DraftCountOrderByAggregateInput
+    _max?: DraftMaxOrderByAggregateInput
+    _min?: DraftMinOrderByAggregateInput
+  }
+
+  export type DraftScalarWhereWithAggregatesInput = {
+    AND?: DraftScalarWhereWithAggregatesInput | DraftScalarWhereWithAggregatesInput[]
+    OR?: DraftScalarWhereWithAggregatesInput[]
+    NOT?: DraftScalarWhereWithAggregatesInput | DraftScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Draft"> | string
+    title?: StringWithAggregatesFilter<"Draft"> | string
+    content?: StringWithAggregatesFilter<"Draft"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Draft"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Draft"> | Date | string
+    userId?: StringWithAggregatesFilter<"Draft"> | string
+    published?: BoolWithAggregatesFilter<"Draft"> | boolean
+  }
+
   export type UserCreateInput = {
     id?: string
     userId: string
     username: string
     password: string
     role?: $Enums.Role
+    drafts?: DraftCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -2038,6 +3421,7 @@ export namespace Prisma {
     username: string
     password: string
     role?: $Enums.Role
+    drafts?: DraftUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUpdateInput = {
@@ -2046,6 +3430,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    drafts?: DraftUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -2054,6 +3439,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    drafts?: DraftUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -2080,6 +3466,75 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
   }
 
+  export type DraftCreateInput = {
+    id?: string
+    title: string
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    published?: boolean
+    author: UserCreateNestedOneWithoutDraftsInput
+  }
+
+  export type DraftUncheckedCreateInput = {
+    id?: string
+    title: string
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId: string
+    published?: boolean
+  }
+
+  export type DraftUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    published?: BoolFieldUpdateOperationsInput | boolean
+    author?: UserUpdateOneRequiredWithoutDraftsNestedInput
+  }
+
+  export type DraftUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    published?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type DraftCreateManyInput = {
+    id?: string
+    title: string
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId: string
+    published?: boolean
+  }
+
+  export type DraftUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    published?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type DraftUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    published?: BoolFieldUpdateOperationsInput | boolean
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -2100,6 +3555,16 @@ export namespace Prisma {
     in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
     notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
     not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
+  }
+
+  export type DraftListRelationFilter = {
+    every?: DraftWhereInput
+    some?: DraftWhereInput
+    none?: DraftWhereInput
+  }
+
+  export type DraftOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type UserCountOrderByAggregateInput = {
@@ -2154,12 +3619,149 @@ export namespace Prisma {
     _max?: NestedEnumRoleFilter<$PrismaModel>
   }
 
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type UserScalarRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
+  }
+
+  export type DraftCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    userId?: SortOrder
+    published?: SortOrder
+  }
+
+  export type DraftMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    userId?: SortOrder
+    published?: SortOrder
+  }
+
+  export type DraftMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    userId?: SortOrder
+    published?: SortOrder
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type DraftCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<DraftCreateWithoutAuthorInput, DraftUncheckedCreateWithoutAuthorInput> | DraftCreateWithoutAuthorInput[] | DraftUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: DraftCreateOrConnectWithoutAuthorInput | DraftCreateOrConnectWithoutAuthorInput[]
+    createMany?: DraftCreateManyAuthorInputEnvelope
+    connect?: DraftWhereUniqueInput | DraftWhereUniqueInput[]
+  }
+
+  export type DraftUncheckedCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<DraftCreateWithoutAuthorInput, DraftUncheckedCreateWithoutAuthorInput> | DraftCreateWithoutAuthorInput[] | DraftUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: DraftCreateOrConnectWithoutAuthorInput | DraftCreateOrConnectWithoutAuthorInput[]
+    createMany?: DraftCreateManyAuthorInputEnvelope
+    connect?: DraftWhereUniqueInput | DraftWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
 
   export type EnumRoleFieldUpdateOperationsInput = {
     set?: $Enums.Role
+  }
+
+  export type DraftUpdateManyWithoutAuthorNestedInput = {
+    create?: XOR<DraftCreateWithoutAuthorInput, DraftUncheckedCreateWithoutAuthorInput> | DraftCreateWithoutAuthorInput[] | DraftUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: DraftCreateOrConnectWithoutAuthorInput | DraftCreateOrConnectWithoutAuthorInput[]
+    upsert?: DraftUpsertWithWhereUniqueWithoutAuthorInput | DraftUpsertWithWhereUniqueWithoutAuthorInput[]
+    createMany?: DraftCreateManyAuthorInputEnvelope
+    set?: DraftWhereUniqueInput | DraftWhereUniqueInput[]
+    disconnect?: DraftWhereUniqueInput | DraftWhereUniqueInput[]
+    delete?: DraftWhereUniqueInput | DraftWhereUniqueInput[]
+    connect?: DraftWhereUniqueInput | DraftWhereUniqueInput[]
+    update?: DraftUpdateWithWhereUniqueWithoutAuthorInput | DraftUpdateWithWhereUniqueWithoutAuthorInput[]
+    updateMany?: DraftUpdateManyWithWhereWithoutAuthorInput | DraftUpdateManyWithWhereWithoutAuthorInput[]
+    deleteMany?: DraftScalarWhereInput | DraftScalarWhereInput[]
+  }
+
+  export type DraftUncheckedUpdateManyWithoutAuthorNestedInput = {
+    create?: XOR<DraftCreateWithoutAuthorInput, DraftUncheckedCreateWithoutAuthorInput> | DraftCreateWithoutAuthorInput[] | DraftUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: DraftCreateOrConnectWithoutAuthorInput | DraftCreateOrConnectWithoutAuthorInput[]
+    upsert?: DraftUpsertWithWhereUniqueWithoutAuthorInput | DraftUpsertWithWhereUniqueWithoutAuthorInput[]
+    createMany?: DraftCreateManyAuthorInputEnvelope
+    set?: DraftWhereUniqueInput | DraftWhereUniqueInput[]
+    disconnect?: DraftWhereUniqueInput | DraftWhereUniqueInput[]
+    delete?: DraftWhereUniqueInput | DraftWhereUniqueInput[]
+    connect?: DraftWhereUniqueInput | DraftWhereUniqueInput[]
+    update?: DraftUpdateWithWhereUniqueWithoutAuthorInput | DraftUpdateWithWhereUniqueWithoutAuthorInput[]
+    updateMany?: DraftUpdateManyWithWhereWithoutAuthorInput | DraftUpdateManyWithWhereWithoutAuthorInput[]
+    deleteMany?: DraftScalarWhereInput | DraftScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutDraftsInput = {
+    create?: XOR<UserCreateWithoutDraftsInput, UserUncheckedCreateWithoutDraftsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutDraftsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
+  export type UserUpdateOneRequiredWithoutDraftsNestedInput = {
+    create?: XOR<UserCreateWithoutDraftsInput, UserUncheckedCreateWithoutDraftsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutDraftsInput
+    upsert?: UserUpsertWithoutDraftsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutDraftsInput, UserUpdateWithoutDraftsInput>, UserUncheckedUpdateWithoutDraftsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -2219,6 +3821,185 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumRoleFilter<$PrismaModel>
     _max?: NestedEnumRoleFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type DraftCreateWithoutAuthorInput = {
+    id?: string
+    title: string
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    published?: boolean
+  }
+
+  export type DraftUncheckedCreateWithoutAuthorInput = {
+    id?: string
+    title: string
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    published?: boolean
+  }
+
+  export type DraftCreateOrConnectWithoutAuthorInput = {
+    where: DraftWhereUniqueInput
+    create: XOR<DraftCreateWithoutAuthorInput, DraftUncheckedCreateWithoutAuthorInput>
+  }
+
+  export type DraftCreateManyAuthorInputEnvelope = {
+    data: DraftCreateManyAuthorInput | DraftCreateManyAuthorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type DraftUpsertWithWhereUniqueWithoutAuthorInput = {
+    where: DraftWhereUniqueInput
+    update: XOR<DraftUpdateWithoutAuthorInput, DraftUncheckedUpdateWithoutAuthorInput>
+    create: XOR<DraftCreateWithoutAuthorInput, DraftUncheckedCreateWithoutAuthorInput>
+  }
+
+  export type DraftUpdateWithWhereUniqueWithoutAuthorInput = {
+    where: DraftWhereUniqueInput
+    data: XOR<DraftUpdateWithoutAuthorInput, DraftUncheckedUpdateWithoutAuthorInput>
+  }
+
+  export type DraftUpdateManyWithWhereWithoutAuthorInput = {
+    where: DraftScalarWhereInput
+    data: XOR<DraftUpdateManyMutationInput, DraftUncheckedUpdateManyWithoutAuthorInput>
+  }
+
+  export type DraftScalarWhereInput = {
+    AND?: DraftScalarWhereInput | DraftScalarWhereInput[]
+    OR?: DraftScalarWhereInput[]
+    NOT?: DraftScalarWhereInput | DraftScalarWhereInput[]
+    id?: StringFilter<"Draft"> | string
+    title?: StringFilter<"Draft"> | string
+    content?: StringFilter<"Draft"> | string
+    createdAt?: DateTimeFilter<"Draft"> | Date | string
+    updatedAt?: DateTimeFilter<"Draft"> | Date | string
+    userId?: StringFilter<"Draft"> | string
+    published?: BoolFilter<"Draft"> | boolean
+  }
+
+  export type UserCreateWithoutDraftsInput = {
+    id?: string
+    userId: string
+    username: string
+    password: string
+    role?: $Enums.Role
+  }
+
+  export type UserUncheckedCreateWithoutDraftsInput = {
+    id?: string
+    userId: string
+    username: string
+    password: string
+    role?: $Enums.Role
+  }
+
+  export type UserCreateOrConnectWithoutDraftsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutDraftsInput, UserUncheckedCreateWithoutDraftsInput>
+  }
+
+  export type UserUpsertWithoutDraftsInput = {
+    update: XOR<UserUpdateWithoutDraftsInput, UserUncheckedUpdateWithoutDraftsInput>
+    create: XOR<UserCreateWithoutDraftsInput, UserUncheckedCreateWithoutDraftsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutDraftsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutDraftsInput, UserUncheckedUpdateWithoutDraftsInput>
+  }
+
+  export type UserUpdateWithoutDraftsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  }
+
+  export type UserUncheckedUpdateWithoutDraftsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  }
+
+  export type DraftCreateManyAuthorInput = {
+    id?: string
+    title: string
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    published?: boolean
+  }
+
+  export type DraftUpdateWithoutAuthorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    published?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type DraftUncheckedUpdateWithoutAuthorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    published?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type DraftUncheckedUpdateManyWithoutAuthorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    published?: BoolFieldUpdateOperationsInput | boolean
   }
 
 

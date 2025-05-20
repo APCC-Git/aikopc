@@ -69,16 +69,16 @@ const data = {
     },
     {
       title: 'プロジェクト',
-      url: '/dashboard/project',
+      url: '/dashboard/projects',
       icon: Rocket,
       items: [
         {
           title: '一覧',
-          url: '/dashboard/project/view',
+          url: '/dashboard/projects/view',
         },
         {
           title: '作成',
-          url: '/dashboard/project/create',
+          url: '/dashboard/projects/create',
         },
       ],
     },

@@ -1,3 +1,12 @@
-export default function ProjectsPage() {
-  return <h1 className="text-2xl font-bold">プロジェクト管理ページ</h1>
+import { DashboardBreadcrumb } from '@/components/DashboardBreadcrumb';
+
+export default function Page() {
+  return (
+    <div className={'w-full flex flex-col overflow-y-scroll'}>
+      <DashboardBreadcrumb
+        items={[{ label: 'ダッシュボード', href: '/dashboard' }, { label: 'プロジェクト' }]}
+      />
+      <div className={'w-full h-16'}></div>
+    </div>
+  );
 }
