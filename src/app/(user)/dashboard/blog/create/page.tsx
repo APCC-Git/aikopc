@@ -51,20 +51,26 @@ export default function Page() {
     }
   };
 
-  const getCategories = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const res = await fetch('/api/blog/category', {
+  const saveDraft = async () => {
+    const response = await fetch('/api/blog/draft', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ title, text }),
     });
-    if (res.ok) {
-      console.log(await res.json());
+
+    if (!response.ok) {
+      alert('下書きの保存に失敗しました');
+      //throw new Error('下書きの保存に失敗しました');
     } else {
-      alert('投稿に失敗しました');
+      alert('下書きの保存に成功しました');
     }
+    //return response.json();
   };
 
   return (
-    <div className={'w-full flex flex-col overflow-y-scroll'}>
+    <div className={'w-full flex flex-col overflow-y-scroll overflow-x-hidden'}>
       <DashboardBreadcrumb
         items={[
           { label: 'ダッシュボード', href: '/dashboard' },
@@ -72,7 +78,8 @@ export default function Page() {
           { label: 'ブログ作成' },
         ]}
       />
-      <div className="w-full h-full max-h-full p-2 md:p-6 absolute z-10 overflow-scroll">
+
+      <div className="w-full h-full max-h-full p-2 md:p-6 absolute z-10 overflow-y-scroll">
         <form onSubmit={handleSubmit} className="w-full mb-16 md:mb-5 space-y-10">
           <div className="w-full h-16"></div>
           <div className={'w-full mt-5'}>
@@ -126,7 +133,7 @@ export default function Page() {
           </div>
           <div className={'flex justify-start gap-2'}>
             <Button type={'submit'}>投稿</Button>
-            <Button type={'button'} variant={'outline'}>
+            <Button type={'button'} variant={'outline'} onClick={saveDraft}>
               下書きに保存
             </Button>
           </div>

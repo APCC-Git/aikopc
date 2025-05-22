@@ -135,7 +135,7 @@ export default function Page() {
       <DashboardBreadcrumb
         items={[{ label: 'ダッシュボード', href: '/dashboard' }, { label: 'ユーザー管理' }]}
       />
-      <div className="w-full h-full max-h-full p-2 md:p-10 absolute z-10 overflow-scroll">
+      <div className="w-full h-full max-h-full p-2 md:p-10 absolute z-10 overflow-y-scroll">
         <div className={'w-full h-16'}></div>
         <div className={'w-full flex flex-col gap-8'}>
           {/* 単一ユーザー追加フォーム */}
