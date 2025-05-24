@@ -31,15 +31,15 @@ export default function AboutPage() {
       <section className="mb-12">
         <h2 className="text-3xl font-bold mb-4">活動環境</h2>
         <div className="grid md:grid-cols-3 gap-6">
-          <div className="p-6 bg-slate-100 rounded-lg">
+          <div className="p-6 bg-slate-100 dark:bg-card rounded-lg">
             <h3 className="text-xl font-bold mb-2">充実した機材</h3>
             <p>一人一台PCと開発環境を完備し、快適な開発作業が可能です。</p>
           </div>
-          <div className="p-6 bg-slate-100 rounded-lg">
+          <div className="p-6 bg-slate-100 dark:bg-card rounded-lg">
             <h3 className="text-xl font-bold mb-2">技術サポート</h3>
             <p>先輩部員による丁寧な指導体制、プログラミング講座を整えています。</p>
           </div>
-          <div className="p-6 bg-slate-100 rounded-lg">
+          <div className="p-6 bg-slate-100 dark:bg-card rounded-lg">
             <h3 className="text-xl font-bold mb-2">プロ ジェクト活動</h3>
             <p>実践的なプロジェクトを通じて、チーム開発の経験を積めます。</p>
           </div>
@@ -49,7 +49,7 @@ export default function AboutPage() {
       {/* 入部案内セクション */}
       <section>
         <h2 className="text-3xl font-bold mb-4">入部案内</h2>
-        <div className="bg-slate-100 p-6 rounded-lg">
+        <div className="bg-slate-100 dark:bg-card p-6 rounded-lg">
           <p className="text-lg mb-4">
             パソコン部では随時、新入部員を募集しています。
             プログラミングの経験がない方も大歓迎です。

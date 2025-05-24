@@ -2,14 +2,14 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, CircleUserRound } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
-import { ModeToggle } from '@/components/mode-toggle';
 import Image from 'next/image';
 import type { JwtPayload } from 'jsonwebtoken';
+import ModeToggle from '@/components/ModeToggle';
 
 interface NavItem {
   title: string;
@@ -83,7 +83,7 @@ export function Header({
           className
         )}
       >
-        <div className="container flex items-center justify-between rounded-full shadow-lg px-7 h-full w-full bg-background/80 backdrop-blur-sm border border-gray-200/50">
+        <div className="container flex items-center justify-between rounded-full shadow-lg px-7 h-full w-full bg-background/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50">
           <div className="hidden md:flex items-center gap-6 md:gap-10">
             <Link href="/" className="hidden md:flex items-center space-x-2">
               <Image src="/logo.png" alt="logo" width={35} height={35} priority />
@@ -113,14 +113,14 @@ export function Header({
 
           {/* Right side - Actions */}
           <div className="flex items-center gap-2">
-            <div className="hidden md:flex gap-2">
+            <div className="hidden md:flex gap-2 items-center">
               <ModeToggle />
               {!user ? (
-                <Button variant="outline" size="sm" asChild>
+                <Button variant="outline" size="sm" className={'h-10 rounded-full'} asChild>
                   <Link href="/login">Login</Link>
                 </Button>
               ) : (
-                <Button variant="outline" size="sm" asChild>
+                <Button variant="outline" size="sm" className={'h-10 rounded-full'} asChild>
                   <Link href="/dashboard">Dashboard</Link>
                 </Button>
               )}

@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Header } from '@/components/ui/header';
 import { Button } from '@/components/ui/button';
 import Carousel from '@/components/ui/carousel';
 import { SiGithub, SiX } from '@icons-pack/react-simple-icons';
@@ -46,10 +45,10 @@ export default function Home() {
         <div className={'text-md 2xl:text-3xl mt-4'}>愛光学園パソコン部のホームページ</div>
         <div className={'mt-6 w-full flex justify-center lg:justify-start'}>
           <Link href="/about">
-            <Button className="inline-block 2xl:text-xl 2xl:h-12">活動について</Button>
+            <Button className="rounded-full inline-block 2xl:text-xl 2xl:h-12">活動について</Button>
           </Link>
           <Link href="/login">
-            <Button variant="outline" className="inline-block ml-3 2xl:text-xl 2xl:h-12">
+            <Button variant="outline" className="rounded-full ml-3 2xl:text-xl 2xl:h-12">
               部員ログイン
             </Button>
           </Link>
@@ -64,8 +63,9 @@ export default function Home() {
         </div>
       </div>
       <div
-        className={'w-full min-h-[500px] rounded-lg bg-[rgb(170 170 170)] overflow-hidden'}
-        style={{ boxShadow: 'rgb(199 199 199) 0px 0px 20px 5px' }}
+        className={
+          'w-full min-h-[500px] rounded-lg bg-[rgb(170 170 170)] overflow-hidden shadow-lg'
+        }
       >
         <Carousel
           slides={slidesData}

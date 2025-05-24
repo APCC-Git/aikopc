@@ -79,7 +79,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ id: s
           </div>
         </div>
         <hr />
-        <article className="prose" dangerouslySetInnerHTML={{ __html: `${post.content}` }} />
+        <article
+          className="prose dark:prose-invert"
+          dangerouslySetInnerHTML={{ __html: `${post.content}` }}
+        />
       </Card>
       <div className={'hidden lg:block w-1/3 p-4 pt-0'}>
         関連記事
