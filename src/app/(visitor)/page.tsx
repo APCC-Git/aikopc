@@ -64,7 +64,7 @@ export default function Home() {
       </div>
       <div
         className={
-          'w-full min-h-[500px] rounded-lg bg-[rgb(170 170 170)] overflow-hidden shadow-lg'
+          'w-full min-h-[500px] rounded-2xl bg-[rgb(170 170 170)] overflow-hidden shadow-lg'
         }
       >
         <Carousel

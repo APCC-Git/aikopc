@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { Menu, CircleUserRound } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -65,7 +65,7 @@ export function Header({
     },
     {
       title: 'Blog',
-      href: '/blog',
+      href: '/blog/page/1',
     },
     {
       title: 'Contact',
@@ -132,15 +132,26 @@ export function Header({
                   <span className="sr-only">Toggle menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left" className="pl-0">
-                <div className="px-7 py-3 h-full flex flex-col justify-between">
+              <SheetContent
+                side="left"
+                className="pl-0 rounded-r-3xl [&>button:first-of-type]:hidden"
+              >
+                <div className="px-3 py-4 md:px-6 h-full flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between">
                       <Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
                         <SheetTitle>
-                          <span className="font-bold text-2xl text-center">Aikopc.net</span>
+                          <span className="font-bold text-3xl text-center">Aikopc.net</span>
                         </SheetTitle>
                       </Link>
+                      <div className={'flex items-center gap-2'}>
+                        <button
+                          onClick={() => setOpen(false)}
+                          className={'p-2 rounded-full transition-colors bg-secondary'}
+                        >
+                          <X size={20} />
+                        </button>
+                      </div>
                     </div>
                     <nav className="mt-10 flex flex-col gap-4">
                       {navItems.map((item, index) => (
@@ -148,7 +159,7 @@ export function Header({
                           key={index}
                           href={item.href}
                           className={cn(
-                            'text-sm font-medium transition-colors hover:text-primary',
+                            'text-lg font-medium transition-colors hover:text-primary',
                             item.disabled && 'cursor-not-allowed opacity-80'
                           )}
                           onClick={() => setOpen(false)}
@@ -158,20 +169,33 @@ export function Header({
                       ))}
                     </nav>
                   </div>
-                  <div className="flex flex-col gap-2 mt-4">
-                    {!user ? (
-                      <Button variant="outline" size="sm" asChild>
-                        <Link href="/login" onClick={() => setOpen(false)}>
-                          Login
-                        </Link>
-                      </Button>
-                    ) : (
-                      <Button variant="outline" size="sm" asChild>
-                        <Link href="/dashboard" onClick={() => setOpen(false)}>
-                          Dashboard
-                        </Link>
-                      </Button>
-                    )}
+                  <div className="flex gap-2 mt-4 items-center">
+                    <ModeToggle />
+                    <div className={'w-full h-full p-[0.5px]'}>
+                      {!user ? (
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          asChild
+                          className={'rounded-full w-full h-full'}
+                        >
+                          <Link href="/login" onClick={() => setOpen(false)}>
+                            Login
+                          </Link>
+                        </Button>
+                      ) : (
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          asChild
+                          className={'rounded-full w-full h-full'}
+                        >
+                          <Link href="/dashboard" onClick={() => setOpen(false)}>
+                            Dashboard
+                          </Link>
+                        </Button>
+                      )}
+                    </div>
                   </div>
                 </div>
               </SheetContent>

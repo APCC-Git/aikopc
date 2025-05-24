@@ -38,7 +38,7 @@ export default function ModeToggle({ className = '' }: { className?: string }) {
         <button
           onClick={() => toggleTheme('light')}
           className={`p-2 rounded-full transition-colors ${
-            theme === 'light' ? 'bg-card shadow-md' : 'hover:bg-purple-200 dark:hover:bg-purple-800'
+            theme === 'light' ? 'bg-card shadow-md' : 'hover:bg-slate-300 dark:hover:bg-slate-700'
           }`}
           title="ライトモード"
         >
@@ -47,7 +47,7 @@ export default function ModeToggle({ className = '' }: { className?: string }) {
         <button
           onClick={() => toggleTheme('dark')}
           className={`p-2 rounded-full transition-colors ${
-            theme === 'dark' ? 'bg-card shadow-md' : 'hover:bg-purple-200 dark:hover:bg-purple-800'
+            theme === 'dark' ? 'bg-card shadow-md' : 'hover:bg-slate-300 dark:hover:bg-slate-700'
           }`}
           title="ダークモード"
         >
@@ -56,9 +56,7 @@ export default function ModeToggle({ className = '' }: { className?: string }) {
         <button
           onClick={() => toggleTheme('system')}
           className={`p-2 rounded-full transition-colors ${
-            theme === 'system'
-              ? 'bg-card shadow-md'
-              : 'hover:bg-purple-200 dark:hover:bg-purple-800'
+            theme === 'system' ? 'bg-card shadow-md' : 'hover:bg-slate-300 dark:hover:bg-slate-700'
           }`}
           title="システム設定に従う"
         >
