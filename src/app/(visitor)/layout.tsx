@@ -1,6 +1,5 @@
 import { Header } from '@/components/header';
 import { getUser } from '@/lib/auth';
-import TransitionLayout from '@/components/TransitionLayout';
 import React from 'react';
 
 export default async function VisitorLayout({
@@ -13,7 +12,7 @@ export default async function VisitorLayout({
     <div>
       <Header user={user} />
       <div className={'w-full h-16'}></div>
-      <TransitionLayout>{children}</TransitionLayout>
+      <div>{children}</div>
     </div>
   );
 }

@@ -86,7 +86,22 @@ export function Header({
         <div className="container flex items-center justify-between rounded-full shadow-lg px-7 h-full w-full bg-background/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50">
           <div className="hidden md:flex items-center gap-6 md:gap-10">
             <Link href="/" className="hidden md:flex items-center space-x-2">
-              <Image src="/logo.png" alt="logo" width={35} height={35} priority />
+              <Image
+                src="/logos/logo.png"
+                alt="logo"
+                width={35}
+                height={35}
+                priority
+                className="dark:hidden"
+              />
+              <Image
+                src="/logos/logo-white.png"
+                alt="logo"
+                width={35}
+                height={35}
+                priority
+                className="hidden dark:block"
+              />
               <span className="font-bold text-2xl inline-block ml-1">Aikopc.net</span>
             </Link>
             <nav className="hidden md:flex gap-6">
@@ -105,7 +120,22 @@ export function Header({
             </nav>
           </div>
           <Link href="/" className="flex md:hidden items-center space-x-2">
-            <Image src="/logo.png" alt="logo" width={36} height={36} priority />
+            <Image
+              src="/logos/logo.png"
+              alt="logo"
+              width={36}
+              height={36}
+              priority
+              className="dark:hidden"
+            />
+            <Image
+              src="/logos/logo-white.png"
+              alt="logo"
+              width={36}
+              height={36}
+              priority
+              className="hidden dark:block"
+            />
           </Link>
           <Link href="/" className="flex md:hidden items-center space-x-2">
             <span className="font-bold text-2xl text-center inline-block">Aikopc.net</span>
