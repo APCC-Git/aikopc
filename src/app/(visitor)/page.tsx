@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import Carousel from '@/components/ui/carousel';
+import KeenCarousel from '@/components/ui/KeenCarousel';
+import { CarouselPlugin } from '@/components/Carousel';
 import { SiGithub, SiX } from '@icons-pack/react-simple-icons';
 
 const slidesData = [
@@ -67,13 +68,13 @@ export default function Home() {
           'w-full min-h-[500px] rounded-2xl bg-[rgb(170 170 170)] overflow-hidden shadow-lg'
         }
       >
-        <Carousel
+        <KeenCarousel
           slides={slidesData}
           loop={true}
           slidesPerView={1}
           spacing={20}
           autoplayInterval={3000} // 3秒ごとに自動再生
-          className={'w-full h-full min-h-[500px] bg-[rgb(170 170 170)] '}
+          className={'w-full h-full min-h-[500px] bg-[rgb(170 170 170)] rounded-2xl'}
         />
       </div>
     </div>
