@@ -31,7 +31,7 @@ export const PostTile: FC<Props> = ({ post }) => {
         </Link>
         <div className="flex flex-wrap gap-1 text-xs mt-auto">
           {post.category && (
-            <span className="bg-gray-200 px-2 py-0.5 rounded-full text-gray-600">
+            <span className="bg-gray-200 px-2 py-0.5 rounded-full text-gray-600 ">
               #{post.category.name}
             </span>
           )}

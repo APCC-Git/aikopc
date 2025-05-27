@@ -172,7 +172,100 @@ const MobileToolbarContent = ({
   </>
 );
 
-export function SimpleEditor({ setTextAction }: { setTextAction: (text: string) => void }) {
+// export function SimpleEditor({ setTextAction }: { setTextAction: (text: string) => void }) {
+//   const isMobile = useMobile();
+//   const windowSize = useWindowSize();
+//   const [mobileView, setMobileView] = React.useState<'main' | 'highlighter' | 'link'>('main');
+//   const toolbarRef = React.useRef<HTMLDivElement>(null);
+//
+//   const editor = useEditor({
+//     immediatelyRender: false,
+//     editorProps: {
+//       attributes: {
+//         autocomplete: 'off',
+//         autocorrect: 'off',
+//         autocapitalize: 'off',
+//         'aria-label': 'Main content area, start typing to enter text.',
+//       },
+//     },
+//     extensions: [
+//       StarterKit,
+//       TextAlign.configure({ types: ['heading', 'paragraph'] }),
+//       Underline,
+//       TaskList,
+//       TaskItem.configure({ nested: true }),
+//       Highlight.configure({ multicolor: true }),
+//       Image,
+//       Typography,
+//       Superscript,
+//       Subscript,
+//       Selection,
+//       TrailingNode,
+//       Link.configure({ openOnClick: false }),
+//     ],
+//     content: null, //エディタ初期化時の文章 placeholder
+//     onUpdate: ({ editor }) => {
+//       setTextAction(editor.getHTML());
+//     },
+//     onCreate: ({ editor }) => {
+//       setTextAction(editor.getHTML());
+//     },
+//   });
+//
+//   const bodyRect = useCursorVisibility({
+//     editor,
+//     overlayHeight: toolbarRef.current?.getBoundingClientRect().height ?? 0,
+//   });
+//
+//   React.useEffect(() => {
+//     if (!isMobile && mobileView !== 'main') {
+//       setMobileView('main');
+//     }
+//   }, [isMobile, mobileView]);
+//
+//   return (
+//     <EditorContext.Provider value={{ editor }}>
+//       <Toolbar
+//         ref={toolbarRef}
+//         style={
+//           isMobile
+//             ? {
+//                 bottom: `calc(100% - ${windowSize.height - bodyRect.y}px)`,
+//               }
+//             : {}
+//         }
+//       >
+//         {mobileView === 'main' ? (
+//           <MainToolbarContent
+//             onHighlighterClick={() => setMobileView('highlighter')}
+//             onLinkClick={() => setMobileView('link')}
+//             isMobile={isMobile}
+//           />
+//         ) : (
+//           <MobileToolbarContent
+//             type={mobileView === 'highlighter' ? 'highlighter' : 'link'}
+//             onBack={() => setMobileView('main')}
+//           />
+//         )}
+//       </Toolbar>
+//
+//       <div className="content-wrapper max-h-[73vh] min-h-[73vh] overflow-y-auto">
+//         <EditorContent editor={editor} role="presentation" className="simple-editor-content" />
+//       </div>
+//     </EditorContext.Provider>
+//   );
+// }
+
+// SimpleEditorコンポーネントの更新部分
+// 既存のコードの export function SimpleEditor の部分を以下に置き換えてください
+
+export function SimpleEditor({
+  setTextAction,
+  onEditorCreate,
+}: {
+  setTextAction: (text: string) => void;
+  onEditorCreate?: (editor: any) => void;
+}) {
   const isMobile = useMobile();
   const windowSize = useWindowSize();
   const [mobileView, setMobileView] = React.useState<'main' | 'highlighter' | 'link'>('main');
@@ -203,15 +296,20 @@ export function SimpleEditor({ setTextAction }: { setTextAction: (text: string) 
       TrailingNode,
       Link.configure({ openOnClick: false }),
     ],
-    content: null, //エディタ初期化時の文章 placeholder
+    content: null,
     onUpdate: ({ editor }) => {
       setTextAction(editor.getHTML());
     },
     onCreate: ({ editor }) => {
       setTextAction(editor.getHTML());
+      // エディタ参照を親コンポーネントに渡す
+      if (onEditorCreate) {
+        onEditorCreate(editor);
+      }
     },
   });
 
+  // 以下は元のコードと同じ
   const bodyRect = useCursorVisibility({
     editor,
     overlayHeight: toolbarRef.current?.getBoundingClientRect().height ?? 0,

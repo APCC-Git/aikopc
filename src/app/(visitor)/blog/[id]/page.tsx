@@ -5,6 +5,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { PostTile } from '@/components/ui/postTile';
 import { PostType } from '@/types/PostType';
+import { TableOfContents } from '@/components/TableOfContents';
 
 // microCMSから特定の記事を取得
 async function getBlogPost(id: string): Promise<PostType> {
@@ -65,34 +66,51 @@ export default async function BlogPostPage({ params }: { params: Promise<{ id: s
   const formattedDate = dayjs(post.publishedAt).format('YY-MM-DD');
 
   return (
-    <main className={'w-full p-4 md:p-10 block lg:flex'}>
-      <Card className={'w-full lg:w-2/3 rounded-lg p-4'}>
-        <div>
-          <h1 className={'text-2xl font-bold mr-5'}>{post.title}</h1>
-          <div className={'text-gray-600 mt-2'}>{formattedDate}</div>
-          <div className="flex flex-wrap gap-1 text-xs mt-2">
-            {post.category && (
-              <span className="bg-gray-200 px-2 py-0.5 rounded-full text-gray-600">
-                #{post.category.name}
-              </span>
-            )}
+    <main className={'w-full'}>
+      <div className={'w-full p-4 md:p-10 md:pr-9 pb-0 md:pb-0'}>
+        <div className={'w-full flex items-center justify-center mb-6 md:mb-10 mt-3'}>
+          <div className={'max-w-5xl'}>
+            <h1 className={'text-2xl md:text-3xl font-bold mr-5'}>{post.title}</h1>
+            <div className={'text-gray-600 mt-3 text-lg text-center'}>{formattedDate}</div>
           </div>
         </div>
-        <hr />
-        <article
-          className="prose dark:prose-invert"
-          dangerouslySetInnerHTML={{ __html: `${post.content}` }}
-        />
-      </Card>
-      <div className={'hidden lg:block w-1/3 p-4 pt-0'}>
-        関連記事
-        {similar.map(post => {
-          return (
-            <div key={post.id} className={'mt-4'}>
+        <div className={'w-full block lg:flex'}>
+          <Card className={'w-full lg:w-2/3 rounded-lg p-4'}>
+            <div className="flex flex-wrap gap-1 text-xs mt-2">
+              {post.category && (
+                <span className="bg-gray-200 px-2 py-0.5 rounded-full text-gray-600">
+                  #{post.category.name}
+                </span>
+              )}
+            </div>
+            <hr />
+            <article
+              className="prose dark:prose-invert"
+              dangerouslySetInnerHTML={{ __html: `${post.content}` }}
+            />
+          </Card>
+          <div className={'hidden lg:block relative lg:w-1/3 px-4'}>
+            <div className={'sticky top-14'}>
+              <Card className={'p-4 rounded-lg'}>
+                <TableOfContents />
+                <div className="toc mb-6">
+                  <h2 className="text-xl font-bold mb-2">目次</h2>
+                  <div className="js-toc"></div>
+                </div>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className={'w-full p-4 md:p-10 md:pr-9'}>
+        <h2 className="text-2xl font-bold mb-4">関連記事</h2>
+        <div className=" grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-6">
+          {similar.map((post: PostType) => (
+            <div key={post.id}>
               <PostTile post={post} />
             </div>
-          );
-        })}
+          ))}
+        </div>
       </div>
     </main>
   );

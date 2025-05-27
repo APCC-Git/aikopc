@@ -237,3 +237,24 @@ body {
   fill: rgba(255, 255, 255, 0.3);
   cursor: default;
 }
+
+/*目次*/
+.toc-list {
+  list-style-type: none;
+}
+
+.toc-link {
+  padding: 0 0 0 0.5rem;
+  border-left: 2px solid var(--color-border);
+  color: inherit;
+  text-decoration: none;
+}
+
+.toc-link:hover {
+  color: #666;
+}
+
+.is-active-link {
+  font-weight: 700;
+  border-left: 2px solid var(--color-primary);
+}
