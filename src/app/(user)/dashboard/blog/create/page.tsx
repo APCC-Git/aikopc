@@ -315,7 +315,7 @@ export default function Page() {
                 </div>
 
                 {/* AI モデル選択 */}
-                <div className="space-y-2">
+                <div className="space-y-2 h-20">
                   <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
                     <Settings className="w-4 h-4" />
                     AIモデル
@@ -327,9 +327,9 @@ export default function Page() {
                     <SelectContent>
                       {AI_MODELS.map(model => (
                         <SelectItem key={model.id} value={model.id}>
-                          <div className="flex flex-col items-start gap-1 p-1">
+                          <div className="flex flex-col items-start gap-1">
                             <span className="font-medium">{model.name}</span>
-                            <span className="text-xs text-gray-500">{model.provider}</span>
+                            <span className="text-xs text-gray-500 ">{model.provider}</span>
                           </div>
                         </SelectItem>
                       ))}
@@ -354,69 +354,71 @@ export default function Page() {
                 <div className="space-y-2">
                   <div className="text-sm font-medium text-gray-700 mb-2">AI機能</div>
 
-                  <DropdownMenu.Item
-                    className="w-full p-0 focus:bg-transparent"
-                    onSelect={e => e.preventDefault()}
-                  >
-                    <Button
-                      onClick={() => handleAiRequest('title')}
-                      disabled={isAiLoading}
-                      variant="outline"
-                      size="sm"
-                      className="w-full justify-start text-left"
+                  <div className={'w-full grid grid-cols-2 gap-1'}>
+                    <DropdownMenu.Item
+                      className="w-full p-0 focus:bg-transparent"
+                      onSelect={e => e.preventDefault()}
                     >
-                      <Wand2 className="w-4 h-4 mr-2" />
-                      タイトル生成
-                    </Button>
-                  </DropdownMenu.Item>
+                      <Button
+                        onClick={() => handleAiRequest('title')}
+                        disabled={isAiLoading}
+                        variant="outline"
+                        size="sm"
+                        className="w-full justify-start text-left"
+                      >
+                        <Wand2 className="w-4 h-4 mr-2" />
+                        タイトル生成
+                      </Button>
+                    </DropdownMenu.Item>
 
-                  <DropdownMenu.Item
-                    className="w-full p-0 focus:bg-transparent"
-                    onSelect={e => e.preventDefault()}
-                  >
-                    <Button
-                      onClick={() => handleAiRequest('content')}
-                      disabled={isAiLoading}
-                      variant="outline"
-                      size="sm"
-                      className="w-full justify-start text-left"
+                    <DropdownMenu.Item
+                      className="w-full p-0 focus:bg-transparent"
+                      onSelect={e => e.preventDefault()}
                     >
-                      <FileText className="w-4 h-4 mr-2" />
-                      本文生成
-                    </Button>
-                  </DropdownMenu.Item>
+                      <Button
+                        onClick={() => handleAiRequest('content')}
+                        disabled={isAiLoading}
+                        variant="outline"
+                        size="sm"
+                        className="w-full justify-start text-left"
+                      >
+                        <FileText className="w-4 h-4 mr-2" />
+                        本文生成
+                      </Button>
+                    </DropdownMenu.Item>
 
-                  <DropdownMenu.Item
-                    className="w-full p-0 focus:bg-transparent"
-                    onSelect={e => e.preventDefault()}
-                  >
-                    <Button
-                      onClick={() => handleAiRequest('improve')}
-                      disabled={isAiLoading || !text}
-                      variant="outline"
-                      size="sm"
-                      className="w-full justify-start text-left"
+                    <DropdownMenu.Item
+                      className="w-full p-0 focus:bg-transparent"
+                      onSelect={e => e.preventDefault()}
                     >
-                      <RefreshCw className="w-4 h-4 mr-2" />
-                      文章改善
-                    </Button>
-                  </DropdownMenu.Item>
+                      <Button
+                        onClick={() => handleAiRequest('improve')}
+                        disabled={isAiLoading || !text}
+                        variant="outline"
+                        size="sm"
+                        className="w-full justify-start text-left"
+                      >
+                        <RefreshCw className="w-4 h-4 mr-2" />
+                        文章改善
+                      </Button>
+                    </DropdownMenu.Item>
 
-                  <DropdownMenu.Item
-                    className="w-full p-0 focus:bg-transparent"
-                    onSelect={e => e.preventDefault()}
-                  >
-                    <Button
-                      onClick={() => handleAiRequest('summary')}
-                      disabled={isAiLoading || !text}
-                      variant="outline"
-                      size="sm"
-                      className="w-full justify-start text-left"
+                    <DropdownMenu.Item
+                      className="w-full p-0 focus:bg-transparent"
+                      onSelect={e => e.preventDefault()}
                     >
-                      <FileText className="w-4 h-4 mr-2" />
-                      要約生成
-                    </Button>
-                  </DropdownMenu.Item>
+                      <Button
+                        onClick={() => handleAiRequest('summary')}
+                        disabled={isAiLoading || !text}
+                        variant="outline"
+                        size="sm"
+                        className="w-full justify-start text-left"
+                      >
+                        <FileText className="w-4 h-4 mr-2" />
+                        要約生成
+                      </Button>
+                    </DropdownMenu.Item>
+                  </div>
                 </div>
 
                 {isAiLoading && (

@@ -11,6 +11,7 @@ import {
   Database,
   FilePenLine,
   Rocket,
+  SquareArrowOutUpRight,
 } from 'lucide-react';
 
 import { NavMain } from '@/components/nav-main';
@@ -94,6 +95,11 @@ const data = {
       url: '/dashboard/db',
       icon: Database,
     },
+    {
+      title: 'Nginx UI',
+      url: 'https://t.aikopc.net',
+      icon: SquareArrowOutUpRight,
+    },
   ],
   projects: [
     {
@@ -125,7 +131,7 @@ export function AppSidebar({ user, ...props }: AppSidebarProps) {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
-              <a href="/dashboard">
+              <a href="/">
                 <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
                   <Image
                     src={'/icons/icon-192.png'}

@@ -10,6 +10,7 @@ import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/s
 import Image from 'next/image';
 import type { JwtPayload } from 'jsonwebtoken';
 import ModeToggle from '@/components/ModeToggle';
+import { SiGithub, SiX } from '@icons-pack/react-simple-icons';
 
 interface NavItem {
   title: string;
@@ -141,7 +142,7 @@ export function Header({
             <span className="font-bold text-2xl text-center inline-block">Aikopc.net</span>
           </Link>
 
-          {/* Right side - Actions */}
+          {/* 右寄せ要素 */}
           <div className="flex items-center gap-2">
             <div className="hidden md:flex gap-2 items-center">
               <ModeToggle />

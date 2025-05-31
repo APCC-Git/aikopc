@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { type LucideIcon } from 'lucide-react';
 
@@ -9,6 +11,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
+import Link from 'next/link';
 
 export function NavSecondary({
   items,
@@ -28,7 +31,7 @@ export function NavSecondary({
           {items.map(item => (
             <SidebarMenuItem key={item.title}>
               <SidebarMenuButton asChild size="sm">
-                <a href={item.url}>
+                <a href={item.url} target={item.url.includes('http') ? '_blank' : ''}>
                   <item.icon />
                   <span>{item.title}</span>
                 </a>
