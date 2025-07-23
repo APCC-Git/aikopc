@@ -82,34 +82,34 @@ export default function Header({
   }, [count, currentIndex, isFadingOut]);
   return (
     <header className={`h-32 overflow-hidden`} style={{ backgroundColor: color }}>
-      <div className={' relative  h-full'}>
-        <div className={'h-10 w-[25%] absolute bottom-0 left-0'}>
-          <div className={'w-full h-full flex'}>
+      <div className={'relative h-full'}>
+        <div className={'absolute bottom-0 left-0 h-10 w-[25%]'}>
+          <div className={'flex h-full w-full'}>
             <div
-              className={`h-10 w-10 absolute`}
+              className={`absolute h-10 w-10`}
               style={{ clipPath: 'polygon(0 0, 0% 100%, 50% 100%)', backgroundColor: bg }}
             ></div>
             <div
-              className={`opacity-0 h-10 w-10`}
+              className={`h-10 w-10 opacity-0`}
               style={{ clipPath: 'polygon(0 0, 0% 100%, 50% 100%)' }}
             ></div>
-            <div className={`w-full h-9`} style={{ backgroundColor: pointColor }}>
+            <div className={`h-9 w-full`} style={{ backgroundColor: pointColor }}>
               <div
-                className={`h-9 w-10 absolute -right-[25px] z-40`}
+                className={`absolute -right-[25px] z-40 h-9 w-10`}
                 style={{
                   clipPath: 'polygon(0 0, 100% 0, 55% 100%, 0 100%)',
                   backgroundColor: pointColor,
                 }}
               ></div>
               <div
-                className={`h-9 w-10 absolute left-[10px] z-40`}
+                className={`absolute left-[10px] z-40 h-9 w-10`}
                 style={{
                   clipPath: 'polygon(0 0, 100% 0, 100% 100%, 45% 100%)',
                   backgroundColor: pointColor,
                 }}
               ></div>
               <div
-                className={`h-5 w-[22.22px] absolute left-[0px] -top-5 z-40`}
+                className={`absolute -top-5 left-[0px] z-40 h-5 w-[22.22px]`}
                 style={{
                   clipPath: 'polygon(0 0, 55% 0, 100% 100%, 45% 100%)',
                   backgroundColor: pointColor,
@@ -118,45 +118,45 @@ export default function Header({
             </div>
           </div>
         </div>
-        <div className={`h-10 w-[75%] absolute bottom-0 right-0`} style={{ backgroundColor: bg }}>
+        <div className={`absolute right-0 bottom-0 h-10 w-[75%]`} style={{ backgroundColor: bg }}>
           <div
-            className={`absolute h-10 w-10 bottom-0 -left-1`}
+            className={`absolute bottom-0 -left-1 h-10 w-10`}
             style={{ clipPath: 'polygon(0 0, 100% 0%, 50% 100%, 0% 100%)', backgroundColor: color }}
           ></div>
           <div
-            className={`absolute h-9 w-10 bottom-0 left-[14px]`}
+            className={`absolute bottom-0 left-[14px] h-9 w-10`}
             style={{
               clipPath: 'polygon(65.655% 0, 100% 0%, 100% 100%, 20% 100%)',
               backgroundColor: color,
             }}
           ></div>
           <div
-            className={`absolute h-9 w-full bottom-0 left-[50px]  z-30`}
+            className={`absolute bottom-0 left-[50px] z-30 h-9 w-full`}
             style={{ backgroundColor: color }}
           ></div>
           <div
-            className={`absolute w-12 h-10 bottom-0 right-0 z-30`}
+            className={`absolute right-0 bottom-0 z-30 h-10 w-12`}
             style={{ backgroundColor: bg }}
           ></div>
           <div
-            className={`absolute h-9 w-10 bottom-0 right-[30px] z-40`}
+            className={`absolute right-[30px] bottom-0 z-40 h-9 w-10`}
             style={{ clipPath: 'polygon(0 0, 100% 0%, 55% 100%, 0% 100%)', backgroundColor: color }}
           ></div>
           <div
-            className={`absolute h-9 w-10 -top-8 right-[12px] z-30`}
+            className={`absolute -top-8 right-[12px] z-30 h-9 w-10`}
             style={{
               clipPath: 'polygon(45% 0, 100% 0%, 55% 100%, 0% 100%)',
               backgroundColor: color,
             }}
           ></div>
         </div>
-        <div className={`absolute h-20 w-20 bottom-0 right-0`} style={{ backgroundColor: bg }}>
+        <div className={`absolute right-0 bottom-0 h-20 w-20`} style={{ backgroundColor: bg }}>
           <div
-            className={`absolute h-10 w-10 top-0 -left-2`}
+            className={`absolute top-0 -left-2 h-10 w-10`}
             style={{ clipPath: 'polygon(0 0, 100% 0%, 50% 100%, 0% 100%)', backgroundColor: color }}
           ></div>
           <div
-            className={`absolute h-9 w-10 -top-8 -right-[28px] z-30`}
+            className={`absolute -top-8 -right-[28px] z-30 h-9 w-10`}
             style={{ clipPath: 'polygon(45% 0, 100% 0%, 55% 100%, 0% 100%)', backgroundColor: bg }}
           ></div>
           {Array.from({ length: count }).map((_, index) => {
@@ -167,7 +167,7 @@ export default function Header({
             return (
               <div
                 key={index}
-                className={`absolute h-9 w-10 top-0 z-30 transition-colors duration-300`}
+                className={`absolute top-0 z-30 h-9 w-10 transition-colors duration-300`}
                 style={{
                   backgroundColor: color,
                   clipPath: 'polygon(55% 0, 100% 0%, 55% 100%, 10% 100%)',

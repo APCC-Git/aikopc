@@ -80,9 +80,9 @@ const KeenCarousel: React.FC<CarouselProps> = ({
     <div className={`carousel-container ${className}`}>
       {' '}
       {/* ナビゲーションボタンの位置調整用コンテナ */}
-      <div ref={sliderRef} className="keen-slider w-full h-full min-h-[500px]">
+      <div ref={sliderRef} className="keen-slider h-full min-h-[500px] w-full">
         {slides.map((slide, index) => (
-          <div className="keen-slider__slide w-full min-h-full" key={index} style={slide.style}>
+          <div className="keen-slider__slide min-h-full w-full" key={index} style={slide.style}>
             {slide.content}
           </div>
         ))}

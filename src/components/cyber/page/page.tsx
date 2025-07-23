@@ -12,8 +12,8 @@ export default function Home() {
     <div className={''} style={{ backgroundColor: bg }}>
       <Header rainbow={true} singleColor={'orange'} bg={bg} color={'white'} textColor={'white'} />
       <WindowSvg>
-        <div className={'w-full h-full p-2'}>
-          <div className={'text-5xl text-white font-bold mt-5'}>愛光学園パソコン部</div>
+        <div className={'h-full w-full p-2'}>
+          <div className={'mt-5 text-5xl font-bold text-white'}>愛光学園パソコン部</div>
         </div>
       </WindowSvg>
     </div>

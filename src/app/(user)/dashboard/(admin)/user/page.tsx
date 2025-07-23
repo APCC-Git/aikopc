@@ -131,17 +131,17 @@ export default function Page() {
   };
 
   return (
-    <div className={'w-full flex flex-col overflow-y-scroll'}>
+    <div className={'flex w-full flex-col overflow-y-scroll'}>
       <DashboardBreadcrumb
         items={[{ label: 'ダッシュボード', href: '/dashboard' }, { label: 'ユーザー管理' }]}
       />
-      <div className="w-full h-full max-h-full p-2 md:p-10 absolute z-10 overflow-y-scroll">
-        <div className={'w-full h-16'}></div>
-        <div className={'w-full flex flex-col gap-8'}>
+      <div className="absolute z-10 h-full max-h-full w-full overflow-y-scroll p-2 md:p-10">
+        <div className={'h-16 w-full'}></div>
+        <div className={'flex w-full flex-col gap-8'}>
           {/* 単一ユーザー追加フォーム */}
           <div>
-            <h2 className={'font-bold text-xl mb-4'}>単一ユーザーを追加</h2>
-            <form onSubmit={handleSingleSubmit} className={'grid gap-4 max-w-md'}>
+            <h2 className={'mb-4 text-xl font-bold'}>単一ユーザーを追加</h2>
+            <form onSubmit={handleSingleSubmit} className={'grid max-w-md gap-4'}>
               <div className="grid gap-2">
                 <Label htmlFor="userId">生徒番号</Label>
                 <Input
@@ -178,8 +178,8 @@ export default function Page() {
 
           {/* 一括追加フォーム */}
           <div>
-            <h2 className={'font-bold text-xl mb-4'}>CSVファイルで一括追加</h2>
-            <form onSubmit={handleBulkSubmit} className={'grid gap-4 max-w-md'}>
+            <h2 className={'mb-4 text-xl font-bold'}>CSVファイルで一括追加</h2>
+            <form onSubmit={handleBulkSubmit} className={'grid max-w-md gap-4'}>
               <div className="grid gap-2">
                 <Label htmlFor="csv-upload">CSVファイルをアップロード</Label>
                 <div className="flex items-center gap-2" style={{ width: '100%' }}>

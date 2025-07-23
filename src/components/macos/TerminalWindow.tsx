@@ -67,28 +67,28 @@ export default function TerminalWindow({
 
   return (
     <div
-      className={`terminal-window flex flex-col rounded-lg shadow-2xs hover:shadow-xl group transition-all border-1 border-macos-window-border-inactive hover:border-macos-window-border ${className}`}
+      className={`terminal-window group border-macos-window-border-inactive hover:border-macos-window-border flex flex-col rounded-lg border-1 shadow-2xs transition-all hover:shadow-xl ${className}`}
       ref={ref}
       {...props}
     >
-      <div className={'h-full w-full flex flex-col'}>
-        <div className="title-bar bg-macos-titlebar-inactive group-hover:bg-macos-titlebar rounded-t-lg px-4 py-2 flex items-center justify-between transition-colors ">
+      <div className={'flex h-full w-full flex-col'}>
+        <div className="title-bar bg-macos-titlebar-inactive group-hover:bg-macos-titlebar flex items-center justify-between rounded-t-lg px-4 py-2 transition-colors">
           <div className={'flex items-center space-x-2'}>
-            <div className="close w-3 h-3 rounded-full group bg-macos-actionbutton-inactive group-hover:bg-macos-close transition-colors"></div>
-            <div className="minimize w-3 h-3 rounded-full group bg-macos-actionbutton-inactive group-hover:bg-macos-minimize transition-colors"></div>
-            <div className="zoom w-3 h-3 rounded-full group bg-macos-actionbutton-inactive group-hover:bg-macos-zoom transition-colors"></div>
-            <span className="text-macos-title-text-inactive group-hover:text-macos-title-text ml-4 text-sm font-mono transition-colors">
+            <div className="close group bg-macos-actionbutton-inactive group-hover:bg-macos-close h-3 w-3 rounded-full transition-colors"></div>
+            <div className="minimize group bg-macos-actionbutton-inactive group-hover:bg-macos-minimize h-3 w-3 rounded-full transition-colors"></div>
+            <div className="zoom group bg-macos-actionbutton-inactive group-hover:bg-macos-zoom h-3 w-3 rounded-full transition-colors"></div>
+            <span className="text-macos-title-text-inactive group-hover:text-macos-title-text ml-4 font-mono text-sm transition-colors">
               {title}
             </span>
           </div>
           {showCurrentTime && (
-            <div suppressHydrationWarning className="text-terminal-gray text-sm font-mono">
+            <div suppressHydrationWarning className="text-terminal-gray font-mono text-sm">
               {currentTime.toLocaleTimeString('ja-JP')}
             </div>
           )}
         </div>
         <div
-          className={`bg-terminal-background rounded-b-lg h-[calc(100%-36px)] text-white ${padding}`}
+          className={`bg-terminal-background h-[calc(100%-36px)] rounded-b-lg text-white ${padding}`}
         >
           {children}
         </div>

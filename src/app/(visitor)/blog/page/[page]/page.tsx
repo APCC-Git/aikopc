@@ -22,15 +22,15 @@ export default async function BlogPage({ params }: { params: Promise<{ page: str
 
   const { posts, totalCount } = await getBlogPostsByPage(pageNumber, limit);
 
-  if (!posts.length) return <div className={'text-center text-lg mt-5'}>記事がありません</div>;
+  if (!posts.length) return <div className={'mt-5 text-center text-lg'}>記事がありません</div>;
 
   //const pageCount = Math.ceil(totalCount / limit);
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
-      <h1 className="text-2xl md:text-3xl font-bold mb-6">Blog ( {pageNumber} )</h1>
+    <div className="mx-auto max-w-6xl px-4 py-8">
+      <h1 className="mb-6 text-2xl font-bold md:text-3xl">Blog ( {pageNumber} )</h1>
 
-      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-6">
+      <div className="mb-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {posts.map((post: PostType) => (
           <div key={post.id}>
             <PostTile post={post} />

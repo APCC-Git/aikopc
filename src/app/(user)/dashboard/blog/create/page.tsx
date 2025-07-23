@@ -270,7 +270,7 @@ export default function Page() {
   };
 
   return (
-    <div className={'w-full flex flex-col overflow-y-scroll overflow-x-hidden'}>
+    <div className={'flex w-full flex-col overflow-x-hidden overflow-y-scroll'}>
       <DashboardBreadcrumb
         items={[
           { label: 'ダッシュボード', href: '/dashboard' },
@@ -279,25 +279,25 @@ export default function Page() {
         ]}
       />
 
-      <div className="w-full h-full max-h-full p-2 md:p-6 absolute z-10 overflow-y-scroll">
+      <div className="absolute z-10 h-full max-h-full w-full overflow-y-scroll p-2 md:p-6">
         {/* AI アシスタントドロップダウン */}
-        <div className="fixed right-5 md:right-10 top-20 z-50">
+        <div className="fixed top-20 right-5 z-50 md:right-10">
           <DropdownMenu.Root>
             <DropdownMenu.Trigger asChild>
               <Button
-                className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white shadow-lg"
+                className="bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg hover:from-purple-600 hover:to-pink-600"
                 disabled={isAiLoading}
               >
                 {isAiLoading ? (
                   <>
-                    <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
+                    <RefreshCw className="mr-2 h-4 w-4 animate-spin" />
                     AI生成中...
                   </>
                 ) : (
                   <>
-                    <Sparkles className="w-4 h-4 mr-2" />
+                    <Sparkles className="mr-2 h-4 w-4" />
                     AI アシスタント
-                    <ChevronDown className="w-4 h-4 ml-2" />
+                    <ChevronDown className="ml-2 h-4 w-4" />
                   </>
                 )}
               </Button>
@@ -305,19 +305,19 @@ export default function Page() {
 
             <DropdownMenu.Portal>
               <DropdownMenu.Content
-                className="w-[320px] bg-white rounded-lg shadow-xl border p-4 space-y-4 z-50"
+                className="z-50 w-[320px] space-y-4 rounded-lg border bg-white p-4 shadow-xl"
                 align="end"
                 sideOffset={5}
               >
-                <div className="flex items-center gap-2 text-lg font-semibold text-gray-800 pb-2 border-b">
-                  <Brain className="w-5 h-5 text-purple-500" />
+                <div className="flex items-center gap-2 border-b pb-2 text-lg font-semibold text-gray-800">
+                  <Brain className="h-5 w-5 text-purple-500" />
                   AI アシスタント
                 </div>
 
                 {/* AI モデル選択 */}
-                <div className="space-y-2 h-20">
-                  <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
-                    <Settings className="w-4 h-4" />
+                <div className="h-20 space-y-2">
+                  <label className="flex items-center gap-2 text-sm font-medium text-gray-700">
+                    <Settings className="h-4 w-4" />
                     AIモデル
                   </label>
                   <Select value={selectedModel} onValueChange={setSelectedModel}>
@@ -329,7 +329,7 @@ export default function Page() {
                         <SelectItem key={model.id} value={model.id}>
                           <div className="flex flex-col items-start gap-1">
                             <span className="font-medium">{model.name}</span>
-                            <span className="text-xs text-gray-500 ">{model.provider}</span>
+                            <span className="text-xs text-gray-500">{model.provider}</span>
                           </div>
                         </SelectItem>
                       ))}
@@ -337,13 +337,13 @@ export default function Page() {
                   </Select>
                 </div>
 
-                <div className="space-y-2 w-full">
-                  <label className="text-sm mb-3 font-medium text-gray-700">プロンプト</label>
+                <div className="w-full space-y-2">
+                  <label className="mb-3 text-sm font-medium text-gray-700">プロンプト</label>
                   <Textarea
                     placeholder="AIに何を手伝ってもらいますか？&#10;例: 'プログラミング学習について初心者向けの記事を書いて'"
                     value={aiPrompt}
                     onChange={e => setAiPrompt(e.target.value)}
-                    className="resize-none text-wrap w-full h-24"
+                    className="h-24 w-full resize-none text-wrap"
                     rows={5}
                   />
                 </div>
@@ -352,9 +352,9 @@ export default function Page() {
 
                 {/* AI機能ボタン */}
                 <div className="space-y-2">
-                  <div className="text-sm font-medium text-gray-700 mb-2">AI機能</div>
+                  <div className="mb-2 text-sm font-medium text-gray-700">AI機能</div>
 
-                  <div className={'w-full grid grid-cols-2 gap-1'}>
+                  <div className={'grid w-full grid-cols-2 gap-1'}>
                     <DropdownMenu.Item
                       className="w-full p-0 focus:bg-transparent"
                       onSelect={e => e.preventDefault()}
@@ -366,7 +366,7 @@ export default function Page() {
                         size="sm"
                         className="w-full justify-start text-left"
                       >
-                        <Wand2 className="w-4 h-4 mr-2" />
+                        <Wand2 className="mr-2 h-4 w-4" />
                         タイトル生成
                       </Button>
                     </DropdownMenu.Item>
@@ -382,7 +382,7 @@ export default function Page() {
                         size="sm"
                         className="w-full justify-start text-left"
                       >
-                        <FileText className="w-4 h-4 mr-2" />
+                        <FileText className="mr-2 h-4 w-4" />
                         本文生成
                       </Button>
                     </DropdownMenu.Item>
@@ -398,7 +398,7 @@ export default function Page() {
                         size="sm"
                         className="w-full justify-start text-left"
                       >
-                        <RefreshCw className="w-4 h-4 mr-2" />
+                        <RefreshCw className="mr-2 h-4 w-4" />
                         文章改善
                       </Button>
                     </DropdownMenu.Item>
@@ -414,7 +414,7 @@ export default function Page() {
                         size="sm"
                         className="w-full justify-start text-left"
                       >
-                        <FileText className="w-4 h-4 mr-2" />
+                        <FileText className="mr-2 h-4 w-4" />
                         要約生成
                       </Button>
                     </DropdownMenu.Item>
@@ -425,7 +425,7 @@ export default function Page() {
                   <>
                     <DropdownMenu.Separator className="h-px bg-gray-200" />
                     <div className="flex items-center justify-center py-2 text-sm text-gray-600">
-                      <RefreshCw className="w-4 h-4 animate-spin mr-2" />
+                      <RefreshCw className="mr-2 h-4 w-4 animate-spin" />
                       {AI_MODELS.find(m => m.id === selectedModel)?.name} で生成中...
                     </div>
                   </>
@@ -435,11 +435,11 @@ export default function Page() {
           </DropdownMenu.Root>
         </div>
 
-        <form onSubmit={handleSubmit} className="w-full mb-16 md:mb-5 space-y-10">
-          <div className="w-full h-16"></div>
+        <form onSubmit={handleSubmit} className="mb-16 w-full space-y-10 md:mb-5">
+          <div className="h-16 w-full"></div>
 
-          <div className={'w-full mt-5'}>
-            <div className={'font-bold flex items-center gap-2'}>
+          <div className={'mt-5 w-full'}>
+            <div className={'flex items-center gap-2 font-bold'}>
               タイトル
               <Button
                 type="button"
@@ -447,9 +447,9 @@ export default function Page() {
                 disabled={isAiLoading}
                 variant="ghost"
                 size="sm"
-                className="p-1 h-6 w-6"
+                className="h-6 w-6 p-1"
               >
-                <Sparkles className="w-3 h-3 text-purple-500" />
+                <Sparkles className="h-3 w-3 text-purple-500" />
               </Button>
             </div>
             <Input
@@ -461,8 +461,8 @@ export default function Page() {
             />
           </div>
 
-          <div className={'w-full mt-10'}>
-            <div className={'font-bold flex items-center gap-2'}>
+          <div className={'mt-10 w-full'}>
+            <div className={'flex items-center gap-2 font-bold'}>
               内容
               <Button
                 type="button"
@@ -470,12 +470,12 @@ export default function Page() {
                 disabled={isAiLoading}
                 variant="ghost"
                 size="sm"
-                className="p-1 h-6 w-6"
+                className="h-6 w-6 p-1"
               >
-                <Sparkles className="w-3 h-3 text-purple-500" />
+                <Sparkles className="h-3 w-3 text-purple-500" />
               </Button>
             </div>
-            <div className="shadow-sm w-full max-h-full mt-3 rounded-lg">
+            <div className="mt-3 max-h-full w-full rounded-lg shadow-sm">
               <SimpleEditor
                 setTextAction={setText}
                 onEditorCreate={editor => setEditorRef(editor)}
@@ -483,12 +483,12 @@ export default function Page() {
             </div>
           </div>
 
-          <div className={'w-full mt-5'}>
+          <div className={'mt-5 w-full'}>
             <div className={'font-bold'}>アイキャッチ</div>
             <Input placeholder="画像アップローダーを実装予定" className={'mt-3'} />
           </div>
 
-          <div className={'w-full mt-5'}>
+          <div className={'mt-5 w-full'}>
             <div className={'font-bold'}>カテゴリ</div>
             <div className="mt-3">
               <DropdownMenu.Root>
@@ -499,13 +499,13 @@ export default function Page() {
                 </DropdownMenu.Trigger>
                 <DropdownMenu.Portal>
                   <DropdownMenu.Content
-                    className="min-w-[200px] bg-white rounded-md shadow-lg p-1 z-50"
+                    className="z-50 min-w-[200px] rounded-md bg-white p-1 shadow-lg"
                     align="start"
                   >
                     {categories.map(category => (
                       <DropdownMenu.Item
                         key={category.id}
-                        className="px-4 py-2 text-sm cursor-pointer hover:bg-gray-100 rounded"
+                        className="cursor-pointer rounded px-4 py-2 text-sm hover:bg-gray-100"
                         onClick={() => setSelectedCategory(category)}
                       >
                         {category.name}

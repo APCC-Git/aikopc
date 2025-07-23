@@ -4,38 +4,38 @@ import { Calendar, Bell, CheckSquare } from 'lucide-react'; // アイコンは�
 
 export default function Page() {
   return (
-    <div className={'w-full flex flex-col overflow-y-scroll'}>
+    <div className={'flex w-full flex-col overflow-y-scroll'}>
       <DashboardBreadcrumb items={[{ label: 'ダッシュボード' }]} />
 
-      <div className={'w-full h-16'}></div>
+      <div className={'h-16 w-full'}></div>
       {/* サマリーカードセクション */}
-      <div className="w-full mb-6 p-4 md:p-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+      <div className="mb-6 w-full p-4 md:p-10">
+        <div className="mb-6 grid grid-cols-1 gap-4 md:grid-cols-3">
           <Card>
-            <div className="p-4 flex items-center">
-              <CheckSquare className="w-8 h-8 mr-3 text-blue-600" />
+            <div className="flex items-center p-4">
+              <CheckSquare className="mr-3 h-8 w-8 text-blue-600" />
               <div>
-                <h3 className="font-bold text-lg">タスク</h3>
+                <h3 className="text-lg font-bold">タスク</h3>
                 <p className="text-gray-600">未完了 5件</p>
               </div>
             </div>
           </Card>
 
           <Card>
-            <div className="p-4 flex items-center">
-              <Calendar className="w-8 h-8 mr-3 text-green-600" />
+            <div className="flex items-center p-4">
+              <Calendar className="mr-3 h-8 w-8 text-green-600" />
               <div>
-                <h3 className="font-bold text-lg">今日の予定</h3>
+                <h3 className="text-lg font-bold">今日の予定</h3>
                 <p className="text-gray-600">2件のイベント</p>
               </div>
             </div>
           </Card>
 
           <Card>
-            <div className="p-4 flex items-center">
-              <Bell className="w-8 h-8 mr-3 text-yellow-600" />
+            <div className="flex items-center p-4">
+              <Bell className="mr-3 h-8 w-8 text-yellow-600" />
               <div>
-                <h3 className="font-bold text-lg">お知らせ</h3>
+                <h3 className="text-lg font-bold">お知らせ</h3>
                 <p className="text-gray-600">新着 3件</p>
               </div>
             </div>
@@ -44,7 +44,7 @@ export default function Page() {
 
         {/* アクティビティフィード */}
         <div className="mb-6">
-          <h2 className="text-xl font-bold mb-4">最近の活動</h2>
+          <h2 className="mb-4 text-xl font-bold">最近の活動</h2>
           <Card>
             <div className="p-4">
               {/* ここにアクティビティリストを実装 */}

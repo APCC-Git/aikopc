@@ -33,11 +33,11 @@ export default function ModeToggle({ className = '' }: { className?: string }) {
   };
 
   return (
-    <div className={` flex items-center gap-4 ${className}`}>
-      <div className="flex items-center gap-2 bg-secondary dark:bg-secondary p-1 rounded-full">
+    <div className={`flex items-center gap-4 ${className}`}>
+      <div className="bg-secondary dark:bg-secondary flex items-center gap-2 rounded-full p-1">
         <button
           onClick={() => toggleTheme('light')}
-          className={`p-2 rounded-full transition-colors ${
+          className={`rounded-full p-2 transition-colors ${
             theme === 'light' ? 'bg-card shadow-md' : 'hover:bg-slate-300 dark:hover:bg-slate-700'
           }`}
           title="ライトモード"
@@ -46,7 +46,7 @@ export default function ModeToggle({ className = '' }: { className?: string }) {
         </button>
         <button
           onClick={() => toggleTheme('dark')}
-          className={`p-2 rounded-full transition-colors ${
+          className={`rounded-full p-2 transition-colors ${
             theme === 'dark' ? 'bg-card shadow-md' : 'hover:bg-slate-300 dark:hover:bg-slate-700'
           }`}
           title="ダークモード"
@@ -55,7 +55,7 @@ export default function ModeToggle({ className = '' }: { className?: string }) {
         </button>
         <button
           onClick={() => toggleTheme('system')}
-          className={`p-2 rounded-full transition-colors ${
+          className={`rounded-full p-2 transition-colors ${
             theme === 'system' ? 'bg-card shadow-md' : 'hover:bg-slate-300 dark:hover:bg-slate-700'
           }`}
           title="システム設定に従う"

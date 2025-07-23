@@ -21,13 +21,13 @@ const workSans = Work_Sans({
 const figTree = Figtree({
   variable: '--font-figtree',
   subsets: ['latin'],
-  weight: '900',
+  weight: ['700', '900'],
 });
 
 const notoSans = Noto_Sans_JP({
   variable: '--font-noto',
   subsets: ['latin'],
-  weight: ['700'],
+  weight: ['400', '700'],
 });
 
 export const metadata: Metadata = {

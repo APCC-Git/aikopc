@@ -74,15 +74,15 @@ export function Header({
     <>
       <header
         className={cn(
-          'sticky top-0 w-full z-40 transition-all duration-300 flex items-center justify-center p-2',
+          'sticky top-0 z-40 flex w-full items-center justify-center p-2 transition-all duration-300',
           isHidden ? '-translate-y-full' : 'translate-y-0',
           'h-20',
           className
         )}
       >
-        <div className="container flex items-center justify-between rounded-full shadow-lg px-7 h-full w-full bg-background/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50">
-          <div className="hidden md:flex items-center gap-6 md:gap-10">
-            <Link href="/public" className="hidden md:flex items-center space-x-2">
+        <div className="bg-background/80 container flex h-full w-full items-center justify-between rounded-full border border-gray-200/50 px-7 shadow-lg backdrop-blur-sm dark:border-gray-700/50">
+          <div className="hidden items-center gap-6 md:flex md:gap-10">
+            <Link href="/public" className="hidden items-center space-x-2 md:flex">
               <Image
                 src="/logos/logo.png"
                 alt="logo"
@@ -99,15 +99,15 @@ export function Header({
                 priority
                 className="hidden dark:block"
               />
-              <span className="font-bold text-2xl inline-block ml-1">Aikopc.net</span>
+              <span className="ml-1 inline-block text-2xl font-bold">Aikopc.net</span>
             </Link>
-            <nav className="hidden md:flex gap-6">
+            <nav className="hidden gap-6 md:flex">
               {navItems.map((item, index) => (
                 <Link
                   key={index}
                   href={item.href}
                   className={cn(
-                    'text-sm font-medium transition-colors hover:text-primary',
+                    'hover:text-primary text-sm font-medium transition-colors',
                     item.disabled && 'cursor-not-allowed opacity-80'
                   )}
                 >
@@ -116,7 +116,7 @@ export function Header({
               ))}
             </nav>
           </div>
-          <Link href="/public" className="flex md:hidden items-center space-x-2">
+          <Link href="/public" className="flex items-center space-x-2 md:hidden">
             <Image
               src="/logos/logo.png"
               alt="logo"
@@ -134,13 +134,13 @@ export function Header({
               className="hidden dark:block"
             />
           </Link>
-          <Link href="/public" className="flex md:hidden items-center space-x-2">
-            <span className="font-bold text-2xl text-center inline-block">Aikopc.net</span>
+          <Link href="/public" className="flex items-center space-x-2 md:hidden">
+            <span className="inline-block text-center text-2xl font-bold">Aikopc.net</span>
           </Link>
 
           {/* 右寄せ要素 */}
           <div className="flex items-center gap-2">
-            <div className="hidden md:flex gap-2 items-center">
+            <div className="hidden items-center gap-2 md:flex">
               <ModeToggle />
               {!user ? (
                 <Button variant="outline" size="sm" className={'h-10 rounded-full'} asChild>
@@ -161,9 +161,9 @@ export function Header({
               </SheetTrigger>
               <SheetContent
                 side="left"
-                className="pl-0 rounded-r-3xl [&>button:first-of-type]:hidden"
+                className="rounded-r-3xl pl-0 [&>button:first-of-type]:hidden"
               >
-                <div className="px-3 py-4 md:px-6 h-full flex flex-col justify-between">
+                <div className="flex h-full flex-col justify-between px-3 py-4 md:px-6">
                   <div>
                     <div className="flex items-center justify-between">
                       <Link
@@ -172,13 +172,13 @@ export function Header({
                         onClick={() => setOpen(false)}
                       >
                         <SheetTitle>
-                          <span className="font-bold text-3xl text-center">Aikopc.net</span>
+                          <span className="text-center text-3xl font-bold">Aikopc.net</span>
                         </SheetTitle>
                       </Link>
                       <div className={'flex items-center gap-2'}>
                         <button
                           onClick={() => setOpen(false)}
-                          className={'p-2 rounded-full transition-colors bg-secondary'}
+                          className={'bg-secondary rounded-full p-2 transition-colors'}
                         >
                           <X size={20} />
                         </button>
@@ -190,7 +190,7 @@ export function Header({
                           key={index}
                           href={item.href}
                           className={cn(
-                            'text-lg font-medium transition-colors hover:text-primary',
+                            'hover:text-primary text-lg font-medium transition-colors',
                             item.disabled && 'cursor-not-allowed opacity-80'
                           )}
                           onClick={() => setOpen(false)}
@@ -200,15 +200,15 @@ export function Header({
                       ))}
                     </nav>
                   </div>
-                  <div className="flex gap-2 mt-4 items-center">
+                  <div className="mt-4 flex items-center gap-2">
                     <ModeToggle />
-                    <div className={'w-full h-full p-[0.5px]'}>
+                    <div className={'h-full w-full p-[0.5px]'}>
                       {!user ? (
                         <Button
                           variant="outline"
                           size="sm"
                           asChild
-                          className={'rounded-full w-full h-full'}
+                          className={'h-full w-full rounded-full'}
                         >
                           <Link href="/login" onClick={() => setOpen(false)}>
                             Login
@@ -219,7 +219,7 @@ export function Header({
                           variant="outline"
                           size="sm"
                           asChild
-                          className={'rounded-full w-full h-full'}
+                          className={'h-full w-full rounded-full'}
                         >
                           <Link href="/dashboard" onClick={() => setOpen(false)}>
                             Dashboard

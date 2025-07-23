@@ -30,7 +30,7 @@ export default function SmoothScroll(props: any) {
   }, []);
 
   return (
-    <div ref={wrapper} id="smooth-wrapper" className="h-full overflow-hidden min-h-screen">
+    <div ref={wrapper} id="smooth-wrapper" className="h-full min-h-screen overflow-hidden">
       <div ref={content} id="smooth-content" className={props.className} style={props.style}>
         {props.children}
       </div>

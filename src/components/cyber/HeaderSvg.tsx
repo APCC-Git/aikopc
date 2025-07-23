@@ -11,7 +11,7 @@ export default function Header(props: any) {
   const textColor = 'black';
   const bg = 'black';
   return (
-    <div className={'h-[500px] w-full z-50'}>
+    <div className={'z-50 h-[500px] w-full'}>
       {/*SVG*/}
       <svg
         version="1.0"
@@ -20,7 +20,7 @@ export default function Header(props: any) {
         height="7816.000000pt"
         viewBox="0 0 26472.000000 7816.000000"
         preserveAspectRatio="none"
-        className={'w-full h-[500px]'}
+        className={'h-[500px] w-full'}
       >
         <g
           transform="translate(0.000000,7816.000000) scale(0.100000,-0.100000)"

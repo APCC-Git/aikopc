@@ -1,15 +1,14 @@
-@import "tailwindcss";
-@import "tw-animate-css";
-@import "keen-slider/keen-slider.min.css";
-
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'keen-slider/keen-slider.min.css';
 
 @plugin "@tailwindcss/typography";
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --font-geist-mono: "Geist Mono", ui-monospace, monospace;
-  --font-geist-sans: "Geist Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-work-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-geist-mono: 'Geist Mono', ui-monospace, monospace;
+  --font-geist-sans: 'Geist Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-work-sans: 'Work Sans', ui-sans-serif, system-ui, sans-serif;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);
@@ -52,7 +51,6 @@
   --font-work: var(--font-work-sans);
   --font-figtree: var(--font-figtree);
   --font-noto: var(--font-noto);
-  --font-Saiba: "Saiba", "sans-serif";
   --animate-slide: slide 5s linear infinite;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -94,14 +92,7 @@
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px)
-}
-
-@font-face {
-  font-family: "Saiba";
-  src: url('/fonts/saiba-45/SAIBA-45.ttf') format("truetype");
-  font-weight: normal;
-  font-style: normal;
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
 html {
@@ -194,7 +185,8 @@ body {
 }
 
 .carousel-container {
-  position: relative; /* ナビゲーションボタンのabsolute配置の基準 */}
+  position: relative; /* ナビゲーションボタンのabsolute配置の基準 */
+}
 
 .keen-slider {
   /* カルーセル全体のスタイルを追加 */
@@ -223,7 +215,7 @@ body {
   fill: #fff;
   cursor: pointer;
   z-index: 10; /* スライドより手前に表示 */
-  filter: drop-shadow(0px 2px 2px rgba(0,0,0,0.5)); /* 見やすくする影 */
+  filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.5)); /* 見やすくする影 */
 }
 
 .arrow--left {
@@ -261,8 +253,6 @@ body {
   border-left: 2px solid var(--color-primary);
 }
 
-
-
 /* Terminal & Window Colors */
 @theme inline {
   --color-macos-close: var(--macos-close);
@@ -291,14 +281,14 @@ body {
   --color-terminal-white: var(--terminal-white);
 }
 
-:root{
-  --macos-close: #FF5F57;
-  --macos-minimize: #FEBC2E;
-  --macos-zoom: #28C840;
-  --macos-actionbutton-inactive: rgb(90,90,90);
+:root {
+  --macos-close: #ff5f57;
+  --macos-minimize: #febc2e;
+  --macos-zoom: #28c840;
+  --macos-actionbutton-inactive: rgb(90, 90, 90);
 }
 
-:root{
+:root {
   --macos-titlebar: rgb(251 251 251);
   --macos-titlebar-inactive: rgb(238 238 238);
 
@@ -328,7 +318,6 @@ body {
   --terminal-white: rgb(191 191 191);
   /* #BFBFBF */
 }
-
 
 :root.dark {
   --macos-titlebar: rgb(64 64 64);

@@ -1,3 +1,3 @@
 export default function Footer() {
-  return <footer className={'w-full h-20 bg-white'}></footer>;
+  return <footer className={'h-20 w-full bg-white'}></footer>;
 }

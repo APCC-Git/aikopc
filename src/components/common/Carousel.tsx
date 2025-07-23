@@ -19,7 +19,7 @@ export function CarouselPlugin({ slides, className }: { slides: Slide[]; classNa
       <CarouselContent>
         {slides.map((slide, index) => (
           <CarouselItem key={index} className={''}>
-            <div className="border border-amber-400 min-h-[500px]">
+            <div className="min-h-[500px] border border-amber-400">
               <CardContent className="">{slide.content}</CardContent>
             </div>
           </CarouselItem>

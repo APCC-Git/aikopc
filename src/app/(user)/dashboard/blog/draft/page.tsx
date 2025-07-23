@@ -62,7 +62,7 @@ export default function DraftsPage() {
   };
 
   return (
-    <div className={'w-full flex flex-col overflow-y-scroll'}>
+    <div className={'flex w-full flex-col overflow-y-scroll'}>
       <DashboardBreadcrumb
         items={[
           { label: 'ダッシュボード', href: '/dashboard' },
@@ -70,9 +70,9 @@ export default function DraftsPage() {
           { label: '下書き' },
         ]}
       />
-      <div className="w-full h-full max-h-full p-2 md:p-10 absolute z-10 overflow-y-scroll">
-        <div className={'w-full h-16'}></div>
-        <div className="flex justify-between items-center space-y-6">
+      <div className="absolute z-10 h-full max-h-full w-full overflow-y-scroll p-2 md:p-10">
+        <div className={'h-16 w-full'}></div>
+        <div className="flex items-center justify-between space-y-6">
           <h1 className="text-2xl font-bold">下書き一覧</h1>
           <Link href="/dashboard/blog/create">
             <Button>新規作成</Button>
@@ -80,17 +80,17 @@ export default function DraftsPage() {
         </div>
 
         {isLoading ? (
-          <div className="text-center py-10">読み込み中...</div>
+          <div className="py-10 text-center">読み込み中...</div>
         ) : drafts.length === 0 ? (
-          <div className="text-center py-10 text-gray-500">下書きはまだありません</div>
+          <div className="py-10 text-center text-gray-500">下書きはまだありません</div>
         ) : (
           <div className="grid gap-4">
             {drafts.map(draft => (
               <div
                 key={draft.id}
-                className="border rounded-lg p-4 hover:bg-gray-50 transition-colors max-w-full"
+                className="max-w-full rounded-lg border p-4 transition-colors hover:bg-gray-50"
               >
-                <div className="flex justify-between items-start">
+                <div className="flex items-start justify-between">
                   <div className="space-y-1">
                     <h2 className="text-xl font-semibold">{draft.title}</h2>
                     <p className="text-sm text-gray-500">

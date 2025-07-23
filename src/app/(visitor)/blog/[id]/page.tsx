@@ -67,18 +67,18 @@ export default async function BlogPostPage({ params }: { params: Promise<{ id: s
 
   return (
     <main className={'w-full'}>
-      <div className={'w-full p-4 md:p-10 md:pr-9 pb-0 md:pb-0'}>
-        <div className={'w-full flex items-center justify-center mb-6 md:mb-10 mt-3'}>
+      <div className={'w-full p-4 pb-0 md:p-10 md:pr-9 md:pb-0'}>
+        <div className={'mt-3 mb-6 flex w-full items-center justify-center md:mb-10'}>
           <div className={'max-w-5xl'}>
-            <h1 className={'text-2xl md:text-3xl font-bold mr-5'}>{post.title}</h1>
-            <div className={'text-gray-600 mt-3 text-lg text-center'}>{formattedDate}</div>
+            <h1 className={'mr-5 text-2xl font-bold md:text-3xl'}>{post.title}</h1>
+            <div className={'mt-3 text-center text-lg text-gray-600'}>{formattedDate}</div>
           </div>
         </div>
-        <div className={'w-full block lg:flex'}>
-          <Card className={'w-full lg:w-2/3 rounded-lg p-4'}>
-            <div className="flex flex-wrap gap-1 text-xs mt-2">
+        <div className={'block w-full lg:flex'}>
+          <Card className={'w-full rounded-lg p-4 lg:w-2/3'}>
+            <div className="mt-2 flex flex-wrap gap-1 text-xs">
               {post.category && (
-                <span className="bg-gray-200 px-2 py-0.5 rounded-full text-gray-600">
+                <span className="rounded-full bg-gray-200 px-2 py-0.5 text-gray-600">
                   #{post.category.name}
                 </span>
               )}
@@ -89,12 +89,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ id: s
               dangerouslySetInnerHTML={{ __html: `${post.content}` }}
             />
           </Card>
-          <div className={'hidden lg:block relative lg:w-1/3 px-4'}>
+          <div className={'relative hidden px-4 lg:block lg:w-1/3'}>
             <div className={'sticky top-14'}>
-              <Card className={'p-4 rounded-lg'}>
+              <Card className={'rounded-lg p-4'}>
                 <TableOfContents />
                 <div className="toc mb-6">
-                  <h2 className="text-xl font-bold mb-2">目次</h2>
+                  <h2 className="mb-2 text-xl font-bold">目次</h2>
                   <div className="js-toc"></div>
                 </div>
               </Card>
@@ -103,8 +103,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ id: s
         </div>
       </div>
       <div className={'w-full p-4 md:p-10 md:pr-9'}>
-        <h2 className="text-2xl font-bold mb-4">関連記事</h2>
-        <div className=" grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-6">
+        <h2 className="mb-4 text-2xl font-bold">関連記事</h2>
+        <div className="mb-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {similar.map((post: PostType) => (
             <div key={post.id}>
               <PostTile post={post} />

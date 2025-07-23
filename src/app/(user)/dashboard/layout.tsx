@@ -19,8 +19,8 @@ export default async function DashboardLayout({ children }: { children: ReactNod
       );
     } else {
       return (
-        <div className="text-center flex flex-col justify-center mt-20">
-          <div className="flex items-center flex-col">
+        <div className="mt-20 flex flex-col justify-center text-center">
+          <div className="flex flex-col items-center">
             セッション期限が切れています。再度ログインしてください
             <LogoutButton />
           </div>
@@ -29,8 +29,8 @@ export default async function DashboardLayout({ children }: { children: ReactNod
     }
   } catch {
     return (
-      <div className="text-center flex flex-col justify-center mt-20">
-        <div className="flex items-center flex-col">
+      <div className="mt-20 flex flex-col justify-center text-center">
+        <div className="flex flex-col items-center">
           セッション期限が切れています。再度ログインしてください
           <LogoutButton />
         </div>

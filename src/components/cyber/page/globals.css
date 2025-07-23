@@ -1,11 +1,11 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --font-geist-mono: "Geist Mono", ui-monospace, monospace;
-  --font-geist-sans: "Geist Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-work-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-geist-mono: 'Geist Mono', ui-monospace, monospace;
+  --font-geist-sans: 'Geist Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-work-sans: 'Work Sans', ui-sans-serif, system-ui, sans-serif;
 }
 
 @theme inline {
@@ -14,7 +14,7 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-work: var(--font-work-sans);
-  --font-Saiba: "Saiba", "sans-serif";
+  --font-Saiba: 'Saiba', 'sans-serif';
   --animate-slide: slide 5s linear infinite;
   @keyframes slide {
     0% {
@@ -33,11 +33,9 @@
   }
 }
 
-
-
 @font-face {
-  font-family: "Saiba";
-  src: url("/fonts/saiba-45/SAIBA-45.ttf") format("truetype");
+  font-family: 'Saiba';
+  src: url('/fonts/saiba-45/SAIBA-45.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }

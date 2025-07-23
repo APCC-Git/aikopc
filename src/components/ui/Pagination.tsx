@@ -11,7 +11,7 @@ export function Pagination({ current, total, limit }: Props) {
   const range = getPaginationRange(current, total);
 
   return (
-    <div className="flex space-x-2 mt-6 justify-center">
+    <div className="mt-6 flex justify-center space-x-2">
       {range.map((page, idx) =>
         page === '...' ? (
           <span key={idx} className="px-2">
@@ -21,7 +21,7 @@ export function Pagination({ current, total, limit }: Props) {
           <Link
             key={`Pagination${page}`}
             href={`/blog/page/${page}`}
-            className={`px-3 py-1 border rounded ${
+            className={`rounded border px-3 py-1 ${
               page === current ? 'bg-primary text-white dark:text-black' : 'hover:bg-gray-100'
             }`}
           >

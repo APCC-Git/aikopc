@@ -80,7 +80,7 @@ const CodeAnimation: React.FC = () => {
           display: none;
         }
       `}</style>
-      <div ref={scrollRef} className={'h-full overflow-y-auto overflow-x-hidden'}>
+      <div ref={scrollRef} className={'h-full overflow-x-hidden overflow-y-auto'}>
         <div
           className="rounded-lg p-0"
           style={{

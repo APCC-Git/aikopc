@@ -9,7 +9,7 @@ type User = {
   exp: number;
 };
 
-export async function getUser() {
+export async function getUser(): Promise<jwt.JwtPayload | null> {
   const token = (await cookies()).get('token')?.value;
   if (!token) return null;
 
