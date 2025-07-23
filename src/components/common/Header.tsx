@@ -9,8 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
 import Image from 'next/image';
 import type { JwtPayload } from 'jsonwebtoken';
-import ModeToggle from '@/components/common/ModeToggle';
-import { SiGithub, SiX } from '@icons-pack/react-simple-icons';
+import ThemeToggle from './ThemeToggle';
 
 interface NavItem {
   title: string;
@@ -74,7 +73,7 @@ export function Header({
     <>
       <header
         className={cn(
-          'sticky top-0 z-40 flex w-full items-center justify-center p-2 transition-all duration-300',
+          'font-figtree sticky top-0 z-40 flex w-full items-center justify-center p-2 transition-all duration-300',
           isHidden ? '-translate-y-full' : 'translate-y-0',
           'h-20',
           className
@@ -141,7 +140,7 @@ export function Header({
           {/* 右寄せ要素 */}
           <div className="flex items-center gap-2">
             <div className="hidden items-center gap-2 md:flex">
-              <ModeToggle />
+              <ThemeToggle />
               {!user ? (
                 <Button variant="outline" size="sm" className={'h-10 rounded-full'} asChild>
                   <Link href="/login">Login</Link>
@@ -201,7 +200,7 @@ export function Header({
                     </nav>
                   </div>
                   <div className="mt-4 flex items-center gap-2">
-                    <ModeToggle />
+                    <ThemeToggle />
                     <div className={'h-full w-full p-[0.5px]'}>
                       {!user ? (
                         <Button

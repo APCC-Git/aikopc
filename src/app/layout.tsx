@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Work_Sans, Geist, Geist_Mono, Figtree, Noto_Sans_JP } from 'next/font/google';
 import './globals.css';
+import { ThemeProvider } from '@/components/common/ThemeProvider';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -57,7 +58,7 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${workSans.variable} ${figTree.variable} ${notoSans.variable} antialiased`}
       >
-        <div>{children}</div>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );

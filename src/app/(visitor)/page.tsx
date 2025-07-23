@@ -1,23 +1,24 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import CodeAnimation from '@/components/macos/effect/CodeAnimation/CodeAnimation';
+// import Tabs
 
 export default function Home() {
   return (
     <div className={'block h-[calc(100vh-5rem)] w-full items-center justify-center lg:flex'}>
       <div className={'flex h-full flex-col items-center justify-center space-y-8 p-8 lg:w-1/2'}>
         <div className={'space-y-4'}>
-          <div className={'font-figtree text-center text-7xl font-black md:text-8xl 2xl:text-9xl'}>
+          <div className={'font-figtree text-center text-6xl font-black md:text-8xl 2xl:text-9xl'}>
             Aikopc.net
           </div>
-          <div className={'font-figtree text-center text-3xl font-bold md:text-4xl 2xl:text-5xl'}>
+          <div className={'font-figtree text-center text-2xl font-bold md:text-4xl 2xl:text-5xl'}>
             APCC <span className={'font-noto'}>- 愛光学園パソコン部</span>
           </div>
         </div>
         <div className={'space-y-5'}>
           <div
             className={
-              'font-noto px-7 text-center text-xl text-gray-600 2xl:text-2xl dark:text-gray-400'
+              'font-noto px-7 text-center text-lg text-gray-600 md:text-xl 2xl:text-2xl dark:text-gray-400'
             }
           >
             愛光学園パソコン部では、競技プログラミング、Webデザイン、ゲーム制作、自作PCなど、
@@ -29,7 +30,7 @@ export default function Home() {
               target={'_blank'}
               rel={'noopener  noreferrer'}
             >
-              <Button className={'font-figtree text-md rounded-full 2xl:text-lg'}>
+              <Button className={'font-figtree text-md rounded-full 2xl:text-lg'} size={'lg'}>
                 See on Github
               </Button>
             </Link>
@@ -37,6 +38,7 @@ export default function Home() {
               <Button
                 className={'font-figtree text-md rounded-full 2xl:text-lg'}
                 variant={'outline'}
+                size={'lg'}
               >
                 See on X (Twitter)
               </Button>
@@ -45,7 +47,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className={'hidden h-full w-1/2 items-center justify-between p-12 lg:flex'}>
+      <div className={'hidden h-full w-1/2 items-center justify-between p-12 py-24 lg:flex'}>
         <CodeAnimation />
       </div>
     </div>
