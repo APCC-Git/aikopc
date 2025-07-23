@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import TerminalWindow from '../../TerminalWindow';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { a11yDark, a11yLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-//import { useTheme } from '@/components/ThemeProvider';
+import { useTheme } from '@/components/common/ThemeProvider';
 import { codes } from './codes';
 
 const CodeAnimation: React.FC = () => {
@@ -20,8 +20,7 @@ const CodeAnimation: React.FC = () => {
   const TITLE = codes[codeIndex].title;
   const LANG = codes[codeIndex].lang;
 
-  //const { isDark } = useTheme();
-  const isDark = false;
+  const { isDark } = useTheme();
 
   const startAnimation = () => {
     setIsAnimating(true);

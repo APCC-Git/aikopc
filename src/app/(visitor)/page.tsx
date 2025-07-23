@@ -5,7 +5,11 @@ import CodeAnimation from '@/components/macos/effect/CodeAnimation/CodeAnimation
 
 export default function Home() {
   return (
-    <div className={'block h-[calc(100vh-5rem)] w-full items-center justify-center lg:flex'}>
+    <div
+      className={
+        'block h-[calc(100vh-5rem)] w-full items-center justify-center lg:flex lg:h-[calc(100vh-6rem)]'
+      }
+    >
       <div className={'flex h-full flex-col items-center justify-center space-y-8 p-8 lg:w-1/2'}>
         <div className={'space-y-4'}>
           <div className={'font-figtree text-center text-6xl font-black md:text-8xl 2xl:text-9xl'}>

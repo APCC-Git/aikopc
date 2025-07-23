@@ -73,15 +73,15 @@ export function Header({
     <>
       <header
         className={cn(
-          'font-figtree sticky top-0 z-40 flex w-full items-center justify-center p-2 transition-all duration-300',
+          'font-figtree sticky top-0 z-40 flex w-full items-center justify-center p-2 transition-all duration-300 xl:p-4',
           isHidden ? '-translate-y-full' : 'translate-y-0',
-          'h-20',
+          'h-20 xl:h-24',
           className
         )}
       >
         <div className="bg-background/80 container flex h-full w-full items-center justify-between rounded-full border border-gray-200/50 px-7 shadow-lg backdrop-blur-sm dark:border-gray-700/50">
           <div className="hidden items-center gap-6 md:flex md:gap-10">
-            <Link href="/public" className="hidden items-center space-x-2 md:flex">
+            <Link href="/" className="hidden items-center space-x-2 md:flex">
               <Image
                 src="/logos/logo.png"
                 alt="logo"
@@ -98,7 +98,7 @@ export function Header({
                 priority
                 className="hidden dark:block"
               />
-              <span className="ml-1 inline-block text-2xl font-bold">Aikopc.net</span>
+              <span className="ml-1 inline-block text-3xl font-black">Aikopc.net</span>
             </Link>
             <nav className="hidden gap-6 md:flex">
               {navItems.map((item, index) => (
@@ -106,7 +106,7 @@ export function Header({
                   key={index}
                   href={item.href}
                   className={cn(
-                    'hover:text-primary text-sm font-medium transition-colors',
+                    'hover:text-primary text-lg transition-colors',
                     item.disabled && 'cursor-not-allowed opacity-80'
                   )}
                 >
@@ -153,8 +153,8 @@ export function Header({
             </div>
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="md:hidden">
-                  <Menu className="h-5 w-5" />
+                <Button variant="ghost" size="lg" className="md:hidden">
+                  <Menu className="h-7 w-7" />
                   <span className="sr-only">Toggle menu</span>
                 </Button>
               </SheetTrigger>
@@ -170,8 +170,10 @@ export function Header({
                         className="flex items-center"
                         onClick={() => setOpen(false)}
                       >
-                        <SheetTitle>
-                          <span className="text-center text-3xl font-bold">Aikopc.net</span>
+                        <SheetTitle className={'justify-between'}>
+                          <span className="font-figtree text-center text-3xl font-black">
+                            Aikopc.net
+                          </span>
                         </SheetTitle>
                       </Link>
                       <div className={'flex items-center gap-2'}>
