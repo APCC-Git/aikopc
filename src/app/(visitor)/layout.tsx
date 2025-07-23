@@ -1,4 +1,4 @@
-import { Header } from '@/components/header';
+import { Header } from '@/components/common/Header';
 import { getUser } from '@/lib/auth';
 import React from 'react';
 
@@ -9,10 +9,9 @@ export default async function VisitorLayout({
 }>) {
   const user = await getUser();
   return (
-    <div>
+    <>
       <Header user={user} />
-      <div className={'w-full h-16'}></div>
-      <div>{children}</div>
-    </div>
+      <div className={''}>{children}</div>
+    </>
   );
 }

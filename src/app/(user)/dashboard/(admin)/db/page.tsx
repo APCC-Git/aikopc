@@ -1,4 +1,4 @@
-import { DashboardBreadcrumb } from '@/components/DashboardBreadcrumb';
+import { DashboardBreadcrumb } from '@/components/dashboard/DashboardBreadcrumb';
 
 export default function Page() {
   return (

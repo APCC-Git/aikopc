@@ -1,3 +1,4 @@
+//ブログに目次を表示するコンポーネント
 'use client';
 
 import { useEffect } from 'react';

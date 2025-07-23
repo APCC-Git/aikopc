@@ -5,7 +5,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { PostTile } from '@/components/ui/postTile';
 import { PostType } from '@/types/PostType';
-import { TableOfContents } from '@/components/TableOfContents';
+import { TableOfContents } from '@/components/common/TableOfContents';
 
 // microCMSから特定の記事を取得
 async function getBlogPost(id: string): Promise<PostType> {

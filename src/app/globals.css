@@ -50,6 +50,8 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-work: var(--font-work-sans);
+  --font-figtree: var(--font-figtree);
+  --font-noto: var(--font-noto);
   --font-Saiba: "Saiba", "sans-serif";
   --animate-slide: slide 5s linear infinite;
   --color-sidebar-ring: var(--sidebar-ring);
@@ -257,4 +259,135 @@ body {
 .is-active-link {
   font-weight: 700;
   border-left: 2px solid var(--color-primary);
+}
+
+
+
+/* Terminal & Window Colors */
+@theme inline {
+  --color-macos-close: var(--macos-close);
+  --color-macos-minimize: var(--macos-minimize);
+  --color-macos-zoom: var(--macos-zoom);
+  --color-macos-actionbutton-inactive: var(--macos-actionbutton-inactive);
+
+  --color-macos-titlebar: var(--macos-titlebar);
+  --color-macos-titlebar-inactive: var(--macos-titlebar-inactive);
+
+  --color-macos-window-border: var(--macos-window-border);
+  --color-macos-window-border-inactive: var(--macos-window-border-inactive);
+
+  --color-macos-title-text: var(--macos-title-text);
+  --color-macos-title-text-inactive: var(--macos-title-text-inactive);
+
+  --color-terminal-background: var(--terminal-background);
+  --color-terminal-black: var(--terminal-black);
+  --color-terminal-gray: var(--terminal-gray);
+  --color-terminal-red: var(--terminal-red);
+  --color-terminal-green: var(--terminal-green);
+  --color-terminal-yellow: var(--terminal-yellow);
+  --color-terminal-blue: var(--terminal-blue);
+  --color-terminal-magenta: var(--terminal-magenta);
+  --color-terminal-cyan: var(--terminal-cyan);
+  --color-terminal-white: var(--terminal-white);
+}
+
+:root{
+  --macos-close: #FF5F57;
+  --macos-minimize: #FEBC2E;
+  --macos-zoom: #28C840;
+  --macos-actionbutton-inactive: rgb(90,90,90);
+}
+
+:root{
+  --macos-titlebar: rgb(251 251 251);
+  --macos-titlebar-inactive: rgb(238 238 238);
+
+  --macos-window-border: rgb(200 200 200);
+  --macos-window-border-inactive: rgb(200 200 200);
+
+  --macos-title-text: rgb(0 0 0);
+  --macos-title-text-inactive: rgb(60 60 67);
+
+  --terminal-background: rgb(255, 255, 255);
+  --terminal-black: rgb(0 0 0);
+  /* #000000 */
+  --terminal-gray: rgb(128 128 128);
+  /* #808080 */
+  --terminal-red: rgb(153 0 0);
+  /* #990000 */
+  --terminal-green: rgb(0, 220, 0);
+  /* #00A600 */
+  --terminal-yellow: rgb(153 153 0);
+  /* #999900 */
+  --terminal-blue: rgb(0 0 178);
+  /* #0000B2 */
+  --terminal-magenta: rgb(178 0 178);
+  /* #B200B2 */
+  --terminal-cyan: rgb(0 166 178);
+  /* #00A6B2 */
+  --terminal-white: rgb(191 191 191);
+  /* #BFBFBF */
+}
+
+
+:root.dark {
+  --macos-titlebar: rgb(64 64 64);
+  --macos-titlebar-inactive: rgb(58 58 58);
+
+  --macos-window-border: rgb(80 80 80);
+  --macos-window-border-inactive: rgb(44 44 44);
+
+  --macos-title-text: rgb(255 255 255);
+  --macos-title-text-inactive: rgb(235 235 245);
+
+  --terminal-background: rgb(28, 28, 28);
+  --terminal-black: rgb(128 128 128);
+  /* #808080 */
+  --terminal-gray: rgb(140, 140, 140);
+  --terminal-red: rgb(255 0 0);
+  /* #FF0000 */
+  --terminal-green: rgb(0 255 0);
+  /* #00FF00 */
+  --terminal-yellow: rgb(255 255 0);
+  /* #FFFF00 */
+  --terminal-blue: rgb(47, 47, 255);
+  /* #0000FF */
+  --terminal-magenta: rgb(255 0 255);
+  /* #FF00FF */
+  --terminal-cyan: rgb(0 255 255);
+  /* #00FFFF */
+  --terminal-white: rgb(255 255 255);
+  /* #FFFFFF */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --macos-titlebar: rgb(64 64 64);
+    --macos-titlebar-inactive: rgb(58 58 58);
+
+    --macos-window-border: rgb(80 80 80);
+    --macos-window-border-inactive: rgb(44 44 44);
+
+    --macos-title-text: rgb(255 255 255);
+    --macos-title-text-inactive: rgb(235 235 245);
+
+    --terminal-background: rgb(28, 28, 28);
+    --terminal-black: rgb(128 128 128);
+    /* #808080 */
+    --terminal-gray: rgb(140, 140, 140);
+    --terminal-red: rgb(255 0 0);
+    /* #FF0000 */
+    --terminal-green: rgb(0 255 0);
+    /* #00FF00 */
+    --terminal-yellow: rgb(255 255 0);
+    /* #FFFF00 */
+    --terminal-blue: rgb(47, 47, 255);
+    /* #0000FF */
+    --terminal-magenta: rgb(255 0 255);
+    /* #FF00FF */
+    --terminal-cyan: rgb(0 255 255);
+    /* #00FFFF */
+    --terminal-white: rgb(255 255 255);
+    /* #FFFFFF */
+  }
 }

@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
 import Image from 'next/image';
 import type { JwtPayload } from 'jsonwebtoken';
-import ModeToggle from '@/components/ModeToggle';
+import ModeToggle from '@/components/common/ModeToggle';
 import { SiGithub, SiX } from '@icons-pack/react-simple-icons';
 
 interface NavItem {
@@ -65,10 +65,6 @@ export function Header({
       href: '/about',
     },
     {
-      title: 'Blog',
-      href: '/blog/page/1',
-    },
-    {
       title: 'Contact',
       href: '/contact',
     },
@@ -78,7 +74,7 @@ export function Header({
     <>
       <header
         className={cn(
-          'fixed top-0 w-full z-40 transition-all duration-300 flex items-center justify-center p-2',
+          'sticky top-0 w-full z-40 transition-all duration-300 flex items-center justify-center p-2',
           isHidden ? '-translate-y-full' : 'translate-y-0',
           'h-20',
           className
@@ -86,7 +82,7 @@ export function Header({
       >
         <div className="container flex items-center justify-between rounded-full shadow-lg px-7 h-full w-full bg-background/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50">
           <div className="hidden md:flex items-center gap-6 md:gap-10">
-            <Link href="/" className="hidden md:flex items-center space-x-2">
+            <Link href="/public" className="hidden md:flex items-center space-x-2">
               <Image
                 src="/logos/logo.png"
                 alt="logo"
@@ -120,7 +116,7 @@ export function Header({
               ))}
             </nav>
           </div>
-          <Link href="/" className="flex md:hidden items-center space-x-2">
+          <Link href="/public" className="flex md:hidden items-center space-x-2">
             <Image
               src="/logos/logo.png"
               alt="logo"
@@ -138,7 +134,7 @@ export function Header({
               className="hidden dark:block"
             />
           </Link>
-          <Link href="/" className="flex md:hidden items-center space-x-2">
+          <Link href="/public" className="flex md:hidden items-center space-x-2">
             <span className="font-bold text-2xl text-center inline-block">Aikopc.net</span>
           </Link>
 
@@ -170,7 +166,11 @@ export function Header({
                 <div className="px-3 py-4 md:px-6 h-full flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between">
-                      <Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
+                      <Link
+                        href="/public"
+                        className="flex items-center"
+                        onClick={() => setOpen(false)}
+                      >
                         <SheetTitle>
                           <span className="font-bold text-3xl text-center">Aikopc.net</span>
                         </SheetTitle>

@@ -1,6 +1,6 @@
 'use client';
 
-import { DashboardBreadcrumb } from '@/components/DashboardBreadcrumb';
+import { DashboardBreadcrumb } from '@/components/dashboard/DashboardBreadcrumb';
 import { SimpleEditor } from '@/components/tiptap-templates/simple/simple-editor';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';

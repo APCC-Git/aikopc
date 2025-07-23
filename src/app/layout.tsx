@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Work_Sans, Geist, Geist_Mono } from 'next/font/google';
+import { Work_Sans, Geist, Geist_Mono, Figtree, Noto_Sans_JP } from 'next/font/google';
 import './globals.css';
 
 const geistSans = Geist({
@@ -16,6 +16,18 @@ const workSans = Work_Sans({
   variable: '--font-work-sans',
   subsets: ['latin'],
   weight: '900',
+});
+
+const figTree = Figtree({
+  variable: '--font-figtree',
+  subsets: ['latin'],
+  weight: '900',
+});
+
+const notoSans = Noto_Sans_JP({
+  variable: '--font-noto',
+  subsets: ['latin'],
+  weight: ['700'],
 });
 
 export const metadata: Metadata = {
@@ -43,9 +55,9 @@ export default async function RootLayout({
   return (
     <html lang="ja">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${workSans.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${workSans.variable} ${figTree.variable} ${notoSans.variable} antialiased`}
       >
-        <main>{children}</main>
+        <div>{children}</div>
       </body>
     </html>
   );

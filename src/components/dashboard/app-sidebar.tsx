@@ -14,10 +14,10 @@ import {
   SquareArrowOutUpRight,
 } from 'lucide-react';
 
-import { NavMain } from '@/components/nav-main';
-import { NavProjects } from '@/components/nav-projects';
-import { NavSecondary } from '@/components/nav-secondary';
-import { NavUser } from '@/components/nav-user';
+import { NavMain } from '@/components/dashboard/nav-main';
+import { NavProjects } from '@/components/dashboard/nav-projects';
+import { NavSecondary } from '@/components/dashboard/nav-secondary';
+import { NavUser } from '@/components/dashboard/nav-user';
 import {
   Sidebar,
   SidebarContent,
@@ -131,7 +131,7 @@ export function AppSidebar({ user, ...props }: AppSidebarProps) {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
-              <a href="/">
+              <a href="/public">
                 <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
                   <Image
                     src={'/icons/icon-192.png'}

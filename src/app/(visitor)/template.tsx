@@ -15,7 +15,6 @@ export default function Template({ children }: { children: React.ReactNode }) {
         damping: 30,
         duration: 0.5,
       }}
-      className="min-h-screen"
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.98 }}

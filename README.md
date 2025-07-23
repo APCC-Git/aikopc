@@ -86,11 +86,12 @@ src
   * ギャラリーページ
 
 ## ToDo
++ [ ] UIキット自作する
 + [ ] カルーセル用の画像探す・撮る
 + [ ] 関連記事機能のロジック変更(containにする)
 + [ ] ダッシュボード画面作る
 + [ ] アイキャッチの実装方法考える
-+ [ ] AIでブログかけるようにする
++ [x] AIでブログかけるようにする
 + [ ] DB管理
 + [ ] ブログページをOn-demand ISRに対応させる [この記事](https://blog.microcms.io/on-demand-isr/)を参照 (microcmsのwebhook的にデプロイ後でないと難しそう)
 + [x] [SSL 証明書を取得する (Let's Encrypt)](https://www.server-world.info/query?os=CentOS_Stream_9&p=ssl&f=2)

@@ -1,9 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import KeenCarousel from '@/components/ui/KeenCarousel';
-import { CarouselPlugin } from '@/components/Carousel';
-import { SiGithub, SiX } from '@icons-pack/react-simple-icons';
+import CodeAnimation from '@/components/macos/effect/CodeAnimation/CodeAnimation';
 
 const slidesData = [
   {
@@ -11,7 +9,7 @@ const slidesData = [
       <Image
         src="/images/sample1.jpg"
         fill
-        className="object-cover bg-[rgb(199 199 199)]"
+        className="object-cover bg-[rgb(199 199 199)] absolute"
         alt="Placeholder Image"
       />
     ),
@@ -40,42 +38,38 @@ const slidesData = [
 
 export default function Home() {
   return (
-    <div className={'w-full min-h-[calc(100vh-90px)] p-4 lg:p-10 block lg:flex'}>
-      <div className={'mb-5 lg:mr-10 xl:mr-20 p-4 text-center lg:text-left'}>
-        <div className={'text-6xl 2xl:text-8xl font-bold'}>Aikopc.net</div>
-        <div className={'text-md 2xl:text-3xl mt-4'}>愛光学園パソコン部のホームページ</div>
-        <div className={'mt-6 w-full flex justify-center lg:justify-start'}>
-          <Link href="/about">
-            <Button className="rounded-full inline-block 2xl:text-xl 2xl:h-12">活動について</Button>
-          </Link>
-          <Link href="/login">
-            <Button variant="outline" className="rounded-full ml-3 2xl:text-xl 2xl:h-12">
-              部員ログイン
-            </Button>
-          </Link>
+    <div className={'h-[calc(100vh-5rem)] w-full block lg:flex items-center justify-center'}>
+      <div className={'h-full lg:w-1/2 p-8 space-y-8 flex flex-col items-center justify-center'}>
+        <div className={'space-y-4'}>
+          <div className={'font-figtree text-8xl text-center 2xl:text-9xl'}>Aikopc.net</div>
+          <div className={'font-noto text-4xl text-center 2xl:text-5xl'}>
+            APCC - 愛光学園パソコン部
+          </div>
         </div>
-        <div className="mt-4 md:mt-8 flex justify-center lg:justify-start space-x-8">
-          <Link href="https://github.com/APCC-Git" target="_blank" rel="noopener noreferrer">
-            <SiGithub size={24} />
-          </Link>
-          <Link href="https://x.com/APCC_" target="_blank" rel="noopener noreferrer">
-            <SiX className={'w-full h-full'} size={24} />
-          </Link>
+        <div className={'space-y-4'}>
+          <div className={'text-center text-xl 2xl:text-2xl text-gray-600 dark:text-gray-400'}>
+            愛光学園パソコン部では、競技プログラミング、Webデザイン、ゲーム制作、自作PCなど、
+            幅広い分野でのIT技術の習得と実践を行っています
+          </div>
+          <div className={'flex w-full items-center justify-center space-x-4'}>
+            <Link
+              href={'https://github.com/APCC-Git'}
+              target={'_blank'}
+              rel={'noopener  noreferrer'}
+            >
+              <Button className={'rounded-full text-md 2xl:text-lg'}>See on Github</Button>
+            </Link>
+            <Link href={'https://x.com/APCC_'} target={'_blank'} rel={'noopener  noreferrer'}>
+              <Button className={'rounded-full text-md 2xl:text-lg'} variant={'outline'}>
+                See on X (Twitter)
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
-      <div
-        className={
-          'w-full min-h-[500px] rounded-2xl bg-[rgb(170 170 170)] overflow-hidden shadow-lg'
-        }
-      >
-        <KeenCarousel
-          slides={slidesData}
-          loop={true}
-          slidesPerView={1}
-          spacing={20}
-          autoplayInterval={3000} // 3秒ごとに自動再生
-          className={'w-full h-full min-h-[500px] bg-[rgb(170 170 170)] rounded-2xl'}
-        />
+
+      <div className={'hidden lg:flex h-full w-1/2 p-8 items-center justify-between'}>
+        <CodeAnimation />
       </div>
     </div>
   );
