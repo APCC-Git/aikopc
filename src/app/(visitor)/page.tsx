@@ -12,12 +12,12 @@ export default function Home() {
     >
       <div className={'flex h-full flex-col items-center justify-center space-y-8 p-8 lg:w-1/2'}>
         <div className={'space-y-4'}>
-          <div className={'font-figtree text-center text-6xl font-black md:text-8xl 2xl:text-9xl'}>
+          <h1 className={'font-figtree text-center text-6xl font-black md:text-8xl 2xl:text-9xl'}>
             Aikopc.net
-          </div>
-          <div className={'font-figtree text-center text-2xl font-bold md:text-4xl 2xl:text-5xl'}>
+          </h1>
+          <h2 className={'font-figtree text-center text-2xl font-bold md:text-4xl 2xl:text-5xl'}>
             APCC <span className={'font-noto'}>- 愛光学園パソコン部</span>
-          </div>
+          </h2>
         </div>
         <div className={'space-y-5'}>
           <div
@@ -51,7 +51,9 @@ export default function Home() {
         </div>
       </div>
 
-      <div className={'hidden h-full w-1/2 items-center justify-between p-12 py-24 lg:flex'}>
+      <div
+        className={'hidden h-full w-1/2 items-center justify-between p-12 py-14 lg:flex 2xl:py-24'}
+      >
         <CodeAnimation />
       </div>
     </div>

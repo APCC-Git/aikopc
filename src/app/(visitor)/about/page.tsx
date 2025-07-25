@@ -5,10 +5,10 @@ import Image from 'next/image';
 export default function AboutPage() {
   return (
     <div className={'w-full p-4 md:p-10'}>
-      <div className={'mb-8 text-6xl font-bold 2xl:text-8xl'}>About</div>
+      <div className={'font-figtree mb-8 text-6xl font-black 2xl:text-8xl'}>About</div>
 
       {/* 活動内容セクション */}
-      <section className="mb-12">
+      <section className="font-noto mb-12">
         <h2 className="mb-4 text-3xl font-bold">活動内容</h2>
         <div className="grid gap-8 md:grid-cols-2">
           <div className="space-y-4">
