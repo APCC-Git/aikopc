@@ -1,4 +1,4 @@
-# AikoPC.net
+# Aikopc.net
 
 > **開発中**  
 > アイデアは [こちら](#アイデア) に記載
@@ -15,6 +15,35 @@ npm install
 npm run dev
 ```
 
+<details>
+<summary>postgreSQLインストール&Prisma設定方法</summary>
+以下はUbuntuでの例です
+
+```shell
+# aptリポジトリの登録
+sudo apt install -y postgresql-common
+sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh
+
+# postgresql16.9のインストール
+sudo apt install postgresql-16
+
+# ロールとDBの作成
+sudo su - postgres
+psql # postgresの対話ターミナルにログイン
+create role ROLE_NAME with login password 'PASSWORD'; # ROLE_NAMEはLinuxの自分のユーザー名と同じものを設定
+alter role ROLE_NAME with createdb; # 権限付与
+create database user_data with owner=ROLE_NAME locale='C' template='template0';
+# ctrl+d ×2で自分のユーザーのターミナルに戻る
+
+# Prismaの設定
+touch .env && echo 'DATABASE_URL="postgresql://ROLE_NAME:PASSWORD@localhost:5432/user_data"' > .env
+npx prisma db push
+npx prisma generate
+
+
+```
+</details>
+
 <http://localhost:3000>に開発サーバが立ち上がるぞ！
 
 > [!IMPORTANT]
@@ -22,19 +51,19 @@ npm run dev
 
 ## 使用技術
 
-| 言語・フレームワーク | バージョン |
-| -------------------- | ---------- |
-| Node.js              | 22.14.0    |
-| React                | 19.0.0     |
-| Next.js              | 15.3.1     |
-| TypeScript           | 5.8.3      |
-| TailwindCSS          | v4         |
-| PostgreSQL           | 16.9       |
+| 言語・フレームワーク  | バージョン   |
+|-------------|---------|
+| Node.js     | 22.14.0 |
+| React       | 19.0.0  |
+| Next.js     | 15.3.1  |
+| TypeScript  | 5.8.3   |
+| TailwindCSS | v4      |
+| PostgreSQL  | 16.9    |
 
 ## ホスト
 
 Conoha VPSにデプロイ + nginxで公開  
-6Rix6が作成した`deploy.sh`を実行すれば自動でデプロイされる。(sshの秘密鍵が必要)
+`deploy.sh`を実行すれば自動でデプロイされる。(gitリポジトリに含めていません)
 
 #### prisma studio　の転送方法
 
@@ -62,8 +91,7 @@ src
 ├── types        ... 型を定義したファイル
 └── lib          ... ユーティリティ関数
 ```
-
-- 詳しくは[この記事](https://qiita.com/miumi/items/359b8a77bbb6f9666950)を参照
+詳しくは[この記事](https://qiita.com/miumi/items/359b8a77bbb6f9666950)を参照
 
 ---
 
@@ -74,22 +102,11 @@ src
   - シンプルなコード
   - わかりやすい変数名
   - マジックナンバーは避ける
-- **main ブランチに直接コミットしない！**
-  - `develop`ブランチを切ってpush
 
 ---
 
 ## アイデア
 
-- モチーフ
-  - ~~PCのパーツ~~
-    - ~~電源ボタン~~
-    - ~~マザーボード~~
-    - ~~モニター~~
-    - ~~ハードディスク~~
-  - モチーフカラー
-    - ~~白/グレーでダークモードに応じて反転~~
-    - ~~アクセントカラー一色(オレンジとか蛍光イエローとか)~~
 - shadcn/uiでモダンui
   - ログイン機能
     - ブログ作成
