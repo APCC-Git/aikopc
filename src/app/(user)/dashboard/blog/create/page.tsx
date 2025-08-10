@@ -2,16 +2,16 @@
 
 import { DashboardBreadcrumb } from '@/components/dashboard/DashboardBreadcrumb';
 import { SimpleEditor } from '@/components/tiptap-templates/simple/simple-editor';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Textarea } from '@/components/ui/textarea';
+import { Input } from '@/components/common/ui/input';
+import { Button } from '@/components/common/ui/button';
+import { Textarea } from '@/components/common/ui/textarea';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
+} from '@/components/common/ui/select';
 import React, { useState, useEffect } from 'react';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { Sparkles, Wand2, RefreshCw, FileText, Settings, Brain, ChevronDown } from 'lucide-react';

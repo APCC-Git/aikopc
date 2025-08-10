@@ -1,4 +1,4 @@
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/common/ui/card';
 import Link from 'next/link';
 import Image from 'next/image';
 import dayjs from 'dayjs';

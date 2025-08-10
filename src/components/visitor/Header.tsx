@@ -5,11 +5,11 @@ import { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
+import { Button } from '@/components/common/ui/button';
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/common/ui/sheet';
 import Image from 'next/image';
 import type { JwtPayload } from 'jsonwebtoken';
-import ThemeToggle from './ThemeToggle';
+import ThemeToggle from '../common/ThemeToggle';
 
 interface NavItem {
   title: string;
@@ -61,11 +61,7 @@ export function Header({
     },
     {
       title: 'About',
-      href: '/about',
-    },
-    {
-      title: 'Contact',
-      href: '/contact',
+      href: '#about',
     },
   ];
 
@@ -73,13 +69,13 @@ export function Header({
     <>
       <header
         className={cn(
-          'font-figtree sticky top-0 z-40 flex w-full items-center justify-center p-2 transition-all duration-300 xl:p-4',
+          'font-figtree fixed top-0 z-40 flex w-full items-center justify-center p-2 transition-all duration-300 xl:p-4',
           isHidden ? '-translate-y-full' : 'translate-y-0',
           'h-20 xl:h-24',
           className
         )}
       >
-        <div className="bg-background/80 container flex h-full w-full items-center justify-between rounded-full border border-gray-200/50 px-7 shadow-lg backdrop-blur-sm dark:border-gray-700/50">
+        <div className="bg-background/80 border-accent-primary-400/50 container flex h-full w-full items-center justify-between rounded-full border px-7 shadow-lg backdrop-blur-sm">
           <div className="hidden items-center gap-6 md:flex md:gap-10">
             <Link href="/" className="hidden items-center space-x-2 md:flex">
               <Image
@@ -115,7 +111,7 @@ export function Header({
               ))}
             </nav>
           </div>
-          <Link href="/public" className="flex items-center space-x-2 md:hidden">
+          <Link href="/" className="flex items-center space-x-2 md:hidden">
             <Image
               src="/logos/logo.png"
               alt="logo"
@@ -165,11 +161,7 @@ export function Header({
                 <div className="flex h-full flex-col justify-between px-3 py-4 md:px-6">
                   <div>
                     <div className="flex items-center justify-between">
-                      <Link
-                        href="/public"
-                        className="flex items-center"
-                        onClick={() => setOpen(false)}
-                      >
+                      <Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
                         <SheetTitle className={'justify-between'}>
                           <span className="font-figtree text-center text-3xl font-black">
                             Aikopc.net

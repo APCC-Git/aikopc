@@ -5,10 +5,10 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb';
+} from '@/components/common/ui/breadcrumb';
 import React from 'react';
-import { Separator } from '@/components/ui/separator';
-import { SidebarTrigger } from '@/components/ui/sidebar';
+import { Separator } from '@/components/common/ui/separator';
+import { SidebarTrigger } from '@/components/common/ui/sidebar';
 
 export type BreadcrumbItemType = {
   label: string;

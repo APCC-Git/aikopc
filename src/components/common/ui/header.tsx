@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/common/ui/button';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
@@ -18,14 +18,14 @@ export function Header({ user }: Props) {
     <header className="relative z-50 mb-2 max-h-20 w-full border-b shadow-sm">
       <div className="mx-auto flex w-full items-center justify-between px-4 py-3 md:px-10">
         {/* ロゴ */}
-        <Link href="/" className="text-primary text-xl font-bold">
+        <Link href="/public" className="text-primary text-xl font-bold">
           <Image src="/logo.png" alt="logo" width={50} height={50} priority />
           {/*AikoPC.net*/}
         </Link>
 
         {/* PC用ナビゲーション */}
         <nav className="hidden space-x-6 md:flex">
-          <Link href="/" className="text-sm hover:underline 2xl:text-xl">
+          <Link href="/public" className="text-sm hover:underline 2xl:text-xl">
             Home
           </Link>
           <Link href="/about" className="text-sm hover:underline 2xl:text-xl">
@@ -67,7 +67,11 @@ export function Header({ user }: Props) {
         style={{ transition: 'all', transitionDuration: '0.2' }}
       >
         <nav className="flex flex-col space-y-2">
-          <Link href="/" onClick={() => setMenuOpen(false)} className="text-sm hover:underline">
+          <Link
+            href="/public"
+            onClick={() => setMenuOpen(false)}
+            className="text-sm hover:underline"
+          >
             Home
           </Link>
           <Link

@@ -1,7 +1,7 @@
 'use client';
 
 import { DashboardBreadcrumb } from '@/components/dashboard/DashboardBreadcrumb';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/common/ui/button';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import dayjs from 'dayjs';

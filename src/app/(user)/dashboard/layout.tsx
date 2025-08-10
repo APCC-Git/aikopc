@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
-import { LogoutButton } from '@/components/ui/logoutButton';
+import { LogoutButton } from '@/components/common/ui/logoutButton';
 import { AppSidebar } from '@/components/dashboard/app-sidebar';
-import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
+import { SidebarInset, SidebarProvider } from '@/components/common/ui/sidebar';
 import { getUser } from '@/lib/auth';
 import { User } from '@/types/prisma';
 

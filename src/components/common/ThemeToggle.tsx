@@ -2,12 +2,12 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { Sun, Moon, Laptop } from 'lucide-react';
-import { useTheme } from '@/components/common/ThemeProvider';
+import { useTheme } from '@/hooks/useTheme';
 
 export default function ThemeToggle({ className = '' }: { className?: string }) {
   const tabsRef = useRef<HTMLDivElement>(null); // タブコンテナの参照
   const [highlightStyle, setHighlightStyle] = useState({}); // ハイライトのスタイル状態
-  const { theme, setTheme, isDark } = useTheme();
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     if (tabsRef.current) {
@@ -42,7 +42,7 @@ export default function ThemeToggle({ className = '' }: { className?: string }) 
         ref={tabsRef}
       >
         <div
-          className="bg-card absolute top-1 bottom-1 z-10 rounded-full shadow transition-all duration-300 ease-in-out hover:bg-slate-300 dark:hover:bg-slate-700"
+          className="bg-accent-primary-200 dark:bg-accent-primary-600 absolute top-1 bottom-1 z-10 rounded-full shadow transition-all duration-300 ease-in-out hover:bg-slate-300 dark:hover:bg-slate-700"
           style={highlightStyle}
         ></div>
         <button

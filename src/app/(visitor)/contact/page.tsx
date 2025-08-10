@@ -1,9 +1,9 @@
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/common/ui/button';
 
 export default function Page() {
   return (
-    <div className={'w-full p-4 md:p-10'}>
-      <div className="mx-auto max-w-2xl">
+    <div className={'min-h-screen w-full p-4 md:p-10'}>
+      <div className="mx-auto mt-24 max-w-2xl">
         <h1 className="mb-6 text-2xl font-bold md:text-4xl">お問い合わせ</h1>
 
         <form className="space-y-6">

@@ -8,6 +8,10 @@ export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
   const token = req.cookies.get('token')?.value;
 
+  if (pathname.startsWith('/blog') || pathname === '/about') {
+    return NextResponse.redirect(new URL('/', req.url));
+  }
+
   //ログイン済みユーザーは/dashboardへ
   if (pathname === '/login' && token) {
     return NextResponse.redirect(new URL('/dashboard', req.url));

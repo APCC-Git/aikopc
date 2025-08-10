@@ -1,4 +1,4 @@
-import { LoginForm } from '@/components/ui/loginForm';
+import { LoginForm } from '@/components/common/ui/loginForm';
 import { getUser } from '@/lib/auth';
 import { redirect } from 'next/navigation';
 

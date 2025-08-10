@@ -8,8 +8,8 @@ interface Slide {
   style?: React.CSSProperties;
 }
 
-import { Card, CardContent } from '@/components/ui/card';
-import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
+import { Card, CardContent } from '@/components/common/ui/card';
+import { Carousel, CarouselContent, CarouselItem } from '@/components/common/ui/carousel';
 
 export function CarouselPlugin({ slides, className }: { slides: Slide[]; className?: string }) {
   const plugin = React.useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));

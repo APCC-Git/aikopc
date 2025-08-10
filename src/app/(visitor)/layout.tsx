@@ -1,4 +1,5 @@
-import { Header } from '@/components/common/Header';
+import { Header } from '@/components/visitor/Header';
+import { Footer } from '@/components/visitor/Footer';
 import { getUser } from '@/lib/auth';
 import React from 'react';
 
@@ -9,9 +10,14 @@ export default async function VisitorLayout({
 }>) {
   const user = await getUser();
   return (
-    <>
+    <div
+      className={
+        'bg-[linear-gradient(to_right,#80808033_1px,transparent_1px),linear-gradient(to_bottom,#80808033_1px,transparent_1px)] bg-[size:70px_70px] bg-fixed'
+      }
+    >
       <Header user={user} />
-      <div className={''}>{children}</div>
-    </>
+      <main>{children}</main>
+      <Footer />
+    </div>
   );
 }

@@ -1,5 +1,5 @@
 /* Terminal & Window Colors */
-@theme inline {
+root {
   --color-macos-close: var(--macos-close);
   --color-macos-minimize: var(--macos-minimize);
   --color-macos-zoom: var(--macos-zoom);

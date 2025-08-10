@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import TerminalWindow from '../../TerminalWindow';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { a11yDark, a11yLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import { useTheme } from '@/components/common/ThemeProvider';
+import { useTheme } from '@/hooks/useTheme';
 import { codes } from './codes';
 
 const CodeAnimation: React.FC = () => {
@@ -17,10 +17,14 @@ const CodeAnimation: React.FC = () => {
   const codeIndex = Math.floor(Math.random() * codes.length);
 
   const CODE = codes[codeIndex].code;
-  const TITLE = codes[codeIndex].title;
+  //const TITLE = codes[codeIndex].title;
   const LANG = codes[codeIndex].lang;
 
   const { isDark } = useTheme();
+
+  useEffect(() => {
+    console.log(isDark);
+  }, [isDark]);
 
   const startAnimation = () => {
     setIsAnimating(true);
