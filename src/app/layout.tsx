@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     title: `Aikopc.net`,
     images: [
       {
-        url: '/images/sample1.jpg',
+        url: '/images/ogp.png',
         width: 1200,
         height: 630,
       },

@@ -6,7 +6,7 @@ export default function Page() {
       <div className="mx-auto mt-24 max-w-2xl">
         <h1 className="mb-6 text-2xl font-bold md:text-4xl">お問い合わせ</h1>
 
-        <form className="space-y-6">
+        <form className="bg-card space-y-6 rounded-2xl p-6">
           {/* お名前 */}
           <div>
             <label htmlFor="name" className="mb-2 block text-sm font-medium">

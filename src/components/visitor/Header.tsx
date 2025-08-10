@@ -57,11 +57,11 @@ export function Header({
   const navItems = items ?? [
     {
       title: 'Home',
-      href: '/',
+      href: '/#top',
     },
     {
       title: 'About',
-      href: '#about',
+      href: '/#about',
     },
   ];
 

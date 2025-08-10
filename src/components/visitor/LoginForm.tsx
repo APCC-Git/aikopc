@@ -35,7 +35,7 @@ export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRe
 
   return (
     <div className={cn('flex flex-col gap-6', className)} {...props}>
-      <Card>
+      <Card className={'font-noto shadow-none'}>
         <CardHeader>
           <CardTitle className="text-2xl">部員ログイン</CardTitle>
           <CardDescription>生徒番号とパスワードを入力してログイン</CardDescription>
@@ -64,7 +64,12 @@ export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRe
                   required
                 />
               </div>
-              <Button type="submit" className="w-full">
+              <Button
+                type="submit"
+                className={
+                  'text-foreground dark:text-background bg-accent-primary-400 hover:bg-accent-primary-500 border-accent-primary-400 dark:border-accent-primary-400 w-full font-bold'
+                }
+              >
                 ログイン
               </Button>
             </div>
