@@ -217,7 +217,7 @@ body {
 /*}*/
 
 /*::-webkit-scrollbar-track {*/
-/*  background: var(--background);*/
+/*  background: transparent;*/
 /*  border-radius: 8px;*/
 /*}*/
 
@@ -227,30 +227,9 @@ body {
 /*  border: 2px solid var(--background);*/
 /*}*/
 
-/*::-webkit-scrollbar-thumb:hover {*/
-/*  background: oklch(0.554 0.046 257.417);*/
-/*}*/
-
-/*!* スクロールバー(ダーク) *!*/
-/*.dark ::-webkit-scrollbar-track {*/
-/*  background: var(--background);*/
-/*}*/
-
-/*.dark ::-webkit-scrollbar-thumb {*/
-/*  background: var(--accent-primary-400);*/
-/*  border: 2px solid var(--background);*/
-/*}*/
-
-/*.dark ::-webkit-scrollbar-thumb:hover {*/
-/*  background: oklch(0.551 0.027 264.364);*/
-/*}*/
-
+/*カルーセル*/
 .carousel-container {
-  position: relative; /* ナビゲーションボタンのabsolute配置の基準 */
-}
-
-.keen-slider {
-  /* カルーセル全体のスタイルを追加 */
+  position: relative;
 }
 
 .keen-slider__slide {
