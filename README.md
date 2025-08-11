@@ -81,16 +81,17 @@ ssh -L 5555:localhost:5555 [username]@[hostname]
 ```
 src
 ├── app          ... ルーティングに関するコンポーネント
-├── features     ... ロジック + コンポーネントをまとめたもの
-│   ├── common   ... 共通部分
-│   └── routes   ... 特定のページで使うもの
 ├── components   ... ロジックがない共通コンポーネント
-├── hooks        ... 共通ロジックの内、React Hooksが「ある」もの
-├── utils        ... 共通ロジックの内、React Hooksが「ない」もの
+│   ├── common   ... 共通コンポーネント
+│   ├── visitor  ... (visitor)内でのみ使用するコンポーネント
+│   └── dashboard... (user)内でのみ使用するコンポーネント
+├── hooks        ... 自作のReact Hooks等
 ├── constants    ... 定数を定義したファイル
 ├── types        ... 型を定義したファイル
+├── styles       ... スタイルシート
 └── lib          ... ユーティリティ関数
 ```
+単一ページ内でのセクションをコンポーネント化する場合はそのページの`page.tsx`と同階層に`_components`フォルダを作成しそちらにまとめる。  
 詳しくは[この記事](https://qiita.com/miumi/items/359b8a77bbb6f9666950)を参照
 
 ---
@@ -102,6 +103,7 @@ src
   - シンプルなコード
   - わかりやすい変数名
   - マジックナンバーは避ける
+  - 分割できるファイルは分割してファイルの肥大化を避ける
 
 ---
 
@@ -109,20 +111,12 @@ src
 
 - shadcn/uiでモダンui
   - ログイン機能
-    - ブログ作成
     - プロジェクトの進捗管理
   - ギャラリーページ
 
 ## ToDo
 
-- [ ] UIキット自作する
-- [ ] カルーセル用の画像探す・撮る
-- [ ] 関連記事機能のロジック変更(containにする)
-- [ ] ダッシュボード画面作る
-- [ ] アイキャッチの実装方法考える
-- [x] AIでブログかけるようにする
+- [ ] UIキット自作する(chadcnを改変？)
 - [ ] DB管理
-- [ ] ブログページをOn-demand ISRに対応させる [この記事](https://blog.microcms.io/on-demand-isr/)を参照 (microcmsのwebhook的にデプロイ後でないと難しそう)
 - [x] [SSL 証明書を取得する (Let's Encrypt)](https://www.server-world.info/query?os=CentOS_Stream_9&p=ssl&f=2)
 - [x] (SSL対応したら)CookieをSecure:trueに設定(auth/login)
-- [ ] iPadのレイアウト作る

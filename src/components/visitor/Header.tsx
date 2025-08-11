@@ -11,7 +11,7 @@ import Image from 'next/image';
 import type { JwtPayload } from 'jsonwebtoken';
 import ThemeToggle from '../common/ThemeToggle';
 
-interface NavItem {
+export interface NavItem {
   title: string;
   href: string;
   disabled?: boolean;

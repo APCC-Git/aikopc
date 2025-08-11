@@ -7,7 +7,7 @@ export default function Home() {
     <div className={'min-h-[100dvh] w-full overflow-x-hidden transition-colors'}>
       <Top />
       <About />
-      {/*<Activity />*/}
+      <Activity />
     </div>
   );
 }
