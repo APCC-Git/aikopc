@@ -1,6 +1,7 @@
 import { Top } from './_components/Top';
 import { About } from './_components/About';
 import { Activity } from './_components/Activity';
+import { Members } from './_components/Members';
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Top />
       <About />
       <Activity />
+      {/*<Members />*/}
     </div>
   );
 }

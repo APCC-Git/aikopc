@@ -212,38 +212,38 @@ body {
 }
 
 /* スクロールバー */
-::-webkit-scrollbar {
-  width: 10px;
-}
+/*::-webkit-scrollbar {*/
+/*  width: 10px;*/
+/*}*/
 
-::-webkit-scrollbar-track {
-  background: var(--background);
-  border-radius: 8px;
-}
+/*::-webkit-scrollbar-track {*/
+/*  background: var(--background);*/
+/*  border-radius: 8px;*/
+/*}*/
 
-::-webkit-scrollbar-thumb {
-  background: oklch(0.704 0.04 256.788);
-  border-radius: 8px;
-  border: 2px solid var(--background);
-}
+/*::-webkit-scrollbar-thumb {*/
+/*  background: var(--accent-primary-400);*/
+/*  border-radius: 8px;*/
+/*  border: 2px solid var(--background);*/
+/*}*/
 
-::-webkit-scrollbar-thumb:hover {
-  background: oklch(0.554 0.046 257.417);
-}
+/*::-webkit-scrollbar-thumb:hover {*/
+/*  background: oklch(0.554 0.046 257.417);*/
+/*}*/
 
-/* スクロールバー(ダーク) */
-.dark ::-webkit-scrollbar-track {
-  background: var(--background);
-}
+/*!* スクロールバー(ダーク) *!*/
+/*.dark ::-webkit-scrollbar-track {*/
+/*  background: var(--background);*/
+/*}*/
 
-.dark ::-webkit-scrollbar-thumb {
-  background: oklch(0.279 0.041 260.031);
-  border: 2px solid var(--background);
-}
+/*.dark ::-webkit-scrollbar-thumb {*/
+/*  background: var(--accent-primary-400);*/
+/*  border: 2px solid var(--background);*/
+/*}*/
 
-.dark ::-webkit-scrollbar-thumb:hover {
-  background: oklch(0.551 0.027 264.364);
-}
+/*.dark ::-webkit-scrollbar-thumb:hover {*/
+/*  background: oklch(0.551 0.027 264.364);*/
+/*}*/
 
 .carousel-container {
   position: relative; /* ナビゲーションボタンのabsolute配置の基準 */

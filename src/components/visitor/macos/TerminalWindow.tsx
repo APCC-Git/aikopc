@@ -88,7 +88,7 @@ export default function TerminalWindow({
           )}
         </div>
         <div
-          className={`bg-terminal-background h-[calc(100%-36px)] rounded-b-lg text-white ${padding}`}
+          className={`bg-terminal-background h-[calc(100%-36px)] flex-1 rounded-b-lg text-white ${padding}`}
         >
           {children}
         </div>

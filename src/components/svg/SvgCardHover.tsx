@@ -1,8 +1,5 @@
 'use client';
 
-//TODO: モバイル対応
-//TODO: SVG表示時のアニメーション
-
 import { useState, useRef, useEffect } from 'react';
 import { LaptopSvg } from '@/components/svg/LaptopSvg';
 import { PlanningSvg } from '@/components/svg/PlanningSvg';
@@ -62,10 +59,10 @@ export function SvgCardHover() {
   }, [hoverTarget]);
 
   return (
-    <div className="w-full flex-1 flex flex-col lg:flex-row md:space-y-0 justify-center items-center relative">
+    <div className="relative flex w-full flex-1 flex-col items-center justify-center md:space-y-0 lg:flex-row">
       {/* 動く Card */}
       <div
-        className="absolute transition-all duration-300 ease-in-out -translate-x-1/2 z-0 rounded-xl p-5 bg-background/80 border-accent-primary-400/50 border"
+        className="bg-background/80 border-accent-primary-400/50 absolute z-0 -translate-x-1/2 rounded-xl border p-5 transition-all duration-300 ease-in-out"
         style={{
           top: `${cardPos.top}px`,
           left: `${cardPos.left}px`,
@@ -74,12 +71,12 @@ export function SvgCardHover() {
         ref={cardRef}
       >
         <EmptyBox />
-        <div className="absolute top-5 left-5 font-mono font-bold text-2xl pr-5">{title}</div>
-        <div className="absolute bottom-5 left-5 font-mono text-xl pr-5">{describe}</div>
+        <div className="absolute top-5 left-5 pr-5 font-mono text-2xl font-bold">{title}</div>
+        <div className="absolute bottom-5 left-5 pr-5 font-mono text-xl">{describe}</div>
       </div>
 
       {/* SVG たち */}
-      <div ref={laptopRef} onMouseEnter={() => setHoverTarget('laptop')} className={'p-5 z-20'}>
+      <div ref={laptopRef} onMouseEnter={() => setHoverTarget('laptop')} className={'z-20 p-5'}>
         <EmptyBox className={'flex items-center justify-center'}>
           <LaptopSvg
             scale={hoverTarget === 'laptop' ? 0.7 : 1}
@@ -88,7 +85,7 @@ export function SvgCardHover() {
         </EmptyBox>
       </div>
 
-      <div ref={planningRef} onMouseEnter={() => setHoverTarget('planning')} className={'p-5 z-20'}>
+      <div ref={planningRef} onMouseEnter={() => setHoverTarget('planning')} className={'z-20 p-5'}>
         <EmptyBox className={'flex items-start justify-end'}>
           <PlanningSvg
             scale={hoverTarget === 'planning' ? 0.6 : 1}
@@ -97,7 +94,7 @@ export function SvgCardHover() {
         </EmptyBox>
       </div>
 
-      <div ref={webRef} onMouseEnter={() => setHoverTarget('web')} className={'p-5 z-20'}>
+      <div ref={webRef} onMouseEnter={() => setHoverTarget('web')} className={'z-20 p-5'}>
         <EmptyBox className={'flex items-start justify-end'}>
           <PresentationSvg
             scale={hoverTarget === 'web' ? 0.6 : 1}
