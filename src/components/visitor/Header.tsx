@@ -129,7 +129,7 @@ export function Header({
               className="hidden dark:block"
             />
           </Link>
-          <Link href="/public" className="flex items-center space-x-2 md:hidden">
+          <Link href="/" className="flex items-center space-x-2 md:hidden">
             <span className="inline-block text-center text-2xl font-bold">Aikopc.net</span>
           </Link>
 
