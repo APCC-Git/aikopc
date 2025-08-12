@@ -76,8 +76,8 @@ export function Header({
         )}
       >
         <div className="bg-background/80 border-accent-primary-400/50 container flex h-full w-full items-center justify-between rounded-full border px-7 shadow-lg backdrop-blur-sm">
-          <div className="hidden items-center gap-6 md:flex md:gap-10">
-            <Link href="/" className="hidden items-center space-x-2 md:flex">
+          <div className="hidden items-center gap-6 lg:flex lg:gap-10">
+            <Link href="/" className="hidden items-center space-x-2 lg:flex">
               <Image
                 src="/logos/logo.png"
                 alt="logo"
@@ -96,7 +96,7 @@ export function Header({
               />
               <span className="ml-1 inline-block text-3xl font-black">Aikopc.net</span>
             </Link>
-            <nav className="hidden gap-6 md:flex">
+            <nav className="hidden gap-6 lg:flex">
               {navItems.map((item, index) => (
                 <Link
                   key={index}
@@ -111,7 +111,7 @@ export function Header({
               ))}
             </nav>
           </div>
-          <Link href="/" className="flex items-center space-x-2 md:hidden">
+          <Link href="/" className="flex items-center space-x-2 lg:hidden">
             <Image
               src="/logos/logo.png"
               alt="logo"
@@ -129,13 +129,13 @@ export function Header({
               className="hidden dark:block"
             />
           </Link>
-          <Link href="/" className="flex items-center space-x-2 md:hidden">
+          <Link href="/" className="flex items-center space-x-2 lg:hidden">
             <span className="inline-block text-center text-2xl font-bold">Aikopc.net</span>
           </Link>
 
           {/* 右寄せ要素 */}
           <div className="flex items-center gap-2">
-            <div className="hidden items-center gap-2 md:flex">
+            <div className="hidden items-center gap-2 lg:flex">
               <ThemeToggle />
               {!user ? (
                 <Button variant="outline" size="sm" className={'h-10 rounded-full'} asChild>
@@ -149,7 +149,7 @@ export function Header({
             </div>
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="lg" className="md:hidden">
+                <Button variant="ghost" size="lg" className="lg:hidden">
                   <Menu className="h-7 w-7" />
                   <span className="sr-only">Toggle menu</span>
                 </Button>
@@ -158,7 +158,7 @@ export function Header({
                 side="left"
                 className="rounded-r-3xl pl-0 [&>button:first-of-type]:hidden"
               >
-                <div className="flex h-full flex-col justify-between px-3 py-4 md:px-6">
+                <div className="flex h-full flex-col justify-between px-3 py-4 lg:px-6">
                   <div>
                     <div className="flex items-center justify-between">
                       <Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
@@ -183,7 +183,7 @@ export function Header({
                           key={index}
                           href={item.href}
                           className={cn(
-                            'hover:text-primary text-lg font-medium transition-colors',
+                            'hover:text-primary font-figtree text-lg font-medium transition-colors',
                             item.disabled && 'cursor-not-allowed opacity-80'
                           )}
                           onClick={() => setOpen(false)}

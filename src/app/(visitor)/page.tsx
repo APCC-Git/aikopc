@@ -2,6 +2,8 @@ import { Top } from './_components/Top';
 import { About } from './_components/About';
 import { Activity } from './_components/Activity';
 import { Status } from './_components/Status';
+import { Social } from './_components/Social';
+import { JoinUs } from './_components/JoinUs';
 
 export default function Home() {
   return (
@@ -10,6 +12,8 @@ export default function Home() {
       <About />
       <Activity />
       <Status />
+      <Social />
+      <JoinUs />
     </div>
   );
 }

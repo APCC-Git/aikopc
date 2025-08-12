@@ -197,6 +197,12 @@
   html {
     scroll-behavior: smooth;
   }
+  .font-outline-1 {
+    -webkit-text-stroke: 1px black;
+  }
+  .font-outline-4 {
+    -webkit-text-stroke: 4px black;
+  }
 }
 
 html {

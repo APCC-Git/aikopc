@@ -21,6 +21,10 @@ export default async function VisitorLayout({
       title: 'Activity',
       href: '/#activity',
     },
+    {
+      title: 'Social',
+      href: '/#social',
+    },
   ];
 
   const user = await getUser();
