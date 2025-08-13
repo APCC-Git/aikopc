@@ -1,10 +1,8 @@
 # Aikopc.net
+愛光学園パソコン部のホームページ
 
 > **開発中**  
 > アイデアは [こちら](#アイデア) に記載
-
-誰かNext.js書けるようになってや(´;ω;｀)  
-共有メアドは APCC-Official@outlook.jp
 
 ## Getting Started
 
@@ -50,16 +48,23 @@ npx prisma generate
 > [!IMPORTANT]
 > .envファイルがないとブログやらログインやらができません。もってる人からもらってね！
 
+<details>
+  <summary>envファイルについて</summary>
+
+- `.env`: prismaのdb定義のみ書く(本番サーバーにアップロードしない)
+- `.env.production`: その他の環境変数(deploy.shに含める)
+</details>
+
 ## 使用技術
 
-| 言語・フレームワーク | バージョン |
-| -------------------- | ---------- |
-| Node.js              | 22.14.0    |
-| React                | 19.0.0     |
-| Next.js              | 15.3.1     |
-| TypeScript           | 5.8.3      |
-| TailwindCSS          | v4         |
-| PostgreSQL           | 16.9       |
+| 言語・フレームワーク  | バージョン   |
+|-------------|---------|
+| Node.js     | 22.14.0 |
+| React       | 19.0.0  |
+| Next.js     | 15.3.3  |
+| TypeScript  | 5.8.3   |
+| TailwindCSS | 4       |
+| PostgreSQL  | 16.9    |
 
 ## ホスト
 
@@ -119,6 +124,4 @@ src
 ## ToDo
 
 - [ ] UIキット自作する(chadcnを改変？)
-- [ ] DB管理
-- [x] [SSL 証明書を取得する (Let's Encrypt)](https://www.server-world.info/query?os=CentOS_Stream_9&p=ssl&f=2)
-- [x] (SSL対応したら)CookieをSecure:trueに設定(auth/login)
+- [ ] DB管理ページ
