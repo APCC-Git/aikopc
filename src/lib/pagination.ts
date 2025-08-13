@@ -1,4 +1,3 @@
-// lib/pagination.ts
 export function getPaginationRange(current: number, total: number, delta = 2): (number | '...')[] {
   const range: (number | '...')[] = [];
   const left = Math.max(2, current - delta);
