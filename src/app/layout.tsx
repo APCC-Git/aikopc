@@ -34,17 +34,28 @@ const notoSansJP = Noto_Sans_JP({
 export const metadata: Metadata = {
   metadataBase: new URL('https://aikopc.net'),
   title: 'Aikopc.net',
-  description: '愛光学園パソコン部の公式ホームページ',
+  description: '愛光学園パソコン部の公式ホームページです。',
   keywords: ['パソコン部', 'パソコン', '愛光学園', '中学校', '高校', '愛媛', `Aikopc`],
   openGraph: {
     title: `Aikopc.net`,
+    description: '愛光学園パソコン部の公式ホームページです。',
+    url: 'https://aikopc.net',
+    siteName: 'Aikopc.net',
     images: [
       {
-        url: '/images/ogp.png',
+        url: 'https://aikopc.net/images/ogp.png',
         width: 1920,
         height: 1080,
       },
     ],
+    locale: 'ja_JP',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `Aikopc.net`,
+    description: '愛光学園パソコン部の公式ホームページです。',
+    images: ['https://aikopc.net/images/ogp.png'],
   },
 };
 
