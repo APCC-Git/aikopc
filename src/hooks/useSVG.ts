@@ -1,13 +1,20 @@
 'use client';
-
-import { useTheme } from './useTheme';
+import { useTheme } from 'next-themes';
 import { useResponsive } from './useResponsive';
+import { useState, useEffect } from 'react';
 
 export const useSVG = () => {
-  const { isDark } = useTheme();
+  const { theme, systemTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const breakpoint = useResponsive();
 
-  // 画面サイズに応じたSVGのベースサイズ
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // マウント前はテーマ判定しない
+  const isDark = mounted ? (theme === 'system' ? systemTheme : theme) === 'dark' : false;
+
   const baseSize =
     breakpoint === 'base'
       ? 270
@@ -21,8 +28,8 @@ export const useSVG = () => {
               ? 400
               : 500;
 
-  // SVGのライトモード/ダークモードに応じたデフォルトカラー
   const svgColor = isDark ? '#a3ff00' : '#ffbb32';
+
   return {
     svgColor,
     baseSize,

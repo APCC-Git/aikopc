@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { Sun, Moon, Laptop } from 'lucide-react';
-import { useTheme } from '@/hooks/useTheme';
+import { useTheme } from 'next-themes';
 
 export default function ThemeToggle({ className = '' }: { className?: string }) {
   const tabsRef = useRef<HTMLDivElement>(null); // タブコンテナの参照

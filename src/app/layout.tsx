@@ -20,7 +20,7 @@ const workSans = Work_Sans({
   weight: '900',
 });
 
-const figTree = Figtree({
+const figtree = Figtree({
   variable: '--font-figtree',
   subsets: ['latin'],
   weight: ['700', '900'],
@@ -41,8 +41,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: '/images/ogp.png',
-        width: 1200,
-        height: 630,
+        width: 1920,
+        height: 1080,
       },
     ],
   },
@@ -54,11 +54,18 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja">
+    <html lang="ja" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${workSans.variable} ${figTree.variable} ${notoSansJP.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${workSans.variable} ${figtree.variable} ${notoSansJP.variable} antialiased`}
       >
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
