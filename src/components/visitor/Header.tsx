@@ -11,6 +11,11 @@ import Image from 'next/image';
 import type { JwtPayload } from 'jsonwebtoken';
 import ThemeToggle from '../common/ThemeToggle';
 
+import gsap from 'gsap';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+
+gsap.registerPlugin(ScrollToPlugin);
+
 export interface NavItem {
   title: string;
   href: string;
@@ -53,6 +58,15 @@ export function Header({
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
+
+  const scrollToSection = (id: string) => {
+    if (typeof window === 'undefined' || !id.startsWith('#')) return;
+    gsap.to(window, {
+      duration: 0.8,
+      scrollTo: { y: id, offsetY: 0 },
+      ease: 'power2.inOut',
+    });
+  };
 
   const navItems = items ?? [
     {
@@ -98,16 +112,16 @@ export function Header({
             </Link>
             <nav className="hidden gap-6 lg:flex">
               {navItems.map((item, index) => (
-                <Link
+                <a
                   key={index}
-                  href={item.href}
+                  onClick={() => scrollToSection(item.href)}
                   className={cn(
-                    'hover:text-primary text-lg transition-colors',
+                    'hover:text-accent-primary-500 cursor-pointer text-lg transition-colors duration-300',
                     item.disabled && 'cursor-not-allowed opacity-80'
                   )}
                 >
                   {item.title}
-                </Link>
+                </a>
               ))}
             </nav>
           </div>
@@ -179,17 +193,19 @@ export function Header({
                     </div>
                     <nav className="mt-10 flex flex-col gap-4">
                       {navItems.map((item, index) => (
-                        <Link
+                        <a
                           key={index}
-                          href={item.href}
                           className={cn(
-                            'hover:text-primary font-figtree text-lg font-medium transition-colors',
+                            'hover:text-primary font-figtree cursor-pointer text-lg font-bold transition-colors',
                             item.disabled && 'cursor-not-allowed opacity-80'
                           )}
-                          onClick={() => setOpen(false)}
+                          onClick={() => {
+                            setOpen(false);
+                            scrollToSection(item.href);
+                          }}
                         >
                           {item.title}
-                        </Link>
+                        </a>
                       ))}
                     </nav>
                   </div>

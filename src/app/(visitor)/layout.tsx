@@ -10,20 +10,20 @@ export default async function VisitorLayout({
 }>) {
   const navItems: NavItem[] = [
     {
-      title: 'Home',
-      href: '/#top',
+      title: 'Top',
+      href: '#top',
     },
     {
       title: 'About',
-      href: '/#about',
+      href: '#about',
     },
     {
       title: 'Activity',
-      href: '/#activity',
+      href: '#activity',
     },
     {
       title: 'Social',
-      href: '/#social',
+      href: '#social',
     },
   ];
 

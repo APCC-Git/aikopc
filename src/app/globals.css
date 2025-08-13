@@ -164,9 +164,6 @@
   body {
     @apply bg-background text-foreground;
   }
-  html {
-    scroll-behavior: smooth;
-  }
   .font-outline-1 {
     -webkit-text-stroke: 1px black;
   }
