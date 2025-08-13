@@ -1,15 +1,16 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
+import type { JwtPayload } from 'jsonwebtoken';
+
 import { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
-
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/common/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/common/ui/sheet';
-import Image from 'next/image';
-import type { JwtPayload } from 'jsonwebtoken';
 import ThemeToggle from '../common/ThemeToggle';
+import { UnderlineAnchor } from '@/components/visitor/UnderlineAnchor';
 
 import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
@@ -112,16 +113,16 @@ export function Header({
             </Link>
             <nav className="hidden gap-6 lg:flex">
               {navItems.map((item, index) => (
-                <a
+                <UnderlineAnchor
                   key={index}
                   onClick={() => scrollToSection(item.href)}
                   className={cn(
-                    'hover:text-accent-primary-500 cursor-pointer text-lg transition-colors duration-300',
+                    'hover:text-accent-primary-400 cursor-pointer text-lg transition-colors duration-300',
                     item.disabled && 'cursor-not-allowed opacity-80'
                   )}
                 >
                   {item.title}
-                </a>
+                </UnderlineAnchor>
               ))}
             </nav>
           </div>
@@ -196,7 +197,7 @@ export function Header({
                         <a
                           key={index}
                           className={cn(
-                            'hover:text-primary font-figtree cursor-pointer text-lg font-bold transition-colors',
+                            'hover:text-primary font-figtree cursor-pointer text-xl font-bold transition-colors',
                             item.disabled && 'cursor-not-allowed opacity-80'
                           )}
                           onClick={() => {
