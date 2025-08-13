@@ -29,7 +29,6 @@ export default function ThemeToggle({ className = '' }: { className?: string }) 
   }, [theme]);
 
   const toggleTheme = (newTheme: 'light' | 'dark' | 'system') => {
-    console.log(newTheme);
     setTheme(newTheme);
   };
 
