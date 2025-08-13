@@ -1,7 +1,7 @@
 // app/blog/page/[page]/page.tsx
 import { getBlogPostsByPage } from '@/lib/microcms';
-import { Pagination } from '@/components/common/ui/Pagination';
-import { PostTile } from '@/components/common/ui/postTile';
+import { Pagination } from '@/components/visitor/blog/Pagination';
+import { PostTile } from '@/components/visitor/blog/PostTile';
 import { notFound } from 'next/navigation';
 import { PostType } from '@/types/PostType';
 

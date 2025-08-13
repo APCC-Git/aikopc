@@ -3,7 +3,7 @@ import { Card } from '@/components/common/ui/card';
 import dayjs from 'dayjs';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { PostTile } from '@/components/common/ui/postTile';
+import { PostTile } from '@/components/visitor/blog/PostTile';
 import { PostType } from '@/types/PostType';
 import { TableOfContents } from '@/components/visitor/TableOfContents';
 
