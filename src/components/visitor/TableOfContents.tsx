@@ -3,6 +3,7 @@
 
 import { useEffect } from 'react';
 import tocbot from 'tocbot';
+import '@/styles/TableOfContents.css';
 
 export function TableOfContents() {
   useEffect(() => {

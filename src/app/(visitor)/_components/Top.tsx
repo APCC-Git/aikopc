@@ -1,10 +1,13 @@
+'use client';
 import TextType from '@/components/bits/TextType';
 import Link from 'next/link';
 import { Button } from '@/components/common/ui/button';
 import { CodingSvg } from '@/components/svg/CodingSvg';
 import ScrollHint from '@/components/visitor/ScrollHint';
+import { announce } from '@/lib/announce';
 
 export const Top = () => {
+  announce();
   return (
     <div id={'top'} className={'w-full items-center justify-center lg:flex'}>
       <div className={'flex h-screen flex-col items-center justify-center space-y-8 p-8 lg:w-1/2'}>

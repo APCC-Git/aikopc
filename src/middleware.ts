@@ -8,7 +8,7 @@ export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
   const token = req.cookies.get('token')?.value;
 
-  if (pathname.startsWith('/blog') || pathname === '/about') {
+  if (pathname.startsWith('/blog') || pathname === '/contact') {
     return NextResponse.redirect(new URL('/', req.url));
   }
 
@@ -21,12 +21,4 @@ export async function middleware(req: NextRequest) {
   if (protectedRoutes.some(route => pathname.startsWith(route)) && !token) {
     return NextResponse.redirect(new URL('/login', req.url));
   }
-
-  // try {
-  //   jwt.verify(token, process.env.JWT_SECRET!);
-  //   return NextResponse.next(); // 検証OK → 通過
-  // } catch {
-  //   const loginUrl = new URL('/login', req.url);
-  //   return NextResponse.redirect(loginUrl);
-  // }
 }
