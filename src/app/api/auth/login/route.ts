@@ -36,11 +36,11 @@ export async function POST(req: NextRequest) {
       role: prismaUser.role,
     },
     process.env.JWT_SECRET!, // .env に JWT_SECRET を設定しておくこと
-    { expiresIn: '10h' }
+    { algorithm: 'HS256', expiresIn: '10h' }
   );
 
   const res = NextResponse.json({ success: true });
-  res.cookies.set('token', token, { secure: true, httpOnly: true, path: '/' });
+  res.cookies.set('token', token, { secure: true, httpOnly: true, sameSite: 'strict', path: '/' });
 
   return res;
 }

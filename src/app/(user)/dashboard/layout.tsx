@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
-import { LogoutButton } from '@/components/common/ui/logoutButton';
-import { AppSidebar } from '@/components/dashboard/app-sidebar';
+import { LogoutButton } from '@/components/user/LogoutButton';
+import { AppSidebar } from '@/components/user/dashboard/app-sidebar';
 import { SidebarInset, SidebarProvider } from '@/components/common/ui/sidebar';
 import { getUser } from '@/lib/auth';
 import { User } from '@/types/prisma';
@@ -9,7 +9,6 @@ export default async function DashboardLayout({ children }: { children: ReactNod
   try {
     const payload = await getUser();
 
-    // 型ガードで判定
     if (payload) {
       return (
         <SidebarProvider>

@@ -42,6 +42,7 @@ npx prisma generate
 
 
 ```
+
 </details>
 
 <http://localhost:3000>に開発サーバが立ち上がるぞ！
@@ -51,14 +52,14 @@ npx prisma generate
 
 ## 使用技術
 
-| 言語・フレームワーク  | バージョン   |
-|-------------|---------|
-| Node.js     | 22.14.0 |
-| React       | 19.0.0  |
-| Next.js     | 15.3.1  |
-| TypeScript  | 5.8.3   |
-| TailwindCSS | v4      |
-| PostgreSQL  | 16.9    |
+| 言語・フレームワーク | バージョン |
+| -------------------- | ---------- |
+| Node.js              | 22.14.0    |
+| React                | 19.0.0     |
+| Next.js              | 15.3.1     |
+| TypeScript           | 5.8.3      |
+| TailwindCSS          | v4         |
+| PostgreSQL           | 16.9       |
 
 ## ホスト
 
@@ -91,6 +92,7 @@ src
 ├── styles       ... スタイルシート
 └── lib          ... ユーティリティ関数
 ```
+
 単一ページ内でのセクションをコンポーネント化する場合はそのページの`page.tsx`と同階層に`_components`フォルダを作成しそちらにまとめる。  
 詳しくは[この記事](https://qiita.com/miumi/items/359b8a77bbb6f9666950)を参照
 

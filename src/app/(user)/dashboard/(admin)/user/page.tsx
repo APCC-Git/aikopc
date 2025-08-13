@@ -1,6 +1,6 @@
 'use client';
 
-import { DashboardBreadcrumb } from '@/components/dashboard/DashboardBreadcrumb';
+import { DashboardBreadcrumb } from '@/components/user/dashboard/DashboardBreadcrumb';
 import { Button } from '@/components/common/ui/button';
 import { Input } from '@/components/common/ui/input';
 import React, { useState } from 'react';

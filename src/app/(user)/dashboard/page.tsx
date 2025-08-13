@@ -1,4 +1,4 @@
-import { DashboardBreadcrumb } from '@/components/dashboard/DashboardBreadcrumb';
+import { DashboardBreadcrumb } from '@/components/user/dashboard/DashboardBreadcrumb';
 import { Card } from '@/components/common/ui/card'; // 要実装
 import { Calendar, Bell, CheckSquare } from 'lucide-react'; // アイコンはインストール済み
 

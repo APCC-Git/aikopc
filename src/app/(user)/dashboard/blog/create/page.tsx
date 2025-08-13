@@ -1,7 +1,7 @@
 'use client';
 
-import { DashboardBreadcrumb } from '@/components/dashboard/DashboardBreadcrumb';
-import { SimpleEditor } from '@/components/dashboard/tiptap/tiptap-templates/simple/simple-editor';
+import { DashboardBreadcrumb } from '@/components/user/dashboard/DashboardBreadcrumb';
+import { SimpleEditor } from '@/components/user/dashboard/tiptap/tiptap-templates/simple/simple-editor';
 import { Input } from '@/components/common/ui/input';
 import { Button } from '@/components/common/ui/button';
 import { Textarea } from '@/components/common/ui/textarea';
