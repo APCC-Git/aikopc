@@ -28,7 +28,7 @@ export const Activity = () => {
             <h2 className={'font-noto text-center text-3xl font-bold md:text-left lg:text-4xl'}>
               ゲーム制作
             </h2>
-            <a className={'font-noto text-sm md:text-base md:leading-relaxed lg:text-xl'}>
+            <a className={'font-noto text-sm md:leading-relaxed lg:text-base xl:text-xl'}>
               &emsp;HSPやPython、Unity等のゲームエンジンなどを使った本格的なゲーム開発に挑戦します。プログラミングだけでなく、グラフィックデザインやサウンド制作、ストーリー構成など、ゲーム制作の様々な側面を学ぶことができます。
               <br />
               &emsp;個人作品からチーム制作まで、オリジナルゲームを完成させる達成感を味わえます。
@@ -61,7 +61,7 @@ export const Activity = () => {
             <h2 className={'font-noto text-center text-3xl font-bold md:text-left lg:text-4xl'}>
               競技プログラミング
             </h2>
-            <a className={'font-noto text-sm md:text-base md:leading-relaxed lg:text-xl'}>
+            <a className={'font-noto text-sm md:leading-relaxed lg:text-base xl:text-xl'}>
               &emsp;競技プログラミングとは、与えられた問題を効率的なアルゴリズムで解くスピードと正確さを競う知的スポーツです。
               <br />
               &emsp;部員たちはAtCoderなどのプラットフォームで腕を磨き、論理的思考力とコーディング技術を向上させています。初心者向けのプログラミング講座から、コンテスト参加まで、それぞれのレベルに合わせた活動を行っています。
@@ -81,7 +81,7 @@ export const Activity = () => {
             <h2 className={'font-noto text-center text-3xl font-bold md:text-left lg:text-4xl'}>
               Webデザイン
             </h2>
-            <a className={'font-noto text-sm md:text-base md:leading-relaxed lg:text-xl'}>
+            <a className={'font-noto text-sm md:leading-relaxed lg:text-base xl:text-xl'}>
               &emsp;HTMLやCSS、JavaScriptを活用したWebサイト制作を学びます。デザインの基礎からレスポンシブ対応、モダンなフレームワークまで、実践的なスキルを身につけられます。
               <br />
               &emsp;このサイトも部員たちの手で作られており、プロジェクトを通じて企画からデザイン、実装までの一連の流れを経験できます。
@@ -101,7 +101,7 @@ export const Activity = () => {
             <h2 className={'font-noto text-center text-3xl font-bold md:text-left lg:text-4xl'}>
               AI
             </h2>
-            <a className={'font-noto text-sm md:text-base md:leading-relaxed lg:text-xl'}>
+            <a className={'font-noto text-sm md:leading-relaxed lg:text-base xl:text-xl'}>
               &emsp;人工知能（AI）技術の基礎から応用までを探求します。機械学習やディープラーニングの基本概念を学び、実際にPythonを使った画像認識や自然言語処理などの実装に挑戦します。
               <br />
               &emsp;最新のAIツールやモデルを活用したプロジェクト開発を通じて、未来を切り拓く技術に触れることができます。
