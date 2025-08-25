@@ -25,7 +25,7 @@ export const useSVG = () => {
           : breakpoint === 'lg'
             ? 360
             : breakpoint === 'xl'
-              ? 400
+              ? 380
               : 500;
 
   const svgColor = isDark ? '#a3ff00' : '#ffbb32';
